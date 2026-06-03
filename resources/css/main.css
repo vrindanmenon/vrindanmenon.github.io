@@ -639,9 +639,10 @@ p .past-exp-text{
 /* ================= BASE TYPOGRAPHY ================= */
 
 body {
-  font-family: "Georgia", serif;
+  font-family: 'Lora', serif;
   color: #222;
-  line-height: 1.75;
+  line-height: 1.9;
+  background-color: #fafafa;
 }
 
 a {
@@ -735,7 +736,7 @@ a:hover {
 
 .blog-content {
   flex: 1;
-  max-width: 720px;
+  max-width: 680px;
 }
 
 
@@ -796,8 +797,11 @@ a:hover {
 }
 
 .blog-post h1 {
-  font-size: 2.6rem;
-  margin-bottom: 12px;
+  font-size: 4rem;
+  line-height: 1.25;
+  margin-bottom: 18px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 .post-date {
@@ -811,14 +815,23 @@ a:hover {
 }
 
 .blog-post p {
-  font-size: 1.15rem;
-  margin-bottom: 26px;
+  font-size: 1.22rem;
+  line-height: 1.95;
+  margin-bottom: 34px;
+  color: #2b2b2b;
+}
+
+.blog-post strong {
+  font-weight: 700;
+  color: #111;
 }
 
 .blog-post h2 {
-  margin-top: 50px;
-  margin-bottom: 18px;
-  font-size: 1.8rem;
+  margin-top: 70px;
+  margin-bottom: 24px;
+  font-size: 2rem;
+  line-height: 1.4;
+  font-weight: 500;
 }
 
 .blog-post h3 {

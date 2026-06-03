@@ -51,10 +51,10 @@ A paper plane may look simple, but the moment it leaves your hand, it enters int
 
 Even the simplest paper plane is constantly balancing four of them.
 
-### **Lift** pulls it upward.
-### **Gravity** pulls it downward.
-### **Thrust** pushes it forward.
-### **Drag** slows it down.
+- **Lift** pulls it upward.
+- **Gravity** pulls it downward.
+- **Thrust** pushes it forward.
+- **Drag** slows it down.
 
 You cannot see these forces directly.
 But you can watch them fighting each other by observing paper plane’s motion.
@@ -77,9 +77,9 @@ Even while resting on the desk, they already feel different. One resembles a gli
 
 Now throw them gently.
 
-### Which one remains airborne longer?
-### Which one feels faster?
-### Which one appears steadier while turning?
+Which one remains airborne longer?
+Which one feels faster?
+Which one appears steadier while turning?
 
 As the planes move through the air, notice what the wings are doing to the airflow around them.
 
@@ -88,9 +88,9 @@ More air gets redirected downward.
 
 And strangely, that downward movement of air helps the paper plane rise.
 
-### This is where **Newton’s Third Law** quietly enters the classroom. When the plane pushes air downward, the air pushes the plane upward with an equal and opposite force.That upward force is called **lift**.
+This is where **Newton’s Third Law** quietly enters the classroom. When the plane pushes air downward, the air pushes the plane upward with an equal and opposite force.That upward force is called **lift**.
 
-### Paper planes also rely heavily on something called the **Coanda effect** — the tendency of moving air to follow curved or angled surfaces.
+Paper planes also rely heavily on something called the **Coanda effect** — the tendency of moving air to follow curved or angled surfaces.
 
 Even though paper plane wings appear mostly flat, tiny bends and folds still guide airflow in different ways. Air briefly clings to the wing surface, curves downward, and leaves behind changing pressure patterns. The paper plane is not simply cutting through air. It is continuously reshaping the airflow around itself. 
 
@@ -102,12 +102,12 @@ Wider wings may create more lift, but they also create more drag. The plane rema
 
 Now look carefully at the back edges of the wings.
 
-### Bend them upward slightly.Throw the plane again. Then flatten them.Then bend them downward. What changes?
+Bend them upward slightly.Throw the plane again. Then flatten them.Then bend them downward. What changes?
 
-### Does the plane rise more?  
-### Does it dive faster?  
-### Does it wobble?  
-### Does it slow down?
+Does the plane rise more?  
+Does it dive faster?  
+Does it wobble?  
+Does it slow down?
 
 Now try bending only one side upward.
 
@@ -123,7 +123,7 @@ The plane begins revealing something fascinating: flight is not controlled by a 
 
 ## Experiment 3: The Nose
 
-### Attach a paperclip near the nose.
+Attach a paperclip near the nose.
 
 Throw the plane.
 
@@ -146,10 +146,10 @@ Good flight depends on the relationship between these two invisible points. When
 
 Look at the paper plane from the front.
 
-### Now tilt the wings upward slightly into a shallow “V” shape. Throw it again.
+Now tilt the wings upward slightly into a shallow “V” shape. Throw it again.
 
-### Does it wobble less?
-### Does it recover balance more easily while falling?
+Does it wobble less?
+Does it recover balance more easily while falling?
 
 Now flatten the wings completely.
 Does the behavior change?
@@ -164,7 +164,7 @@ The plane is constantly interacting with moving currents of air, correcting itse
 
 Now keep the airplane unchanged.
 
-### Only change the throw.
+Only change the throw.
 
 A fast throw.  
 A soft throw.  
