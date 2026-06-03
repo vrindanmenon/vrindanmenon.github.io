@@ -1,0 +1,31 @@
+---
+---
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }}</title>
+
+  <!-- Global Styles -->
+  <link rel="stylesheet" href="/resources/css/reset.css">
+  <link rel="stylesheet" href="/resources/css/main.css">
+</head>
+
+<body>
+
+  <!-- Page content injected by layouts -->
+  {{ content }}
+
+  <!-- Search script (only runs if input exists) -->
+  <script>
+  document.getElementById("searchInput")?.addEventListener("keyup", function() {
+    let filter = this.value.toLowerCase();
+    document.querySelectorAll(".post-link").forEach(link => {
+      link.style.display = link.textContent.toLowerCase().includes(filter) ? "" : "none";
+    });
+  });
+  </script>
+
+</body>
+</html>

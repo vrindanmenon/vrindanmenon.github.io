@@ -1,0 +1,79 @@
+---
+layout: default
+---
+
+<div class="blog-layout">
+
+  <!-- =========================
+       LEFT SIDEBAR (GLOBAL)
+  ========================== -->
+  <aside class="blog-sidebar">
+    <div class="sidebar-inner">
+
+      <!-- Primary Navigation -->
+      <nav class="sidebar-nav">
+        <a href="/" class="sidebar-nav-link">Home</a>
+        <a href="/portfolio.html" class="sidebar-nav-link">Portfolio</a>
+        <a href="/recursive-reflections" class="sidebar-nav-link">Recursive Reflections</a>
+      </nav>
+
+      <hr class="sidebar-divider">
+
+      <!-- Blog Tools -->
+      <h3>Explore</h3>
+      <input type="text" id="searchInput" placeholder="Search thoughts..." class="blog-sidebar-search">
+
+      <h4>Topics</h4>
+      <div class="tag-cloud">
+        <a href="/tag/patterns/" class="tag-cloud-link">Patterns</a>
+        <a href="/tag/nature/" class="tag-cloud-link">Nature</a>
+        <a href="/tag/books/" class="tag-cloud-link">Books</a>
+        <a href="/tag/geometry/" class="tag-cloud-link">Geometry</a>
+      </div>
+
+    </div>
+  </aside>
+
+  <!-- =========================
+       MAIN BLOG CONTENT AREA
+  ========================== -->
+  <main class="blog-content">
+
+    {% if page.date %}
+      <!-- ===== SINGLE BLOG POST ===== -->
+      <article class="blog-post">
+        <h1>{{ page.title }}</h1>
+        <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+        {{ content }}
+      </article>
+
+    {% else %}
+      <!-- ===== BLOG MAIN PAGE (LIST) ===== -->
+      {% assign current_collection = page.collection | default: "recursive-reflections" %}
+
+<section class="blog-list">
+  <h1 class="blog-content-title">{{ page.title }}</h1>
+
+  {% for post in site[current_collection] %}
+    <div class="post-card">
+      <h2 class="post-card-title">
+        <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
+      </h2>
+
+      <p class="blog-content-meta">
+        {{ post.date | date: "%B %d, %Y" }}
+      </p>
+
+      <p class="post-card-content">
+        {{ post.content | strip_html | truncate: 180 }}
+      </p>
+
+      <a href="{{ post.url }}" class="read-more-link">Read more →</a>
+    </div>
+  {% endfor %}
+</section>
+
+    {% endif %}
+
+  </main>
+</div>l

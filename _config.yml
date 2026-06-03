@@ -1,0 +1,12 @@
+title: Vrinda Rakesh
+description: Thoughts on books, math, and patterns in life
+baseurl: ""
+url: "https://vrindarakesh.github.io"
+
+collections:
+  booksorbed:
+    output: true
+    permalink: /booksorbed/:name/
+  recursive-reflections:
+    output: true
+    permalink: /recursive-reflections/:name/
