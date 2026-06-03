@@ -30,18 +30,9 @@ The paper plane is ready. A hand stretches backward. And then it flies.
 
 For a few seconds, everybody watches.
 
-Not because they care about aerodynamics.  
-Not because they are thinking about Newton’s laws or airflow patterns.
+Not because they care about aerodynamics. Not because they are thinking about Newton’s laws or airflow patterns. But because flight always captures attention, especially when the plane is aimed at someone.
 
-But because flight always captures attention, especially when the plane is aimed at someone.
-
-Sometimes it glides softly through the classroom air before landing near the last bench.
-
-Sometimes it rises beautifully at first, hesitates for a moment, and suddenly drops nose-first toward the floor.
-
-Sometimes it curves sideways unexpectedly, as though an invisible hand pushed it midair.
-
-And sometimes, with the smallest change in shape, the entire behavior changes.
+Sometimes it glides softly through the classroom air before landing near the last bench. Sometimes it rises beautifully at first, hesitates for a moment, and suddenly drops nose-first toward the floor Sometimes it curves sideways unexpectedly, as though an invisible hand pushed it midair. And sometimes, with the smallest change in shape, the entire behavior changes.
 
 A tiny bend near the wing.  
 A heavier nose.  
@@ -80,9 +71,7 @@ And when the paper plane finally dips downward and crashes,gravity takes over co
 
 Fold two paper planes.
 
-One with long, wide wings.
-
-Another with narrow, compact wings.
+One with long, **wide wings**. Another with narrow, **compact wings**.
 
 Place them side by side before throwing them.
 
@@ -101,9 +90,7 @@ More air gets redirected downward.
 
 And strangely, that downward movement of air helps the paper plane rise.
 
-This is where **Newton’s Third Law** quietly enters the classroom. When the plane pushes air downward, the air pushes the plane upward with an equal and opposite force.
-
-That upward force is called lift.
+This is where **Newton’s Third Law** quietly enters the classroom. When the plane pushes air downward, the air pushes the plane upward with an equal and opposite force.That upward force is called **lift**.
 
 Paper planes also rely heavily on something called the **Coanda effect** — the tendency of moving air to follow curved or angled surfaces.
 
@@ -117,15 +104,9 @@ Wider wings may create more lift, but they also create more drag. The plane rema
 
 Now look carefully at the back edges of the wings.
 
-Bend them upward slightly.
+Bend them upward slightly.Throw the plane again.
 
-Throw the plane again.
-
-Then flatten them.
-
-Then bend them downward.
-
-What changes?
+Then flatten them.Then bend them downward. What changes?
 
 Does the plane rise more?  
 Does it dive faster?  
@@ -136,21 +117,11 @@ Now try bending only one side upward.
 
 Does the plane still travel straight?
 
-At first, these adjustments feel too small to matter.
+At first, these adjustments feel too small to matter.But air is extremely sensitive. As the plane moves forward, thin layers of airflow slide across the wings, curve around folds, separate near edges, and react to every tiny surface change.
 
-But air is extremely sensitive.
+A small bend changes the direction in which air leaves the wing. And once airflow changes, the balance between lift, drag, and gravity changes too.
 
-As the plane moves forward, thin layers of airflow slide across the wings, curve around folds, separate near edges, and react to every tiny surface change.
-
-A small bend changes the direction in which air leaves the wing.
-
-And once airflow changes, the balance between lift, drag, and gravity changes too.
-
-The plane begins revealing something fascinating:
-
-flight is not controlled by a single force.
-
-It emerges from relationships between shape, pressure, motion, and airflow.
+The plane begins revealing something fascinating: flight is not controlled by a single force. It emerges from relationships between shape, pressure, motion, and airflow.
 
 ---
 
@@ -213,7 +184,7 @@ More thrust increases speed, which changes airflow over the wings. More airflow 
 Even after leaving your hand, the physics never stops evolving. Every second of flight becomes a shifting balance between lift, gravity, thrust, and drag.
 
 <div style="text-align:center;">
-  <img src="/resources/images/007_paper_planes_1.jpeg"
+  <img src="/resources/images/007_paper_planes_1.png"
        alt="Paper Plane Forces"
        style="max-width:100%; height:auto;" />
 </div>
