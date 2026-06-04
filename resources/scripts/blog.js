@@ -80,37 +80,21 @@ if (activeTag && searchInput) {
 
 }
 
-/* =========================
-   MOBILE SIDEBAR
-========================== */
+// =========================
+// MOBILE SIDEBAR TOGGLE
+// =========================
+const menuToggle = document.getElementById('mobileMenuToggle');
+const mobileSidebar = document.getElementById('mobileSidebar');
 
-const mobileMenuToggle =
-  document.getElementById('mobileMenuToggle');
-
-const mobileSidebar =
-  document.getElementById('mobileSidebar');
-
-if (mobileMenuToggle && mobileSidebar) {
-
-  mobileMenuToggle.addEventListener('click', () => {
-
+if (menuToggle && mobileSidebar) {
+  menuToggle.addEventListener('click', () => {
     mobileSidebar.classList.toggle('sidebar-open');
-
   });
 
+  // Close sidebar when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!mobileSidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+      mobileSidebar.classList.remove('sidebar-open');
+    }
+  });
 }
-
-document.addEventListener('click', (e) => {
-
-  if (
-    mobileSidebar &&
-    mobileSidebar.classList.contains('sidebar-open') &&
-    !mobileSidebar.contains(e.target) &&
-    !mobileMenuToggle.contains(e.target)
-  ) {
-
-    mobileSidebar.classList.remove('sidebar-open');
-
-  }
-
-});
