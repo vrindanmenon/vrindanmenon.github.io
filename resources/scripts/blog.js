@@ -79,3 +79,38 @@ if (activeTag && searchInput) {
   filterPosts(activeTag, "tag");
 
 }
+
+/* =========================
+   MOBILE SIDEBAR
+========================== */
+
+const mobileMenuToggle =
+  document.getElementById('mobileMenuToggle');
+
+const mobileSidebar =
+  document.getElementById('mobileSidebar');
+
+if (mobileMenuToggle && mobileSidebar) {
+
+  mobileMenuToggle.addEventListener('click', () => {
+
+    mobileSidebar.classList.toggle('sidebar-open');
+
+  });
+
+}
+
+document.addEventListener('click', (e) => {
+
+  if (
+    mobileSidebar &&
+    mobileSidebar.classList.contains('sidebar-open') &&
+    !mobileSidebar.contains(e.target) &&
+    !mobileMenuToggle.contains(e.target)
+  ) {
+
+    mobileSidebar.classList.remove('sidebar-open');
+
+  }
+
+});
