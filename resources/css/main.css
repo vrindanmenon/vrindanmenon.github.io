@@ -876,154 +876,147 @@ a:hover {
   margin: 25px 0 30px 20px;
 }
 
-
-/* ================= RESPONSIVE ================= */
-
-@media (max-width: 900px) {
-  .blog-layout {
-    flex-direction: column;
-    gap: 50px;
-    margin: 60px auto;
-  }
-
-  .blog-sidebar {
-    position: static;
-    width: 100%;
-  }
-
-  .blog-content {
-    max-width: 100%;
-  }
-}
-
-/* =========================
-   MOBILE TOPBAR
-========================== */
+/* ========================================
+   BLOG PAGE ONLY — MOBILE SIDEBAR
+======================================== */
 
 .mobile-topbar {
-  display: none;
+    display: none;
 }
 
-/* =========================
-   MOBILE RESPONSIVE
-========================== */
+/* ========================================
+   BLOG MOBILE VIEW ONLY
+======================================== */
 
-@media (max-width: 900px) {
+@media only screen and (max-width: 900px){
 
-  /* =========================
-     TOPBAR
-  ========================== */
+    /* =========================
+       BLOG PAGE LAYOUT
+    ========================== */
 
-  .mobile-topbar {
+    .blog-layout{
 
-    display: flex;
+        display: block;
+        margin: 0 auto;
+        padding: 0;
+    }
 
-    align-items: center;
-    gap: 18px;
+    .blog-content{
 
-    position: sticky;
-    top: 0;
+        max-width: 100%;
+        padding: 28px 22px;
+    }
 
-    padding: 18px 22px;
+    /* =========================
+       MOBILE TOPBAR
+    ========================== */
 
-    background: #fafafa;
+    .mobile-topbar{
 
-    border-bottom: 1px solid #e8e8e8;
+        display: flex;
 
-    z-index: 1000;
-  }
+        align-items: center;
+        gap: 18px;
 
-  .mobile-menu-toggle {
+        position: sticky;
+        top: 0;
 
-    background: none;
-    border: none;
+        padding: 18px 22px;
 
-    font-size: 28px;
+        background: #fafafa;
 
-    cursor: pointer;
+        border-bottom: 1px solid #e8e8e8;
 
-    color: #222;
-  }
+        z-index: 1000;
+    }
 
-  .mobile-title {
+    .mobile-menu-toggle{
 
-    font-size: 1.05rem;
-    font-weight: 600;
-  }
+        background: none;
+        border: none;
 
-  /* =========================
-     SIDEBAR DRAWER
-  ========================== */
+        cursor: pointer;
 
-  .blog-sidebar {
+        color: #222;
 
-    position: fixed;
+        font-size: 28px;
+    }
 
-    top: 0;
-    left: -320px;
+    .mobile-title{
 
-    width: 280px;
-    height: 100vh;
+        font-size: 1.05rem;
+        font-weight: 600;
 
-    background: #fafafa;
+        font-family: 'Karla', sans-serif;
+    }
 
-    padding: 40px 28px;
+    /* =========================
+       SIDEBAR DRAWER
+    ========================== */
 
-    overflow-y: auto;
+    .blog-layout .blog-sidebar{
 
-    transition: left 0.3s ease;
+        position: fixed;
 
-    z-index: 999;
+        top: 0;
+        left: -320px;
 
-    box-shadow: 2px 0 14px rgba(0,0,0,0.08);
-  }
+        width: 280px;
+        height: 100vh;
 
-  .blog-sidebar.sidebar-open {
+        padding: 40px 28px;
 
-    left: 0;
-  }
+        overflow-y: auto;
 
-  /* =========================
-     HIDE TAG CLOUD
-  ========================== */
+        background: #fafafa;
 
-  .tag-cloud,
-  .blog-sidebar h4 {
+        transition: left 0.3s ease;
 
-    display: none;
-  }
+        z-index: 999;
 
-  /* =========================
-     LAYOUT
-  ========================== */
+        box-shadow: 2px 0 14px rgba(0,0,0,0.08);
+    }
 
-  .blog-layout {
+    .blog-layout .blog-sidebar.sidebar-open{
 
-    display: block;
-  }
+        left: 0;
+    }
 
-  .blog-content {
+    /* =========================
+       HIDE TAG CLOUD IN MOBILE
+    ========================== */
 
-    max-width: 100%;
+    .blog-layout .tag-cloud,
+    .blog-layout .blog-sidebar h4{
 
-    padding: 28px 22px;
-  }
+        display: none;
+    }
 
-  /* =========================
-     TYPOGRAPHY
-  ========================== */
+    /* =========================
+       MOBILE TYPOGRAPHY
+    ========================== */
 
-  .blog-post h1,
-  .blog-content-title {
+    .blog-content-title{
 
-    font-size: 2.3rem;
-    line-height: 1.2;
-  }
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
 
-  .blog-post p {
+    .blog-post h1{
 
-    font-size: 1.05rem;
-    line-height: 1.85;
-  }
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+
+    .post-card-title{
+
+        font-size: 1.6rem;
+    }
+
+    .blog-post p{
+
+        font-size: 1.05rem;
+        line-height: 1.85;
+    }
 
 }
