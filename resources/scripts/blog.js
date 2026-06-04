@@ -1,6 +1,5 @@
 
 const searchInput = document.getElementById('searchInput');
-const posts = document.querySelectorAll('.post-card');
 
 /* =========================
    FILTER POSTS
@@ -8,18 +7,22 @@ const posts = document.querySelectorAll('.post-card');
 
 function filterPosts(query, mode = "general") {
 
-  query = query.toLowerCase();
+  const posts =
+    document.querySelectorAll('.post-card');
+
+  query =
+    query.trim().toLowerCase();
 
   posts.forEach(post => {
 
     const title =
-      post.dataset.title || "";
+      (post.dataset.title || "").toLowerCase();
 
     const tags =
-      post.dataset.tags || "";
+      (post.dataset.tags || "").toLowerCase();
 
     const content =
-      post.dataset.content || "";
+      (post.dataset.content || "").toLowerCase();
 
     let isMatch = false;
 
@@ -29,9 +32,11 @@ function filterPosts(query, mode = "general") {
 
     if (mode === "tag") {
 
-      const tagList = tags.split(" ");
+      const tagList =
+        tags.split(" ");
 
-      isMatch = tagList.includes(query);
+      isMatch =
+        tagList.includes(query);
 
     }
 
@@ -42,7 +47,7 @@ function filterPosts(query, mode = "general") {
     else {
 
       const searchableText =
-        title + " " + tags + " " + content;
+        `${title} ${tags} ${content}`;
 
       isMatch =
         searchableText.includes(query);
@@ -62,9 +67,9 @@ function filterPosts(query, mode = "general") {
 
 if (searchInput) {
 
-  searchInput.addEventListener('input', function () {
+  searchInput.addEventListener('input', (e) => {
 
-    filterPosts(this.value);
+    filterPosts(e.target.value);
 
   });
 
@@ -82,7 +87,8 @@ const activeTag =
 
 if (activeTag && searchInput) {
 
-  searchInput.value = activeTag;
+  searchInput.value =
+    activeTag;
 
   filterPosts(activeTag, "tag");
 

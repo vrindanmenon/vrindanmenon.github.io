@@ -12,7 +12,9 @@ layout: default
 
     <div class="sidebar-inner">
 
-      <!-- Navigation -->
+      <!-- =========================
+           NAVIGATION
+      ========================== -->
 
       <nav class="sidebar-nav">
 
@@ -32,7 +34,9 @@ layout: default
 
       <hr class="sidebar-divider">
 
-      <!-- Search -->
+      <!-- =========================
+           SEARCH
+      ========================== -->
 
       <h3>Explore Thoughts</h3>
 
@@ -43,7 +47,9 @@ layout: default
         class="blog-sidebar-search"
       >
 
-      <!-- Topics -->
+      <!-- =========================
+           TAG CLOUD
+      ========================== -->
 
       <h4>Topics</h4>
 
@@ -51,12 +57,14 @@ layout: default
 
         {% assign all_tags = "" | split: "" %}
 
-        {% for post in site.recursive-reflections %}
+        {% for post in site["recursive-reflections"] %}
 
           {% for tag in post.tags %}
 
             {% unless all_tags contains tag %}
+
               {% assign all_tags = all_tags | push: tag %}
+
             {% endunless %}
 
           {% endfor %}
@@ -66,7 +74,7 @@ layout: default
         {% for tag in all_tags %}
 
           <a
-            href="/recursive-reflections?tag={{ tag | downcase }}"
+            href="{{ '/recursive-reflections' | relative_url }}?tag={{ tag | downcase }}"
             class="tag-cloud-link"
             data-tag="{{ tag | downcase }}"
           >
@@ -91,14 +99,18 @@ layout: default
 
     {% if page.date %}
 
-      <!-- ===== SINGLE POST ===== -->
+      <!-- =========================
+           SINGLE BLOG POST
+      ========================== -->
 
       <article class="blog-post">
 
         <h1>{{ page.title }}</h1>
 
         <p class="post-date">
+
           {{ page.date | date: "%B %d, %Y" }}
+
         </p>
 
         {{ content }}
@@ -107,15 +119,19 @@ layout: default
 
     {% else %}
 
-      <!-- ===== BLOG LIST ===== -->
+      <!-- =========================
+           BLOG LIST
+      ========================== -->
 
       <section class="blog-list">
 
         <h1 class="blog-content-title">
+
           {{ page.title }}
+
         </h1>
 
-        {% for post in site.recursive-reflections %}
+        {% for post in site["recursive-reflections"] %}
 
           <div
             class="post-card"
@@ -124,46 +140,72 @@ layout: default
             data-content="{{ post.content | strip_html | downcase }}"
           >
 
-            <!-- Title -->
+            <!-- =========================
+                 POST TITLE
+            ========================== -->
 
             <h2 class="post-card-title">
 
-              <a href="{{ post.url }}" class="post-link">
+              <a
+                href="{{ post.url }}"
+                class="post-link"
+              >
+
                 {{ post.title }}
+
               </a>
 
             </h2>
 
-            <!-- Date -->
+            <!-- =========================
+                 DATE
+            ========================== -->
 
             <p class="blog-content-meta">
+
               {{ post.date | date: "%B %d, %Y" }}
+
             </p>
 
-            <!-- Preview -->
+            <!-- =========================
+                 PREVIEW
+            ========================== -->
 
             <p class="post-card-content">
+
               {{ post.content | strip_html | truncate: 180 }}
+
             </p>
 
-            <!-- Tags -->
+            <!-- =========================
+                 TAGS
+            ========================== -->
 
             <div class="post-preview-tags">
 
               {% for tag in post.tags %}
 
                 <span class="post-preview-tag">
+
                   #{{ tag }}
+
                 </span>
 
               {% endfor %}
 
             </div>
 
-            <!-- Read More -->
+            <!-- =========================
+                 READ MORE
+            ========================== -->
 
-            <a href="{{ post.url }}" class="read-more-link">
+            <a
+              href="{{ post.url }}"
+              class="read-more-link"
+            >
+
               Read more →
+
             </a>
 
           </div>
@@ -177,4 +219,3 @@ layout: default
   </main>
 
 </div>
-
