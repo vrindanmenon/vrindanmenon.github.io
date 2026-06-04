@@ -20,7 +20,7 @@ layout: default
       <hr class="sidebar-divider">
 
       <!-- Blog Tools -->
-      <h3>Explore Thoughts</h3>
+      <h3>Explore Thoughts</h3 ̰>
       <input type="text" id="searchInput" placeholder="Search thoughts..." class="blog-sidebar-search">
 
       <h4>Topics</h4>
@@ -68,12 +68,11 @@ layout: default
 
     {% else %}
       <!-- ===== BLOG MAIN PAGE (LIST) ===== -->
-      {% assign current_collection = page.collection | default: "recursive-reflections" %}
 
 <section class="blog-list">
   <h1 class="blog-content-title">{{ page.title }}</h1>
 
-  {% for post in site[current_collection] %}
+  {% for post in site.recursive-reflections %}
     <div class="post-card"
          data-title="{{ post.title | downcase }}"
          data-tags="{{ post.tags | join: ' ' | downcase }}"
