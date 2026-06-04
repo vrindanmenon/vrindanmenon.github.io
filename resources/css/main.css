@@ -765,6 +765,23 @@ a:hover {
   color: #7a2d91;
 }
 
+.post-preview-tags {
+  margin-top: 18px;
+}
+
+.post-preview-tag {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 0.9rem;
+  color: #7a2d91;
+  opacity: 0.8;
+}
+
+/* Search filter - Makes filtering feel softer and smoother*/ 
+.post-card {
+  transition: opacity 0.25s ease;
+}
+
 .blog-content-meta {
   font-size: 13px;
   text-transform: uppercase;

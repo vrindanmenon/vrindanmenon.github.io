@@ -20,16 +20,27 @@ layout: default
       <hr class="sidebar-divider">
 
       <!-- Blog Tools -->
-      <h3>Explore</h3>
+      <h3>Explore Thoughts</h3>
       <input type="text" id="searchInput" placeholder="Search thoughts..." class="blog-sidebar-search">
 
       <h4>Topics</h4>
       <div class="tag-cloud">
-        <a href="/tag/patterns/" class="tag-cloud-link">Patterns</a>
-        <a href="/tag/nature/" class="tag-cloud-link">Nature</a>
-        <a href="/tag/books/" class="tag-cloud-link">Books</a>
-        <a href="/tag/geometry/" class="tag-cloud-link">Geometry</a>
-      </div>
+
+  {% assign tags = site.tags | sort %}
+
+  {% for tag in tags %}
+
+    <a href="#"
+       class="tag-cloud-link"
+       data-tag="{{ tag[0] | downcase }}">
+
+       #{{ tag[0] }}
+
+    </a>
+
+  {% endfor %}
+
+</div>
 
     </div>
   </aside>
@@ -55,7 +66,10 @@ layout: default
   <h1 class="blog-content-title">{{ page.title }}</h1>
 
   {% for post in site[current_collection] %}
-    <div class="post-card">
+    <div class="post-card"
+         data-title="{{ post.title | downcase }}"
+         data-tags="{{ post.tags | join: ' ' | downcase }}"
+         data-content="{{ post.content | strip_html | downcase }}">
       <h2 class="post-card-title">
         <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
       </h2>
@@ -64,9 +78,19 @@ layout: default
         {{ post.date | date: "%B %d, %Y" }}
       </p>
 
-      <p class="post-card-content">
-        {{ post.content | strip_html | truncate: 180 }}
-      </p>
+     <p class="post-card-content">
+  {{ post.content | strip_html | truncate: 180 }}
+</p>
+
+<div class="post-preview-tags">
+
+  {% for tag in post.tags %}
+    <span class="post-preview-tag">
+      #{{ tag }}
+    </span>
+  {% endfor %}
+
+</div>
 
       <a href="{{ post.url }}" class="read-more-link">Read more →</a>
     </div>
@@ -76,4 +100,65 @@ layout: default
     {% endif %}
 
   </main>
-</div>l
+</div>
+
+<script>
+
+const searchInput = document.getElementById('searchInput');
+const posts = document.querySelectorAll('.post-card');
+const tagLinks = document.querySelectorAll('.tag-cloud-link');
+
+function filterPosts(query) {
+
+  query = query.toLowerCase();
+
+  posts.forEach(post => {
+
+    const title = post.dataset.title || "";
+    const tags = post.dataset.tags || "";
+    const content = post.dataset.content || "";
+
+    const searchableText = title + " " + tags + " " + content;
+
+    if (searchableText.includes(query)) {
+      post.style.display = 'block';
+    } else {
+      post.style.display = 'none';
+    }
+
+  });
+}
+
+/* Search Input */
+
+if (searchInput) {
+
+  searchInput.addEventListener('input', function () {
+
+    filterPosts(this.value);
+
+  });
+
+}
+
+/* Tag Click */
+
+tagLinks.forEach(tag => {
+
+  tag.addEventListener('click', function(e) {
+
+    e.preventDefault();
+
+    const selectedTag = this.dataset.tag;
+
+    if (searchInput) {
+      searchInput.value = selectedTag;
+    }
+
+    filterPosts(selectedTag);
+
+  });
+
+});
+
+</script>

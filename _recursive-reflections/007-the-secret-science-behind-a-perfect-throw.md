@@ -1,8 +1,8 @@
 ---
 layout: blogpost
-title: "007 — The Secret Science of the Perfect Throw"
+title: "007 — The Secret Science Behind a Perfect Throw"
 date: 2026-06-02
-tags: [physics, paper planes, airflow, emergence, funLearning, integratedLearning]
+tags: [physics, aerodynamics, funLearning, integratedLearning]
 ---
 
 The bell rings for recess.
