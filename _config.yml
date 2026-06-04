@@ -10,3 +10,7 @@ collections:
   recursive-reflections:
     output: true
     permalink: /recursive-reflections/:name/
+  learning-spaces:
+    output: true
+    permalink: /learning-spaces/:name/
+
