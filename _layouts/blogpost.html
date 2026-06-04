@@ -26,15 +26,23 @@ layout: default
       <h4>Topics</h4>
       <div class="tag-cloud">
 
-  {% assign tags = site.tags | sort %}
+  {% assign all_tags = "" | split: "" %}
 
-  {% for tag in tags %}
+  {% for post in site[current_collection] %}
+    {% for tag in post.tags %}
+      {% unless all_tags contains tag %}
+        {% assign all_tags = all_tags | push: tag %}
+      {% endunless %}
+    {% endfor %}
+  {% endfor %}
+
+  {% for tag in all_tags %}
 
     <a href="#"
        class="tag-cloud-link"
-       data-tag="{{ tag[0] | downcase }}">
+       data-tag="{{ tag | downcase }}">
 
-       #{{ tag[0] }}
+       #{{ tag }}
 
     </a>
 
