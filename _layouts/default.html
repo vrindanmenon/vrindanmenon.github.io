@@ -18,14 +18,14 @@
   {{ content }}
 
   <!-- Search script (only runs if input exists) -->
-  <script>
-  document.getElementById("searchInput")?.addEventListener("keyup", function() {
-    let filter = this.value.toLowerCase();
-    document.querySelectorAll(".post-link").forEach(link => {
-      link.style.display = link.textContent.toLowerCase().includes(filter) ? "" : "none";
-    });
+<script>
+document.getElementById("searchInput")?.addEventListener("keyup", function() {
+  let filter = this.value.toLowerCase();
+  document.querySelectorAll(".post-link").forEach(link => {
+    link.style.display = link.textContent.toLowerCase().includes(filter) ? "" : "none";
   });
-  </script>
+});
+</script>
 
 <script src = "{{ '/resources/scripts/blog.js' | relative_url }}"></script>
 </body>

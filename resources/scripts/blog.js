@@ -7,22 +7,15 @@ const searchInput = document.getElementById('searchInput');
 
 function filterPosts(query, mode = "general") {
 
-  const posts =
-    document.querySelectorAll('.post-card');
+  const posts = document.querySelectorAll('.post-card');
 
-  query =
-    query.trim().toLowerCase();
+  query = query.trim().toLowerCase();
 
   posts.forEach(post => {
 
-    const title =
-      (post.dataset.title || "").toLowerCase();
-
-    const tags =
-      (post.dataset.tags || "").toLowerCase();
-
-    const content =
-      (post.dataset.content || "").toLowerCase();
+    const title = (post.dataset.title || "").toLowerCase();
+    const tags = (post.dataset.tags || "").toLowerCase();
+    const content = (post.dataset.content || "").toLowerCase();
 
     let isMatch = false;
 
@@ -32,11 +25,9 @@ function filterPosts(query, mode = "general") {
 
     if (mode === "tag") {
 
-      const tagList =
-        tags.split(" ");
+      const tagList = tags.split(" ");
 
-      isMatch =
-        tagList.includes(query);
+      isMatch = tagList.includes(query);
 
     }
 
@@ -46,16 +37,13 @@ function filterPosts(query, mode = "general") {
 
     else {
 
-      const searchableText =
-        `${title} ${tags} ${content}`;
+      const searchableText = `${title} ${tags} ${content}`;
 
-      isMatch =
-        searchableText.includes(query);
+      isMatch = searchableText.includes(query);
 
     }
 
-    post.style.display =
-      isMatch ? "block" : "none";
+    post.style.display = isMatch ? "block" : "none";
 
   });
 
@@ -79,11 +67,9 @@ if (searchInput) {
    URL TAG FILTER
 ========================== */
 
-const params =
-  new URLSearchParams(window.location.search);
+const params = new URLSearchParams(window.location.search);
 
-const activeTag =
-  params.get('tag');
+const activeTag = params.get('tag');
 
 if (activeTag && searchInput) {
 
