@@ -26,12 +26,11 @@
             <img class ="logo" src="./resources/images/logoVividVistas.png" alt = "VividVistas logo">
             <nav class="primary-nav">
                 <ul class="desktop-view">
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./designarchive.html">Archive</a></li>
-                    <li><a href="./naturediares.html">Nature Diares</a></li>
-                    <li><a href="./aboutMe.html">About Me</a></li>
-                    <!--<li><a href="./booksorbed">Booksorbed</a></li>-->
-                    <li><a href="./recursive-reflections">Recursive Reflections</a></li>
+                    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/_pages/archive' | relative_url }}">Archive</a></li>
+                    <li><a href="{{ '/_pages/naturediaries' | relative_url }}">Nature Diaries</a></li>
+                    <li><a href="{{ '/recursive-reflections' | relative_url }}">Recursive Reflections</a></li>
+                    <li><a href="{{ '/_pages/aboutMe' | relative_url }}">About Me</a></li>
                 </ul>
             </nav>
             
@@ -39,19 +38,18 @@
             <div id = "primary-nav-mobile-view">
                 <img class = "close-icon" id = "close-icon" src="./resources/icons/closeIcon.png" alt="close icon"  onclick="closeMenu()">
                 <ul>
-                    <li><a href="./index.html">Home</a></li>
-                    <li><a href="./designarchive.html">Archive</a></li>
-                    <li><a href="./naturediares.html">Nature Diares</a></li>
-                    <li><a href="./aboutMe.html">About Me</a></li>
-                    <!--<li><a href="./booksorbed">Booksorbed</a></li>-->
-                    <li><a href="./recursive-reflections">Recursive Reflections</a></li>
+                    <li><a href="{{ '/' | relative_url }}">Home</a></li>
+                    <li><a href="{{ '/_pages/archive' | relative_url }}">Archive</a></li>
+                    <li><a href="{{ '/_pages/naturediaries' | relative_url }}">Nature Diaries</a></li>
+                    <li><a href="{{ '/recursive-reflections' | relative_url }}">Recursive Reflections</a></li>
+                    <li><a href="{{ '/_pages/aboutMe' | relative_url }}">About Me</a></li>
                 </ul>
             </div>
         </header>
         
         <section class="hero container group">
             <h1>Works Inspired by the<br><span>Vibrance of Nature</span></h1> 
-            <button><a href="./portfolio.html">Discover </a></button>
+            <button><a href="/_pages/naturediares.html">Discover </a></button>
         </section>
         
         <footer class="container">
