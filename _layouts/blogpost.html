@@ -78,7 +78,8 @@ layout: default
 
         {% assign all_tags = "" | split: "" %}
 
-        {% for post in site["recursive-reflections"] %}
+        {% assign reversed_posts = site["recursive-reflections"] | reverse %} 
+        {% for post in reversed_posts %}
 
           {% for tag in post.tags %}
 
@@ -152,7 +153,8 @@ layout: default
 
         </h1>
 
-        {% for post in site["recursive-reflections"] | reverse %}
+        {% assign reversed_posts = site["recursive-reflections"] | reverse %} 
+        {% for post in reversed_posts %}
 
           <div
             class="post-card"
