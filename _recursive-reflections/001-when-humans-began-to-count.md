@@ -28,16 +28,13 @@ Or is counting something we slowly learned as a species?
 Perhaps our ancestors used their fingers for it. Perhaps they kept tallies with sticks or pebbles. Perhaps they carved marks into stone or clay.
 
 But as societies grew, so did their problems.
-
 Larger communities meant trade.  
 Trade meant planning.  
 Planning meant measuring, recording, and comparing quantities.
 
 Suddenly, memory alone was not enough.
 
-Humans needed systems — to manage their increasingly complicated societies and to keep track of numbers.
-
-Across the world, cultures built their own solutions.
+Humans needed systems — to manage their increasingly complicated societies and to keep track of numbers. Across the world, cultures built their own solutions.
 
 <div style="text-align:center;">
   <img src="/resources/images/math001Images/rr_001_01.png"
@@ -103,10 +100,7 @@ The most influential number system today is the one with **10 symbols** that use
 
 It emerged in ancient India and was later refined and spread by Arab scholars.
 
-That’s why the digits **0–9** are called **Hindu-Arabic numerals**.
-
-This system had two revolutionary ideas:
-
+That’s why the digits **0–9** are called **Hindu-Arabic numerals**. This system had two revolutionary ideas:
 1. Only ten symbols are needed  
 2. A digit’s value depends on its position
 
@@ -117,10 +111,8 @@ And so on…
 
 With just ten symbols and place value, humans could express **infinite numbers**.
 
-Counting didn’t just help with trade or farming.
-
+Counting didn’t just help with trade or farming. 
 It changed how humans thought.
-
 It revealed patterns.  
 It led to geometry, astronomy, architecture, and science.  
 It turned observation into abstraction.

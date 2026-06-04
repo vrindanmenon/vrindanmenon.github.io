@@ -32,7 +32,7 @@ For a few seconds, everybody watches.
 
 Not because they care about aerodynamics. Not because they are thinking about Newton’s laws or airflow patterns. But because flight always captures attention, especially when the plane is aimed at someone.
 
-Sometimes it glides softly through the classroom air before landing near the last bench. Sometimes it rises beautifully at first, hesitates for a moment, and suddenly drops nose-first toward the floor Sometimes it curves sideways unexpectedly, as though an invisible hand pushed it midair. And sometimes, with the smallest change in shape, the entire behavior changes.
+Sometimes it glides softly through the classroom air before landing near the last bench. Sometimes it rises beautifully at first, hesitates for a moment, and suddenly drops nose-first towards the floor. Sometimes it curves sideways unexpectedly, as though an invisible hand pushed it midair. And sometimes, with the smallest change in shape, the entire behavior changes.
 
 A tiny bend near the wing.  
 A heavier nose.  
@@ -69,7 +69,7 @@ And when the paper plane finally dips downward and crashes,gravity takes over co
 
 ## Experiment 1: Wing Span
 
-###cFold two paper planes. One with long, **wide wings**. Another with narrow, **compact wings**.
+Fold two paper planes. One with long, **wide wings**. Another with narrow, **compact wings**.
 
 Place them side by side before throwing them.
 
