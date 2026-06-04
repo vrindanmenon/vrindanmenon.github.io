@@ -50,17 +50,28 @@ function filterPosts(query, mode = "general") {
 }
 
 /* =========================
-   LIVE SEARCH
+SEARCH
 ========================== */
 
-if (searchInput) {
+const searchButton = document.getElementById('searchButton');
 
-  searchInput.addEventListener('input', (e) => {
-
-    filterPosts(e.target.value);
-
+if (searchButton && searchInput) {
+  searchButton.addEventListener('click', () => {
+    filterPosts(searchInput.value);
+    if (mobileSidebar) {
+      mobileSidebar.classList.remove('sidebar-open');
+    }
   });
 
+  // Still allow Enter key on desktop
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      filterPosts(searchInput.value);
+      if (mobileSidebar) {
+        mobileSidebar.classList.remove('sidebar-open');
+      }
+    }
+  });
 }
 
 /* =========================
