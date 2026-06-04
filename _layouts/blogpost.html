@@ -152,7 +152,7 @@ layout: default
 
         </h1>
 
-        {% for post in site["recursive-reflections"] %}
+        {% for post in site["recursive-reflections"] | reverse %}
 
           <div
             class="post-card"
