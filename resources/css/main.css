@@ -635,7 +635,6 @@ p .past-exp-text{
    Unified Editorial Layout
 ======================================== */
 
-
 /* ================= BASE TYPOGRAPHY ================= */
 
 body {
@@ -654,7 +653,6 @@ a:hover {
   text-decoration: underline;
 }
 
-
 /* ================= LAYOUT STRUCTURE ================= */
 
 .blog-layout {
@@ -664,7 +662,6 @@ a:hover {
   margin: 90px auto;
   padding: 0 20px;
 }
-
 
 /* ================= SIDEBAR ================= */
 
@@ -680,7 +677,6 @@ a:hover {
   flex-direction: column;
 }
 
-/* Navigation */
 .sidebar-nav {
   margin-bottom: 12px;
 }
@@ -693,27 +689,48 @@ a:hover {
   color: #000;
 }
 
-/* Divider */
 .sidebar-divider {
   border: none;
   border-top: 2px solid #000;
   margin: 22px 0 28px;
 }
 
-/* Sidebar headings */
 .blog-sidebar h3,
 .blog-sidebar h4 {
   font-size: 18px;
   margin-bottom: 12px;
 }
 
-/* Search */
-.blog-sidebar-search {
-  width: 100%;
-  padding: 10px;
+/* Search row */
+.search-row {
+  display: flex;
+  align-items: center;
+  gap: 0;
   margin-bottom: 25px;
+}
+
+.blog-sidebar-search {
+  flex: 1;
+  padding: 10px;
   border: 1px solid #ddd;
-  border-radius: 4px;
+  border-right: none;
+  border-radius: 4px 0 0 4px;
+  margin-bottom: 0;
+}
+
+.search-btn {
+  padding: 10px 12px;
+  background-color: #7a2d91;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  font-size: 0.95rem;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.search-btn:hover {
+  background-color: #913b80;
 }
 
 /* Tags */
@@ -731,14 +748,12 @@ a:hover {
   color: #6a3ea1;
 }
 
-
 /* ================= MAIN CONTENT ================= */
 
 .blog-content {
   flex: 1;
   max-width: 680px;
 }
-
 
 /* ================= BLOG LIST PAGE ================= */
 
@@ -756,6 +771,7 @@ a:hover {
   margin-bottom: 65px;
   padding-bottom: 35px;
   border-bottom: 1px solid #eee;
+  transition: opacity 0.25s ease;
 }
 
 .post-card-title {
@@ -775,11 +791,6 @@ a:hover {
   font-size: 0.9rem;
   color: #7a2d91;
   opacity: 0.8;
-}
-
-/* Search filter - Makes filtering feel softer and smoother*/ 
-.post-card {
-  transition: opacity 0.25s ease;
 }
 
 .blog-content-meta {
@@ -805,7 +816,6 @@ a:hover {
   font-weight: 600;
   color: #7a3aa5;
 }
-
 
 /* ================= SINGLE BLOG POST ================= */
 
@@ -881,176 +891,91 @@ a:hover {
 ======================================== */
 
 .mobile-topbar {
-    display: none;
+  display: none;
 }
 
 /* ========================================
    BLOG MOBILE VIEW ONLY
 ======================================== */
 
-@media only screen and (max-width: 900px){
+@media only screen and (max-width: 900px) {
 
-    /* =========================
-       BLOG PAGE LAYOUT
-    ========================== */
+  .blog-layout {
+    display: block;
+    margin: 0 auto;
+    padding: 0;
+  }
 
-    .blog-layout{
+  .blog-content {
+    max-width: 100%;
+    padding: 28px 22px;
+  }
 
-        display: block;
-        margin: 0 auto;
-        padding: 0;
-    }
+  .mobile-topbar {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    position: sticky;
+    top: 0;
+    padding: 18px 22px;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    z-index: 1000;
+  }
 
-    .blog-content{
+  .mobile-menu-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #222;
+    font-size: 28px;
+  }
 
-        max-width: 100%;
-        padding: 28px 22px;
-    }
+  .mobile-title {
+    font-size: 1.05rem;
+    font-weight: 600;
+    font-family: 'Karla', sans-serif;
+  }
 
-    /* =========================
-       MOBILE TOPBAR
-    ========================== */
+  .blog-layout .blog-sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 280px;
+    height: 100vh;
+    padding: 40px 28px;
+    overflow-y: auto;
+    background: #fafafa;
+    transition: left 0.3s ease;
+    z-index: 999;
+    box-shadow: 2px 0 14px rgba(0,0,0,0.08);
+  }
 
-    .mobile-topbar{
+  .blog-layout .blog-sidebar.sidebar-open {
+    left: 0;
+  }
 
-        display: flex;
+  .blog-layout .tag-cloud,
+  .blog-layout .blog-sidebar h4 {
+    display: none;
+  }
 
-        align-items: center;
-        gap: 18px;
+  .blog-content-title {
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
 
-        position: sticky;
-        top: 0;
+  .blog-post h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+  }
 
-        padding: 18px 22px;
+  .post-card-title {
+    font-size: 1.6rem;
+  }
 
-        background: #fafafa;
-
-        border-bottom: 1px solid #e8e8e8;
-
-        z-index: 1000;
-    }
-
-    .mobile-menu-toggle{
-
-        background: none;
-        border: none;
-
-        cursor: pointer;
-
-        color: #222;
-
-        font-size: 28px;
-    }
-
-    .mobile-title{
-
-        font-size: 1.05rem;
-        font-weight: 600;
-
-        font-family: 'Karla', sans-serif;
-    }
-
-    /* =========================
-       SIDEBAR DRAWER
-    ========================== */
-
-    .blog-layout .blog-sidebar{
-
-        position: fixed;
-
-        top: 0;
-        left: -320px;
-
-        width: 280px;
-        height: 100vh;
-
-        padding: 40px 28px;
-
-        overflow-y: auto;
-
-        background: #fafafa;
-
-        transition: left 0.3s ease;
-
-        z-index: 999;
-
-        box-shadow: 2px 0 14px rgba(0,0,0,0.08);
-    }
-
-    .blog-layout .blog-sidebar.sidebar-open{
-
-        left: 0;
-    }
-
-    /* =========================
-       HIDE TAG CLOUD IN MOBILE
-    ========================== */
-
-    .blog-layout .tag-cloud,
-    .blog-layout .blog-sidebar h4{
-
-        display: none;
-    }
-
-    /* =========================
-       MOBILE TYPOGRAPHY
-    ========================== */
-
-    .blog-content-title{
-
-        font-size: 2.4rem;
-        line-height: 1.2;
-    }
-
-    .blog-post h1{
-
-        font-size: 2.4rem;
-        line-height: 1.2;
-    }
-
-    .post-card-title{
-
-        font-size: 1.6rem;
-    }
-
-    .blog-post p{
-
-        font-size: 1.05rem;
-        line-height: 1.85;
-    }
-
-}
-
- /* =========================
-      Blog Search button
-    ========================== */
-
-.search-row {
-  display: flex;
-  align-items: center;
-  gap: 0;
-  margin-bottom: 25px;
-}
-
-.search-row .blog-sidebar-search {
-  flex: 1;
-  margin-bottom: 0;
-  border-radius: 4px 0 0 4px;
-  border-right: none;
-}
-
-.search-btn {
-  padding: 8px 10px;
-  background-color: #7a2d91;
-  color: white;
-  border: none;
-  border-radius: 0 4px 4px 0;
-  font-size: 0.85rem;
-  cursor: pointer;
-  white-space: nowrap;
-  width: auto;
-}
-
-.search-btn:hover {
-  background-color: #913b80;
+  .blog-post p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+  }
 }
