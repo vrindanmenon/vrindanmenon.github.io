@@ -1,5 +1,5 @@
 ---
-layout: blogpost
+layout: projectpost
 title: "002 — Blockly Math"
 date: 2026-06-04
 tags: [computation, logic, mathematics, patterns]

@@ -979,3 +979,42 @@ a:hover {
     line-height: 1.85;
   }
 }
+
+
+
+/* ========================================
+   Projects list — Learning spaces
+   Unified Editorial Layout
+======================================== */
+
+
+```css
+/* ========================================
+   PROJECT THEME
+======================================== */
+
+.project-theme .post-link,
+.project-theme .read-more-link,
+.project-theme a {
+
+  color: #355c7d;
+}
+
+.project-theme .sidebar-divider,
+.project-theme .blog-content-meta,
+.project-theme .post-date {
+
+  border-color: #355c7d;
+}
+
+.project-theme .mobile-title {
+
+  color: #355c7d;
+}
+
+.project-theme .blog-sidebar h3,
+.project-theme .blog-sidebar h4 {
+
+  color: #355c7d;
+}
+```

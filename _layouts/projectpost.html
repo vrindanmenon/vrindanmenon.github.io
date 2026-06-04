@@ -1,0 +1,162 @@
+---
+layout: default
+---
+
+<div class="mobile-topbar">
+
+  <button
+    class="mobile-menu-toggle"
+    id="mobileMenuToggle">
+
+    ☰
+
+  </button>
+
+  <span class="mobile-title">
+
+    Learning Spaces
+
+  </span>
+
+</div>
+
+<div class="blog-layout project-theme">
+
+  <!-- =========================
+       SIDEBAR
+  ========================== -->
+
+  <aside class="blog-sidebar" id="mobileSidebar">
+
+    <div class="sidebar-inner">
+
+      <!-- Navigation -->
+
+      <nav class="sidebar-nav">
+
+        <a href="/" class="sidebar-nav-link">
+          Home
+        </a>
+
+        <a href="/pages/archive.html" class="sidebar-nav-link">
+          Archive
+        </a>
+
+        <a href="/pages/naturediaries.html" class="sidebar-nav-link">
+          Nature Diaries
+        </a>
+
+        <a href="/recursive-reflections" class="sidebar-nav-link">
+          Recursive Reflections
+        </a>
+
+        <a href="/learning-spaces" class="sidebar-nav-link">
+          Learning Spaces
+        </a>
+
+        <a href="/pages/aboutMe.html" class="sidebar-nav-link">
+          About Me
+        </a>
+
+      </nav>
+
+      <hr class="sidebar-divider">
+
+      <!-- Search -->
+
+      <h3>Explore Spaces</h3>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search spaces..."
+        class="blog-sidebar-search"
+      >
+
+    </div>
+
+  </aside>
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+
+  <main class="blog-content">
+
+    {% if page.title %}
+
+      <!-- =========================
+           SINGLE PROJECT
+      ========================== -->
+
+      <article class="blog-post">
+
+        <h1>{{ page.title }}</h1>
+
+        {{ content }}
+
+      </article>
+
+    {% else %}
+
+      <!-- =========================
+           PROJECT LIST
+      ========================== -->
+
+      <section class="blog-list">
+
+        <h1 class="blog-content-title">
+
+          {{ page.title }}
+
+        </h1>
+
+        {% assign reversed_projects = site["learning-spaces"] | reverse %}
+
+        {% for post in reversed_projects %}
+
+          <div
+            class="post-card"
+            data-title="{{ post.title | downcase }}"
+            data-content="{{ post.content | strip_html | downcase }}"
+          >
+
+            <h2 class="post-card-title">
+
+              <a
+                href="{{ post.url }}"
+                class="post-link"
+              >
+
+                {{ post.title }}
+
+              </a>
+
+            </h2>
+
+            <p class="post-card-content">
+
+              {{ post.content | strip_html | truncate: 180 }}
+
+            </p>
+
+            <a
+              href="{{ post.url }}"
+              class="read-more-link"
+            >
+
+              Explore →
+
+            </a>
+
+          </div>
+
+        {% endfor %}
+
+      </section>
+
+    {% endif %}
+
+  </main>
+
+</div>

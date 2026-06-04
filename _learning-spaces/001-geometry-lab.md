@@ -1,5 +1,5 @@
 ---
-layout: blogpost
+layout: projectpost
 title: "001 — Geometry Lab"
 date: 2026-06-04
 tags: [geometry, patterns, interaction]
