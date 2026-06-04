@@ -1,3 +1,4 @@
+```liquid
 ---
 layout: default
 ---
@@ -5,167 +6,244 @@ layout: default
 <div class="blog-layout">
 
   <!-- =========================
-       LEFT SIDEBAR (GLOBAL)
+       LEFT SIDEBAR
   ========================== -->
+
   <aside class="blog-sidebar">
+
     <div class="sidebar-inner">
 
-      <!-- Primary Navigation -->
+      <!-- Navigation -->
+
       <nav class="sidebar-nav">
-        <a href="/" class="sidebar-nav-link">Home</a>
-        <a href="/portfolio.html" class="sidebar-nav-link">Portfolio</a>
-        <a href="/recursive-reflections" class="sidebar-nav-link">Recursive Reflections</a>
+
+        <a href="/" class="sidebar-nav-link">
+          Home
+        </a>
+
+        <a href="/portfolio.html" class="sidebar-nav-link">
+          Portfolio
+        </a>
+
+        <a href="/recursive-reflections" class="sidebar-nav-link">
+          Recursive Reflections
+        </a>
+
       </nav>
 
       <hr class="sidebar-divider">
 
-      <!-- Blog Tools -->
-      <h3>Explore Thoughts</h3 ̰>
-      <input type="text" id="searchInput" placeholder="Search thoughts..." class="blog-sidebar-search">
+      <!-- Search -->
+
+      <h3>Explore Thoughts</h3>
+
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search thoughts..."
+        class="blog-sidebar-search"
+      >
+
+      <!-- Topics -->
 
       <h4>Topics</h4>
+
       <div class="tag-cloud">
 
-  {% assign all_tags = "" | split: "" %}
+        {% assign all_tags = "" | split: "" %}
 
-  {% for post in site.recursive-reflections %}
-    {% for tag in post.tags %}
-      {% unless all_tags contains tag %}
-        {% assign all_tags = all_tags | push: tag %}
-      {% endunless %}
-    {% endfor %}
-  {% endfor %}
+        {% for post in site.recursive-reflections %}
 
-  {% for tag in all_tags %}
+          {% for tag in post.tags %}
 
-    <a href="#"
-       class="tag-cloud-link"
-       data-tag="{{ tag | downcase }}">
+            {% unless all_tags contains tag %}
+              {% assign all_tags = all_tags | push: tag %}
+            {% endunless %}
 
-       #{{ tag }}
+          {% endfor %}
 
-    </a>
+        {% endfor %}
 
-  {% endfor %}
+        {% for tag in all_tags %}
 
-</div>
+          <a
+            href="/recursive-reflections/?tag={{ tag | downcase }}"
+            class="tag-cloud-link"
+            data-tag="{{ tag | downcase }}"
+          >
+
+            #{{ tag }}
+
+          </a>
+
+        {% endfor %}
+
+      </div>
 
     </div>
+
   </aside>
 
   <!-- =========================
-       MAIN BLOG CONTENT AREA
+       MAIN CONTENT
   ========================== -->
+
   <main class="blog-content">
 
     {% if page.date %}
-      <!-- ===== SINGLE BLOG POST ===== -->
+
+      <!-- ===== SINGLE POST ===== -->
+
       <article class="blog-post">
+
         <h1>{{ page.title }}</h1>
-        <p class="post-date">{{ page.date | date: "%B %d, %Y" }}</p>
+
+        <p class="post-date">
+          {{ page.date | date: "%B %d, %Y" }}
+        </p>
+
         {{ content }}
+
       </article>
 
     {% else %}
-      <!-- ===== BLOG MAIN PAGE (LIST) ===== -->
 
-<section class="blog-list">
-  <h1 class="blog-content-title">{{ page.title }}</h1>
+      <!-- ===== BLOG LIST ===== -->
 
-  {% for post in site.recursive-reflections %}
-    <div class="post-card"
-         data-title="{{ post.title | downcase }}"
-         data-tags="{{ post.tags | join: ' ' | downcase }}"
-         data-content="{{ post.content | strip_html | downcase }}">
-      <h2 class="post-card-title">
-        <a href="{{ post.url }}" class="post-link">{{ post.title }}</a>
-      </h2>
+      <section class="blog-list">
 
-      <p class="blog-content-meta">
-        {{ post.date | date: "%B %d, %Y" }}
-      </p>
+        <h1 class="blog-content-title">
+          {{ page.title }}
+        </h1>
 
-     <p class="post-card-content">
-  {{ post.content | strip_html | truncate: 180 }}
-</p>
+        {% for post in site.recursive-reflections %}
 
-<div class="post-preview-tags">
+          <div
+            class="post-card"
+            data-title="{{ post.title | downcase }}"
+            data-tags="{{ post.tags | join: ' ' | downcase }}"
+            data-content="{{ post.content | strip_html | downcase }}"
+          >
 
-  {% for tag in post.tags %}
-    <span class="post-preview-tag">
-      #{{ tag }}
-    </span>
-  {% endfor %}
+            <!-- Title -->
 
-</div>
+            <h2 class="post-card-title">
 
-      <a href="{{ post.url }}" class="read-more-link">Read more →</a>
-    </div>
-  {% endfor %}
-</section>
+              <a href="{{ post.url }}" class="post-link">
+                {{ post.title }}
+              </a>
+
+            </h2>
+
+            <!-- Date -->
+
+            <p class="blog-content-meta">
+              {{ post.date | date: "%B %d, %Y" }}
+            </p>
+
+            <!-- Preview -->
+
+            <p class="post-card-content">
+              {{ post.content | strip_html | truncate: 180 }}
+            </p>
+
+            <!-- Tags -->
+
+            <div class="post-preview-tags">
+
+              {% for tag in post.tags %}
+
+                <span class="post-preview-tag">
+                  #{{ tag }}
+                </span>
+
+              {% endfor %}
+
+            </div>
+
+            <!-- Read More -->
+
+            <a href="{{ post.url }}" class="read-more-link">
+              Read more →
+            </a>
+
+          </div>
+
+        {% endfor %}
+
+      </section>
 
     {% endif %}
 
   </main>
+
 </div>
+
+<!-- =========================
+     SEARCH + FILTER SCRIPT
+========================== -->
 
 <script>
 
-const searchInput = document.getElementById('searchInput');
-const posts = document.querySelectorAll('.post-card');
-const tagLinks = document.querySelectorAll('.tag-cloud-link');
+  const searchInput = document.getElementById('searchInput');
+  const posts = document.querySelectorAll('.post-card');
 
-function filterPosts(query) {
+  function filterPosts(query) {
 
-  query = query.toLowerCase();
+    query = query.toLowerCase();
 
-  posts.forEach(post => {
+    posts.forEach(post => {
 
-    const title = post.dataset.title || "";
-    const tags = post.dataset.tags || "";
-    const content = post.dataset.content || "";
+      const title = post.dataset.title || "";
+      const tags = post.dataset.tags || "";
+      const content = post.dataset.content || "";
 
-    const searchableText = title + " " + tags + " " + content;
+      const searchableText =
+        title + " " + tags + " " + content;
 
-    if (searchableText.includes(query)) {
-      post.style.display = 'block';
-    } else {
-      post.style.display = 'none';
-    }
+      if (searchableText.includes(query)) {
 
-  });
-}
+        post.style.display = 'block';
 
-/* Search Input */
+      } else {
 
-if (searchInput) {
+        post.style.display = 'none';
 
-  searchInput.addEventListener('input', function () {
+      }
 
-    filterPosts(this.value);
+    });
 
-  });
+  }
 
-}
+  /* =========================
+     LIVE SEARCH
+  ========================== */
 
-/* Tag Click */
+  if (searchInput) {
 
-tagLinks.forEach(tag => {
+    searchInput.addEventListener('input', function () {
 
-  tag.addEventListener('click', function(e) {
+      filterPosts(this.value);
 
-    e.preventDefault();
+    });
 
-    const selectedTag = this.dataset.tag;
+  }
 
-    if (searchInput) {
-      searchInput.value = selectedTag;
-    }
+  /* =========================
+     URL TAG FILTER
+  ========================== */
 
-    filterPosts(selectedTag);
+  const params = new URLSearchParams(window.location.search);
 
-  });
+  const activeTag = params.get('tag');
 
-});
+  if (activeTag && searchInput) {
+
+    searchInput.value = activeTag;
+
+    filterPosts(activeTag);
+
+  }
 
 </script>
+```
