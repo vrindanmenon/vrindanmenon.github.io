@@ -28,10 +28,10 @@ body {
   background: #fafafa;
   color: #222;
 
+  overflow-x: hidden;
+
   font-family: 'Lora', serif;
   line-height: 1.9;
-
-  overflow-x: hidden;
 }
 
 img {
@@ -42,6 +42,7 @@ img {
 a {
   color: #7a2d91;
   text-decoration: none;
+
   transition: 0.2s ease;
 }
 
@@ -51,10 +52,20 @@ a:hover {
 
 
 /* ========================================
+   BLOG PAGE WRAPPER
+======================================== */
+
+.blog-page {
+
+  width: 100%;
+}
+
+
+/* ========================================
    BLOG LAYOUT
 ======================================== */
 
-.blog-layout {
+.blog-page .blog-layout {
 
   display: flex;
   gap: 80px;
@@ -71,7 +82,7 @@ a:hover {
    SIDEBAR
 ======================================== */
 
-.blog-sidebar {
+.blog-page .blog-sidebar {
 
   width: 260px;
 
@@ -83,45 +94,54 @@ a:hover {
   font-family: 'Karla', sans-serif;
 }
 
-.sidebar-inner {
+.blog-page .sidebar-inner {
 
   display: flex;
   flex-direction: column;
 }
 
-/* Navigation */
 
-.sidebar-nav {
+/* ========================================
+   SIDEBAR NAVIGATION
+======================================== */
+
+.blog-page .sidebar-nav {
 
   margin-bottom: 12px;
 }
 
-.sidebar-nav-link {
+.blog-page .sidebar-nav-link {
 
   display: block;
 
   margin-bottom: 12px;
 
+  color: #000;
+
   font-size: 15px;
   font-weight: 600;
-
-  color: #000;
 }
 
-/* Divider */
 
-.sidebar-divider {
+/* ========================================
+   SIDEBAR DIVIDER
+======================================== */
+
+.blog-page .sidebar-divider {
+
+  margin: 24px 0 30px;
 
   border: none;
   border-top: 2px solid #000;
-
-  margin: 24px 0 30px;
 }
 
-/* Sidebar Headings */
 
-.blog-sidebar h3,
-.blog-sidebar h4 {
+/* ========================================
+   SIDEBAR HEADINGS
+======================================== */
+
+.blog-page .blog-sidebar h3,
+.blog-page .blog-sidebar h4 {
 
   margin-bottom: 12px;
 
@@ -130,11 +150,16 @@ a:hover {
   font-family: 'Karla', sans-serif;
 }
 
-/* Search */
 
-.blog-sidebar-search {
+/* ========================================
+   SEARCH INPUT
+======================================== */
+
+.blog-page .blog-sidebar-search {
 
   width: 100%;
+
+  margin-bottom: 26px;
 
   padding: 11px 12px;
 
@@ -144,32 +169,32 @@ a:hover {
   background: white;
 
   font-size: 15px;
-
-  margin-bottom: 26px;
 }
 
-/* Tag Cloud */
 
-.tag-cloud {
+/* ========================================
+   TAG CLOUD
+======================================== */
+
+.blog-page .tag-cloud {
 
   margin-top: 8px;
 }
 
-.tag-cloud-link {
+.blog-page .tag-cloud-link {
 
   display: inline-block;
 
-  padding: 6px 12px;
-
   margin: 6px 6px 0 0;
-
-  background: #f3eef7;
+  padding: 6px 12px;
 
   border-radius: 999px;
 
-  font-size: 13px;
+  background: #f3eef7;
 
   color: #6a3ea1;
+
+  font-size: 13px;
 }
 
 
@@ -177,7 +202,7 @@ a:hover {
    MAIN CONTENT
 ======================================== */
 
-.blog-content {
+.blog-page .blog-content {
 
   flex: 1;
 
@@ -189,19 +214,19 @@ a:hover {
    BLOG LIST
 ======================================== */
 
-.blog-list {
+.blog-page .blog-list {
 
   margin-top: 10px;
 }
 
-.blog-content-title {
+.blog-page .blog-content-title {
+
+  margin-bottom: 55px;
 
   font-size: 46px;
   font-weight: 700;
 
   line-height: 1.15;
-
-  margin-bottom: 55px;
 }
 
 
@@ -209,10 +234,9 @@ a:hover {
    POST CARD
 ======================================== */
 
-.post-card {
+.blog-page .post-card {
 
   margin-bottom: 65px;
-
   padding-bottom: 35px;
 
   border-bottom: 1px solid #eee;
@@ -220,9 +244,12 @@ a:hover {
   transition: opacity 0.25s ease;
 }
 
-/* Post Title */
 
-.post-card-title {
+/* ========================================
+   POST TITLE
+======================================== */
+
+.blog-page .post-card-title {
 
   margin-bottom: 6px;
 
@@ -232,14 +259,17 @@ a:hover {
   line-height: 1.3;
 }
 
-.post-link {
+.blog-page .post-link {
 
   color: #7a2d91;
 }
 
-/* Meta */
 
-.blog-content-meta {
+/* ========================================
+   POST META
+======================================== */
+
+.blog-page .blog-content-meta {
 
   margin-top: 14px;
   padding-top: 16px;
@@ -250,14 +280,16 @@ a:hover {
 
   font-size: 13px;
 
-  text-transform: uppercase;
-
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-/* Preview */
 
-.post-card-content {
+/* ========================================
+   POST PREVIEW
+======================================== */
+
+.blog-page .post-card-content {
 
   margin-top: 15px;
 
@@ -267,29 +299,35 @@ a:hover {
   line-height: 1.75;
 }
 
-/* Tags */
 
-.post-preview-tags {
+/* ========================================
+   POST TAGS
+======================================== */
+
+.blog-page .post-preview-tags {
 
   margin-top: 18px;
 }
 
-.post-preview-tag {
+.blog-page .post-preview-tag {
 
   display: inline-block;
 
   margin-right: 10px;
 
-  font-size: 0.9rem;
-
   color: #7a2d91;
+
+  font-size: 0.9rem;
 
   opacity: 0.8;
 }
 
-/* Read More */
 
-.read-more-link {
+/* ========================================
+   READ MORE
+======================================== */
+
+.blog-page .read-more-link {
 
   display: inline-block;
 
@@ -303,14 +341,17 @@ a:hover {
    SINGLE BLOG POST
 ======================================== */
 
-.blog-post {
+.blog-page .blog-post {
 
   margin-top: 10px;
 }
 
-/* Main Heading */
 
-.blog-post h1 {
+/* ========================================
+   MAIN BLOG HEADING
+======================================== */
+
+.blog-page .blog-post h1 {
 
   margin-bottom: 18px;
 
@@ -322,12 +363,14 @@ a:hover {
   letter-spacing: 0.5px;
 }
 
-/* Date */
 
-.post-date {
+/* ========================================
+   POST DATE
+======================================== */
+
+.blog-page .post-date {
 
   margin: 22px 0 40px;
-
   padding-top: 15px;
 
   border-top: 2px solid #000;
@@ -336,36 +379,43 @@ a:hover {
 
   font-size: 13px;
 
-  text-transform: uppercase;
-
   letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
-/* Paragraphs */
 
-.blog-post p {
+/* ========================================
+   BLOG PARAGRAPHS
+======================================== */
+
+.blog-page .blog-post p {
 
   margin-bottom: 22px;
 
   color: #2b2b2b;
 
   font-size: 1.22rem;
-
   line-height: 1.85;
 }
 
-/* Bold */
 
-.blog-post strong {
+/* ========================================
+   BOLD
+======================================== */
 
-  font-weight: 700;
+.blog-page .blog-post strong {
 
   color: #111;
+
+  font-weight: 700;
 }
 
-/* H2 */
 
-.blog-post h2 {
+/* ========================================
+   H2
+======================================== */
+
+.blog-page .blog-post h2 {
 
   margin-top: 70px;
   margin-bottom: 24px;
@@ -376,9 +426,12 @@ a:hover {
   line-height: 1.4;
 }
 
-/* H3 */
 
-.blog-post h3 {
+/* ========================================
+   H3
+======================================== */
+
+.blog-page .blog-post h3 {
 
   margin-top: 40px;
   margin-bottom: 14px;
@@ -386,9 +439,12 @@ a:hover {
   font-size: 1.4rem;
 }
 
-/* Images */
 
-.blog-post img {
+/* ========================================
+   IMAGES
+======================================== */
+
+.blog-page .blog-post img {
 
   width: 100%;
 
@@ -397,12 +453,14 @@ a:hover {
   border-radius: 6px;
 }
 
-/* Blockquotes */
 
-.blog-post blockquote {
+/* ========================================
+   BLOCKQUOTES
+======================================== */
+
+.blog-page .blog-post blockquote {
 
   margin: 35px 0;
-
   padding-left: 18px;
 
   border-left: 4px solid #7a2d91;
@@ -412,10 +470,13 @@ a:hover {
   font-style: italic;
 }
 
-/* Lists */
 
-.blog-post ul,
-.blog-post ol {
+/* ========================================
+   LISTS
+======================================== */
+
+.blog-page .blog-post ul,
+.blog-page .blog-post ol {
 
   margin: 25px 0 30px 20px;
 }
@@ -425,7 +486,7 @@ a:hover {
    MOBILE TOPBAR
 ======================================== */
 
-.mobile-topbar {
+.blog-page .mobile-topbar {
 
   display: none;
 }
@@ -437,11 +498,11 @@ a:hover {
 
 @media (max-width: 900px) {
 
-  /* =========================
-     TOPBAR
-  ========================== */
+  /* ========================================
+     MOBILE TOPBAR
+  ======================================== */
 
-  .mobile-topbar {
+  .blog-page .mobile-topbar {
 
     display: flex;
 
@@ -462,12 +523,12 @@ a:hover {
     z-index: 1000;
   }
 
-  .mobile-menu-toggle {
+  .blog-page .mobile-menu-toggle {
+
+    padding: 0;
 
     border: none;
     background: none;
-
-    padding: 0;
 
     cursor: pointer;
 
@@ -476,7 +537,7 @@ a:hover {
     font-size: 28px;
   }
 
-  .mobile-title {
+  .blog-page .mobile-title {
 
     font-size: 1.05rem;
     font-weight: 600;
@@ -485,11 +546,11 @@ a:hover {
   }
 
 
-  /* =========================
+  /* ========================================
      SIDEBAR DRAWER
-  ========================== */
+  ======================================== */
 
-  .blog-sidebar {
+  .blog-page .blog-sidebar {
 
     position: fixed;
 
@@ -512,35 +573,35 @@ a:hover {
     box-shadow: 2px 0 14px rgba(0,0,0,0.08);
   }
 
-  .blog-sidebar.sidebar-open {
+  .blog-page .blog-sidebar.sidebar-open {
 
     left: 0;
   }
 
 
-  /* =========================
+  /* ========================================
      HIDE TAG CLOUD
-  ========================== */
+  ======================================== */
 
-  .tag-cloud,
-  .blog-sidebar h4 {
+  .blog-page .tag-cloud,
+  .blog-page .blog-sidebar h4 {
 
     display: none;
   }
 
 
-  /* =========================
-     LAYOUT
-  ========================== */
+  /* ========================================
+     MOBILE LAYOUT
+  ======================================== */
 
-  .blog-layout {
+  .blog-page .blog-layout {
 
     display: block;
 
     margin: 0 auto;
   }
 
-  .blog-content {
+  .blog-page .blog-content {
 
     max-width: 100%;
 
@@ -548,26 +609,26 @@ a:hover {
   }
 
 
-  /* =========================
-     TYPOGRAPHY
-  ========================== */
+  /* ========================================
+     MOBILE TYPOGRAPHY
+  ======================================== */
 
-  .blog-post h1,
-  .blog-content-title {
+  .blog-page .blog-post h1,
+  .blog-page .blog-content-title {
 
     font-size: 2.4rem;
 
     line-height: 1.2;
   }
 
-  .blog-post p {
+  .blog-page .blog-post p {
 
     font-size: 1.05rem;
 
     line-height: 1.85;
   }
 
-  .post-card-title {
+  .blog-page .post-card-title {
 
     font-size: 1.6rem;
   }

@@ -2,7 +2,7 @@
 layout: blogpost
 title: "006 — Custard, Curiosity, and Connected Learning"
 date: 2026-06-01
-tags: [IntegratedLearning, LearningSpaces, CuriosityDrivenLearning, Chemisty, Math, Geometry]
+tags: [IntegratedLearning, LearningSpaces, CuriosityDrivenLearning, Chemisty, Math, geometry]
 ---
 
 Lately, I’ve been thinking a lot about how learning actually happens.
