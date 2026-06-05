@@ -1,5 +1,11 @@
 ---
 layout: projectpost
 title: Learning Spaces
-collection: learning-spaces
 ---
+
+Interactive environments exploring
+geometry, patterns, computation,
+and visual thinking.
+
+These spaces evolve slowly through
+experimentation and continuous refinement.
