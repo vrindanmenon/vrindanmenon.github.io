@@ -13,4 +13,6 @@ collections:
   learning-spaces:
     output: true
     permalink: /learning-spaces/:name/
-
+  nature-diaries:
+    output: true
+    permalink: /nature-diaries/:name/
