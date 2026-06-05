@@ -5,9 +5,7 @@ date: 2026-06-01
 tags: [Chemistry, Geometry, MolecularStructure, CuriosityDrivenLearning, IntegratedLearning]
 ---
 
-# Custard Chemistry
-
-Some learning journeys begin in laboratories.  
+Most of the learning journeys begin in classrooms.  
 But this one began in a kitchen.
 
 My son wanted to make custard, so we searched for a good eggless recipe and started mixing milk, sugar, vanilla essence, and cornflour together.
@@ -19,7 +17,7 @@ Somewhere between stirring the mixture and watching it slowly change texture, a 
 That one question led us into a microscopic world hidden inside starch.
 
 <div style="text-align:center;">
-  <img src="/resources/images/custard overview.png"
+  <img src="/resources/images/006_custard_overview.png"
        alt="Custard chemistry"
        style="max-width:100%; height:auto;" />
 </div>
@@ -59,7 +57,7 @@ Both are built from repeating glucose units.
 But they behave very differently.
 
 <div style="text-align:center;">
-  <img src="/resources/images/startch_vault.png"
+  <img src="/resources/images/006_startch_vault.png"
        alt="Nature's energy vaults"
        style="max-width:100%; height:auto;" />
 </div>
@@ -72,8 +70,7 @@ At first glance, amylose and amylopectin look like simple chains of sugar molecu
 
 But something fascinating happens because of the way the glucose units are linked.
 
-The glucose molecules are connected through something called **alpha-1,4 glycosidic bonds**.  
-(1st carbon linked to the 4th carbon, while “alpha” refers to the orientation of the bridging oxygen.)
+The glucose molecules are connected through something called **alpha-1,4 glycosidic bonds** (1st carbon linked to the 4th carbon, while “alpha” refers to the orientation of the bridging oxygen.).
 
 These bonds cannot rotate freely. Invisible physical constraints restrict their movement, forcing the chain to bend at specific angles.
 
@@ -110,6 +107,12 @@ It is carefully organized into alternating layers:
 - amorphous regions
 - crystalline regions
 
+<div style="text-align:center;">
+  <img src="/resources/images/006_starch_structure.png"
+       alt="Startch Structure"
+       style="max-width:100%; height:auto;" />
+</div>
+
 Inside the crystalline layers, short chains from amylopectin align beside one another and twist together into tightly packed double helices.
 
 These helices bundle together into highly ordered structures, creating microscopic crystalline domains inside the granule.
@@ -131,6 +134,12 @@ Others create branches.
 Others carefully trim away excess structures.
 
 The process feels strangely architectural.
+
+<div style="text-align:center;">
+  <img src="/resources/images/006_startch_crew.png"
+       alt="Startch enzymes"
+       style="max-width:100%; height:auto;" />
+</div>
 
 **Starch Synthases (SS)** act like bricklayers, adding glucose units to elongate chains.
 
@@ -154,7 +163,7 @@ Hydrogen bonds weaken.
 
 Water enters the granule.
 
-The structure swells — a process called gelatinisation.
+The structure swells — a process called **gelatinisation**.
 
 Amylose chains slowly begin leaking outward into the surrounding liquid.
 
@@ -175,6 +184,13 @@ The more we explored starch, the more it stopped feeling like an ingredient and 
 ## The Blue Secret
 
 There is a beautiful little experiment often used to detect starch.
+
+<div style="text-align:center;">
+  <img src="/resources/images/006_iodine_test.png"
+       alt="Iodine Test"
+       style="max-width:100%; height:auto;" />
+</div>
+
 
 Add a drop of iodine solution to starch, and suddenly the mixture turns deep blue-black.
 
@@ -198,21 +214,15 @@ A tiny microscopic spiral suddenly becomes visible to our eyes.
 
 And somehow, a bowl of custard had quietly led us into chemistry, geometry, light, structure, and pattern.
 
-Still exploring. Still connecting dots.
-
-<div style="text-align:center;">
-  <img src="/resources/images/iodine_test.png"
-       alt="Amylose and amylopectin"
-       style="max-width:100%; height:auto;" />
-</div>
 
 ---
 
 ## Questions to Ponder
 
+- What other kitchen observations hide deeper scientific stories?
 - Why do certain molecular structures naturally form spirals?
-- How does microscopic geometry influence macroscopic behaviour?
-- What other everyday experiences hide invisible architectures?
-- Are patterns repeated across different scales of nature?
+- Can colour emerge from molecular interactions?
+- A generic one: What happens when curiosity is allowed to follow a question long enough?
 
 ---
+
