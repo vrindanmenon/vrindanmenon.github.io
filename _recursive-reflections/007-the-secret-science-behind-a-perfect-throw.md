@@ -204,9 +204,7 @@ In some ways, paper planes behave more like insects than passenger jets.
 
 And somewhere between failed launches, unexpected glides, and paper planes getting trapped in ceiling fans, you slowly begin noticing something extraordinary: flight is not magic. It is shaped interaction. A conversation between paper, motion, gravity, pressure, and invisible rivers of air moving quietly through a classroom during recess.
 
-1. [Aerodynamics Explained by a World Record Paper Airplane Designer | Level Up | WIRED](https://youtu.be/3KqjRPV9_PY?si=GiJZsq1mh7i06kSq)
-
+1. [Aerodynamics Explained by a World Record Paper Airplane Designer](https://youtu.be/3KqjRPV9_PY?si=GiJZsq1mh7i06kSq)
 2. [Best Ever Paper Planes: That Really Fly! by Paul Jackson](https://www.amazon.in/-/hi/Paul-Jackson/dp/1854793349)
-
 3. [Paper Plane designs](https://www.foldnfly.com/#/1-1-1-1-1-1-1-1-2-1)
 

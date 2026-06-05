@@ -756,33 +756,6 @@ a:hover {
   max-width: 680px;
 }
 
-/* ========================================
-   BLOG LIST STYLING FIX
-======================================== */
-
-.blog-post ul,
-.blog-post ol {
-  margin: 24px 0 30px 30px;
-  padding-left: 10px;
-  list-style-position: outside;
-}
-
-.blog-post ul {
-  list-style-type: disc;
-}
-
-.blog-post ol {
-  list-style-type: decimal;
-}
-
-.blog-post li {
-
-  margin-bottom: 10px;
-  font-family: 'Lora', serif;
-  font-size: 1.15rem;
-  line-height: 1.85;
-  color: #2b2b2b;
-}
 
 /* ================= BLOG LIST PAGE ================= */
 
@@ -912,7 +885,33 @@ a:hover {
 
 .blog-post ul,
 .blog-post ol {
-  margin: 25px 0 30px 20px;
+  margin: 24px 0 30px 30px;
+  padding-left: 10px;
+  list-style-position: outside;
+}
+
+.blog-post ul {
+  list-style-type: disc;
+}
+
+.blog-post ol {
+  list-style-type: decimal;
+}
+
+.blog-post li {
+
+  margin-bottom: 10px;
+  font-family: 'Lora', serif;
+  font-size: 1.15rem;
+  line-height: 1.85;
+  color: #2b2b2b;
+}
+
+.blog-post li a { 
+  font-family: inherit; 
+  font-size: inherit; 
+  line-height: inherit; 
+  word-break: break-word; 
 }
 
 /* ========================================
