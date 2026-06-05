@@ -226,3 +226,10 @@ And somehow, a bowl of custard had quietly led us into chemistry, geometry, ligh
 
 ---
 
+## References
+
+1. [Starch](https://youtu.be/zDy0_8bWZB8?si=GzEnoqcAvYbZu3OH)
+
+2. [Iodine Test: Principle, Procedure, Result, Uses](https://microbenotes.com/iodine-test/)
+
+3. [How a Chemist Makes the Softest Bread You'll Ever Eat](https://youtu.be/3ziMBDPMuP8?si=izp30fwjdTOXevsG)
