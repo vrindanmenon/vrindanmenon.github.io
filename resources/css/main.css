@@ -976,7 +976,7 @@ a:hover {
     overflow-y: auto;
     background: #fafafa;
     transition: left 0.3s ease;
-    z-index: 999;
+    z-index: 1000;
     box-shadow: 2px 0 14px rgba(0,0,0,0.08);
   }
 
