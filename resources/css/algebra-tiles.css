@@ -120,7 +120,6 @@
 
 .algebra-lab .tile-group{
     background:#fafafa;
-    border-radius:16px;
     padding:16px;
 }
 
@@ -196,9 +195,7 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:6px;
     cursor:grab;
-    font-style:italic;
     font-weight:600;
     border:1px solid rgba(0,0,0,0.12);
     user-select:none;
@@ -211,6 +208,8 @@
     width:22px;
     height:22px;
     font-size:10px;
+    font-family: "JetBrains Mono",
+                 monospace;
 }
 
 .algebra-lab .tile-bar{
@@ -218,9 +217,14 @@
     height:22px;
 }
 
-.algebra-lab .tile-square{
+.algebra-lab .tile-square-x{
     width:66px;
     height:66px;
+}
+
+.algebra-lab .tile-square-y{
+    width:50px;
+    height:50px;
 }
 
 .algebra-lab .tile-rect{
@@ -252,7 +256,6 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    border-radius:6px;
     cursor:pointer;
     transition:0.15s;
 }
