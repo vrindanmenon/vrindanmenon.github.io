@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Algebra Tiles Lab</title>
+
+<link rel="stylesheet" href="/resources/css/main.css">
+<link rel="stylesheet" href="/resources/css/algebra-tiles.css">
+
+</head>
+
+<body>
+
+<div class="algebra-lab">
+
+    <div class="lab-page">
+
+        <div class="lab-header">
+
+            <h1>Algebra Tiles Lab</h1>
+
+            <p>
+                A visual space for exploring algebra through movement,
+                shape, area, and experimentation.
+            </p>
+
+        </div>
+
+        <div class="lab-layout">
+
+            <aside class="lab-sidebar">
+
+                <h3>Try Exploring</h3>
+
+                <div class="prompt-card">
+                    Can you build x² + 3x + 2?
+                </div>
+
+                <div class="prompt-card">
+                    Can you create zero using opposite tiles?
+                </div>
+
+                <div class="prompt-card">
+                    Arrange tiles into a rectangle. What patterns appear?
+                </div>
+
+                <div class="prompt-card">
+                    Can two different arrangements represent the same expression?
+                </div>
+
+            </aside>
+
+            <main>
+
+                <div class="interactive-shell">
+
+                    <div class="toolbar">
+
+                        <button class="mode-btn active">
+                            Free Play
+                        </button>
+
+                        <button class="mode-btn">
+                            Zero Pairs
+                        </button>
+
+                        <button class="mode-btn">
+                            Area Model
+                        </button>
+
+                        <button class="mode-btn">
+                            Substitution
+                        </button>
+
+                        <div class="toolbar-spacer"></div>
+
+                        <button class="action-btn">
+                            Clear Board
+                        </button>
+
+                    </div>
+
+                    <div class="tile-section">
+
+                        <!-- POSITIVE -->
+
+                        <div class="tile-group">
+
+                            <h4>Positive Tiles</h4>
+
+                            <div class="tile-row">
+
+                                <div class="tray-tile tray-unit pos-unit" data-tile="pos-unit">1</div>
+
+                                <div class="tray-tile tray-bar pos-x" data-tile="pos-x">x</div>
+
+                                <div class="tray-tile tray-bar pos-y" data-tile="pos-y">y</div>
+
+                                <div class="tray-tile tray-square pos-x2" data-tile="pos-x2">x²</div>
+
+                                <div class="tray-tile tray-rect pos-xy" data-tile="pos-xy">xy</div>
+
+                                <div class="tray-tile tray-square pos-y2" data-tile="pos-y2">y²</div>
+
+                            </div>
+
+                        </div>
+
+                        <!-- NEGATIVE -->
+
+                        <div class="tile-group">
+
+                            <h4>Negative Tiles</h4>
+
+                            <div class="tile-row">
+
+                                <div class="tray-tile tray-unit neg-unit" data-tile="neg-unit">−1</div>
+
+                                <div class="tray-tile tray-bar neg-x" data-tile="neg-x">−x</div>
+
+                                <div class="tray-tile tray-bar neg-y" data-tile="neg-y">−y</div>
+
+                                <div class="tray-tile tray-square neg-x2" data-tile="neg-x2">−x²</div>
+
+                                <div class="tray-tile tray-rect neg-xy" data-tile="neg-xy">−xy</div>
+
+                                <div class="tray-tile tray-square neg-y2" data-tile="neg-y2">−y²</div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="workspace" id="workspace"></div>
+
+                    <div class="expression-bar">
+
+                        <div class="expression-label">
+                            Expression
+                        </div>
+
+                        <div class="expression-value">
+                            —
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="reflection-box">
+
+                    What changes when algebra becomes something you can move,
+                    arrange, combine, and experiment with?
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="/resources/scripts/algebra-tiles.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,299 @@
+.algebra-lab{
+
+    --bg:#fafafa;
+    --card:#ffffff;
+    --border:#e7e7e7;
+    --text:#222;
+    --muted:#666;
+    --grid:#ececec;
+
+}
+
+/* =========================================================
+   LAYOUT
+   ========================================================= */
+
+.algebra-lab .lab-page{
+    max-width:1500px;
+    margin:auto;
+    padding:40px 24px 80px;
+}
+
+.algebra-lab .lab-header{
+    margin-bottom:36px;
+}
+
+.algebra-lab .lab-header h1{
+    font-size:3rem;
+    margin-bottom:12px;
+}
+
+.algebra-lab .lab-header p{
+    max-width:760px;
+    line-height:1.8;
+    color:var(--muted);
+}
+
+.algebra-lab .lab-layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:24px;
+}
+
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
+
+.algebra-lab .lab-sidebar{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:24px;
+    height:fit-content;
+    position:sticky;
+    top:24px;
+}
+
+.algebra-lab .prompt-card{
+    background:#f7f7f7;
+    border-radius:14px;
+    padding:16px;
+    margin-bottom:16px;
+    line-height:1.6;
+}
+
+/* =========================================================
+   INTERACTIVE SHELL
+   ========================================================= */
+
+.algebra-lab .interactive-shell{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:24px;
+    overflow:hidden;
+}
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.algebra-lab .toolbar{
+    padding:16px 20px;
+    border-bottom:1px solid var(--border);
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    align-items:center;
+    background:#fcfcfc;
+}
+
+.algebra-lab .toolbar-spacer{
+    flex:1;
+}
+
+.algebra-lab .mode-btn,
+.algebra-lab .action-btn{
+    border:none;
+    background:#f1f1f1;
+    padding:10px 16px;
+    border-radius:12px;
+    cursor:pointer;
+    transition:0.2s;
+}
+
+.algebra-lab .mode-btn.active{
+    background:#222;
+    color:white;
+}
+
+/* =========================================================
+   TILE SECTION
+   ========================================================= */
+
+.algebra-lab .tile-section{
+    padding:20px;
+    border-bottom:1px solid var(--border);
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.algebra-lab .tile-group{
+    background:#fafafa;
+    border-radius:16px;
+    padding:16px;
+}
+
+.algebra-lab .tile-row{
+    display:flex;
+    gap:10px;
+    flex-wrap:wrap;
+}
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.algebra-lab .workspace{
+    position:relative;
+    min-height:700px;
+
+    background:
+        repeating-linear-gradient(
+            0deg,
+            var(--grid),
+            var(--grid) 1px,
+            transparent 1px,
+            transparent 22px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--grid),
+            var(--grid) 1px,
+            transparent 1px,
+            transparent 22px
+        );
+
+    overflow:hidden;
+}
+
+/* =========================================================
+   EXPRESSION BAR
+   ========================================================= */
+
+.algebra-lab .expression-bar{
+    border-top:1px solid var(--border);
+    padding:18px 24px;
+    display:flex;
+    gap:18px;
+    align-items:center;
+}
+
+.algebra-lab .expression-value{
+    font-size:1.3rem;
+    font-style:italic;
+    font-weight:600;
+}
+
+/* =========================================================
+   REFLECTION
+   ========================================================= */
+
+.algebra-lab .reflection-box{
+    margin-top:24px;
+    padding:22px;
+    background:#faf8f2;
+    border-radius:18px;
+    line-height:1.8;
+}
+
+/* =========================================================
+   TILES
+   ========================================================= */
+
+.algebra-lab .tile{
+    position:absolute;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    cursor:grab;
+    font-style:italic;
+    font-weight:600;
+    border:1px solid rgba(0,0,0,0.12);
+    user-select:none;
+    touch-action:none;
+}
+
+/* SIZES */
+
+.algebra-lab .tile-unit{
+    width:22px;
+    height:22px;
+    font-size:10px;
+}
+
+.algebra-lab .tile-bar{
+    width:66px;
+    height:22px;
+}
+
+.algebra-lab .tile-square{
+    width:66px;
+    height:66px;
+}
+
+.algebra-lab .tile-rect{
+    width:88px;
+    height:66px;
+}
+
+/* POSITIVE */
+
+.algebra-lab .pos-unit{background:#FFA726;color:#7B3800;}
+.algebra-lab .pos-x{background:#66BB6A;color:#1B5E20;}
+.algebra-lab .pos-y{background:#26C6DA;color:#006064;}
+.algebra-lab .pos-x2{background:#42A5F5;color:#0D47A1;}
+.algebra-lab .pos-xy{background:#7E57C2;color:white;}
+.algebra-lab .pos-y2{background:#AB47BC;color:white;}
+
+/* NEGATIVE */
+
+.algebra-lab .neg-unit{background:#EF5350;color:white;}
+.algebra-lab .neg-x{background:#EC407A;color:white;}
+.algebra-lab .neg-y{background:#FF7043;color:white;}
+.algebra-lab .neg-x2{background:#D81B60;color:white;}
+.algebra-lab .neg-xy{background:#C62828;color:white;}
+.algebra-lab .neg-y2{background:#AD1457;color:white;}
+
+/* TRAY */
+
+.algebra-lab .tray-tile{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    border-radius:6px;
+    cursor:pointer;
+    transition:0.15s;
+}
+
+.algebra-lab .tray-tile:hover{
+    transform:scale(1.06);
+}
+
+.algebra-lab .tray-unit{
+    width:22px;
+    height:22px;
+    font-size:10px;
+}
+
+.algebra-lab .tray-bar{
+    width:60px;
+    height:22px;
+}
+
+.algebra-lab .tray-square{
+    width:60px;
+    height:60px;
+}
+
+.algebra-lab .tray-rect{
+    width:80px;
+    height:60px;
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+
+@media(max-width:1000px){
+
+    .algebra-lab .lab-layout{
+        grid-template-columns:1fr;
+    }
+
+    .algebra-lab .workspace{
+        min-height:500px;
+    }
+
+}
