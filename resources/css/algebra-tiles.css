@@ -1,17 +1,20 @@
 /* =========================================================
    VARIABLES
+   x = 3 units (120px),  y = 4 units (160px)
+   This makes x² ≠ y² visually, and xy a rectangle.
    ========================================================= */
 
 :root {
-    --unit: 40px;
-    --x-len: 120px;
-    --y-len: 120px;
+    --unit:  40px;
+    --x-len: 120px;   /* 3 × 40 */
+    --y-len: 160px;   /* 4 × 40 */
+
     --border-tile: rgba(0, 0, 0, 0.22);
-    --bg: #f5f4f0;
+    --bg:      #f5f4f0;
     --surface: #ffffff;
-    --border: #e2e0da;
-    --text: #1a1a1a;
-    --muted: #6b6b6b;
+    --border:  #e2e0da;
+    --text:    #1a1a1a;
+    --muted:   #6b6b6b;
 }
 
 /* =========================================================
@@ -38,7 +41,7 @@ body {
    ========================================================= */
 
 .lab {
-    max-width: 1160px;
+    max-width: 1200px;
     margin: 0 auto;
     background-image: none;
 }
@@ -69,17 +72,17 @@ body {
 }
 
 /* =========================================================
-   SIDEBAR — HOW TO USE
+   SIDEBAR
    ========================================================= */
 
 .how-to {
     background: var(--surface);
+    background-image: none;
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 20px;
     position: sticky;
     top: 24px;
-    background-image: none;
 }
 
 .how-to h3 {
@@ -119,9 +122,7 @@ body {
     color: var(--text);
 }
 
-.step p strong {
-    font-weight: 500;
-}
+.step p strong { font-weight: 500; }
 
 .legend {
     margin-top: 16px;
@@ -139,10 +140,8 @@ body {
 }
 
 .swatch {
-    width: 28px;
-    height: 28px;
     border-radius: 4px;
-    border: 1.5px solid rgba(0, 0, 0, 0.18);
+    border: 1.5px solid rgba(0,0,0,0.18);
     flex-shrink: 0;
 }
 
@@ -162,10 +161,10 @@ body {
 
 .shell {
     background: var(--surface);
+    background-image: none;
     border: 1px solid var(--border);
     border-radius: 22px;
     overflow: hidden;
-    background-image: none;
 }
 
 /* =========================================================
@@ -179,7 +178,7 @@ body {
     background-image: none;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
 }
 
 .tray-row {
@@ -195,11 +194,11 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.06em;
     color: var(--muted);
-    min-width: 56px;
+    min-width: 60px;
 }
 
 /* =========================================================
-   TILE BASE — shared by tray and board
+   TILE BASE — shared styles
    ========================================================= */
 
 .tile-base {
@@ -217,30 +216,35 @@ body {
 }
 
 /* =========================================================
-   TILE SIZES — board tiles use full unit-based sizes
+   BOARD TILE SIZES  (snap to 40px grid)
+   x = 3u = 120px,  y = 4u = 160px
    ========================================================= */
 
-.board-tile.t-unit { width: 40px;  height: 40px;  font-size: 13px; }
-.board-tile.t-x    { width: 120px; height: 40px;  font-size: 16px; }
-.board-tile.t-y    { width: 40px;  height: 120px; font-size: 16px; writing-mode: vertical-lr; }
+.board-tile.t-unit { width:  40px; height:  40px; font-size: 13px; }
+.board-tile.t-x    { width: 120px; height:  40px; font-size: 16px; }
+.board-tile.t-y    { width:  40px; height: 160px; font-size: 16px; writing-mode: vertical-lr; }
 .board-tile.t-x2   { width: 120px; height: 120px; font-size: 22px; }
-.board-tile.t-xy   { width: 120px; height: 120px; font-size: 20px; }
-.board-tile.t-y2   { width: 120px; height: 120px; font-size: 22px; }
+.board-tile.t-xy   { width: 120px; height: 160px; font-size: 20px; }
+.board-tile.t-y2   { width: 160px; height: 160px; font-size: 24px; }
 
 /* =========================================================
-   TILE SIZES — tray tiles are smaller for compact display
+   TRAY TILE SIZES  (scaled down for compact tray)
+   Proportions preserved: x² is square, y² is bigger square,
+   xy is a rectangle taller than wide.
    ========================================================= */
 
-.tray-tile.t-unit { width: 40px;  height: 40px;  font-size: 12px; }
-.tray-tile.t-x    { width: 120px; height: 40px;  font-size: 14px; }
-.tray-tile.t-y    { width: 24px;  height: 64px;  font-size: 12px; writing-mode: vertical-lr; }
-.tray-tile.t-x2   { width: 64px;  height: 64px;  font-size: 15px; }
-.tray-tile.t-xy   { width: 64px;  height: 64px;  font-size: 15px; }
-.tray-tile.t-y2   { width: 64px;  height: 64px;  font-size: 15px; }
+.tray-tile.t-unit { width:  36px; height:  36px; font-size: 12px; }
+.tray-tile.t-x    { width:  96px; height:  32px; font-size: 13px; }
+.tray-tile.t-y    { width:  32px; height:  80px; font-size: 13px; writing-mode: vertical-lr; }
+.tray-tile.t-x2   { width:  72px; height:  72px; font-size: 14px; }
+.tray-tile.t-xy   { width:  72px; height:  96px; font-size: 13px; }
+.tray-tile.t-y2   { width:  96px; height:  96px; font-size: 16px; }
 
 /* =========================================================
-   UNIT-GRID OVERLAY on large board tiles
-   Repeating lines at 50% opacity show inner unit structure
+   UNIT-GRID OVERLAY on board tiles (not tray tiles)
+   Draws 40px repeating cell lines at ~50% opacity so the
+   tile colour shows through but units are visible.
+   The 1px line sits at position 39px→40px within each cell.
    ========================================================= */
 
 .board-tile.t-x::before,
@@ -252,29 +256,32 @@ body {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.5;
+    z-index: 2;
     background-image:
         repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 38.5px,
-            rgba(0, 0, 0, 0.30) 38.5px,
-            rgba(0, 0, 0, 0.30) 40px
+            to bottom,
+            transparent 0px,
+            transparent 39px,
+            rgba(0, 0, 0, 0.28) 39px,
+            rgba(0, 0, 0, 0.28) 40px
         ),
         repeating-linear-gradient(
-            90deg,
-            transparent,
-            transparent 38.5px,
-            rgba(0, 0, 0, 0.30) 38.5px,
-            rgba(0, 0, 0, 0.30) 40px
+            to right,
+            transparent 0px,
+            transparent 39px,
+            rgba(0, 0, 0, 0.28) 39px,
+            rgba(0, 0, 0, 0.28) 40px
         );
     background-size: 40px 40px;
+    background-position: 0 0;
+    opacity: 0.55;
 }
 
 /* =========================================================
    TILE COLOURS
    ========================================================= */
 
+/* Positive */
 .pos-unit { background: #F5A623; color: #6B3800; }
 .pos-x    { background: #4CAF50; color: #1B4A1E; }
 .pos-y    { background: #29B6F6; color: #003D5C; }
@@ -282,6 +289,7 @@ body {
 .pos-xy   { background: #66BB6A; color: #1B4A1E; }
 .pos-y2   { background: #29B6F6; color: #003D5C; }
 
+/* Negative */
 .neg-unit { background: #EF5350; color: #fff; }
 .neg-x    { background: #E91E8C; color: #fff; }
 .neg-y    { background: #FF7043; color: #fff; }
@@ -301,7 +309,7 @@ body {
 
 .tray-tile:hover {
     transform: scale(1.06);
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.14);
 }
 
 .tray-tile:active {
@@ -309,27 +317,27 @@ body {
 }
 
 /* =========================================================
-   WORKSPACE  — grid only lives here
+   WORKSPACE — grid lives ONLY here
    ========================================================= */
 
 .workspace {
     position: relative;
-    height: 520px;
+    height: 560px;
     overflow: hidden;
     isolation: isolate;
     background-color: #fefefe;
     background-image:
         repeating-linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.10) 0,
-            rgba(0, 0, 0, 0.10) 1px,
+            to bottom,
+            rgba(0,0,0,0.09) 0,
+            rgba(0,0,0,0.09) 1px,
             transparent 1px,
             transparent 40px
         ),
         repeating-linear-gradient(
-            90deg,
-            rgba(0, 0, 0, 0.10) 0,
-            rgba(0, 0, 0, 0.10) 1px,
+            to right,
+            rgba(0,0,0,0.09) 0,
+            rgba(0,0,0,0.09) 1px,
             transparent 1px,
             transparent 40px
         );
@@ -338,7 +346,7 @@ body {
 }
 
 /* =========================================================
-   BOARD TILES
+   BOARD TILES (draggable, positioned absolutely)
    ========================================================= */
 
 .board-tile {
@@ -349,14 +357,14 @@ body {
 }
 
 .board-tile:hover {
-    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
     z-index: 5;
 }
 
 .board-tile:active {
     cursor: grabbing;
     z-index: 20;
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.22);
 }
 
 /* =========================================================
@@ -418,13 +426,7 @@ body {
    ========================================================= */
 
 @media (max-width: 900px) {
-    .lab-body {
-        grid-template-columns: 1fr;
-    }
-    .how-to {
-        position: static;
-    }
-    .workspace {
-        height: 380px;
-    }
+    .lab-body { grid-template-columns: 1fr; }
+    .how-to   { position: static; }
+    .workspace { height: 400px; }
 }
