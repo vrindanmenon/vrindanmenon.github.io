@@ -215,45 +215,94 @@ function enableDrag(tile){
         () => removeTile(tile)
     );
 
+    /* =====================================================
+       MOUSE
+    ===================================================== */
+
     el.addEventListener(
         'mousedown',
-        startDrag
+        startMouseDrag
     );
 
-    function startDrag(event){
+    /* =====================================================
+       TOUCH
+    ===================================================== */
+
+    el.addEventListener(
+        'touchstart',
+        startTouchDrag,
+        { passive:false }
+    );
+
+    /* =====================================================
+       MOUSE DRAG
+    ===================================================== */
+
+    function startMouseDrag(event){
 
         if(event.button !== 0) return;
 
+        beginDrag(
+            event.clientX,
+            event.clientY,
+            false
+        );
+
+    }
+
+    /* =====================================================
+       TOUCH DRAG
+    ===================================================== */
+
+    function startTouchDrag(event){
+
         event.preventDefault();
+
+        const touch =
+            event.touches[0];
+
+        beginDrag(
+            touch.clientX,
+            touch.clientY,
+            true
+        );
+
+    }
+
+    /* =====================================================
+       CORE DRAG
+    ===================================================== */
+
+    function beginDrag(startX,startY,isTouch){
 
         const rect =
             workspace.getBoundingClientRect();
 
         const offsetX =
-            event.clientX -
+            startX -
             rect.left -
             tile.x;
 
         const offsetY =
-            event.clientY -
+            startY -
             rect.top -
             tile.y;
 
-        function drag(moveEvent){
+        function drag(clientX,clientY){
 
             const r =
                 workspace.getBoundingClientRect();
 
             let x =
                 snap(
-                    moveEvent.clientX -
+                    clientX -
                     r.left -
                     offsetX
                 );
 
             let y =
                 snap(
-                    moveEvent.clientY -
+                    clientY -
                     r.top -
                     offsetY
                 );
@@ -280,11 +329,34 @@ function enableDrag(tile){
 
         }
 
+        function mouseMove(e){
+
+            drag(
+                e.clientX,
+                e.clientY
+            );
+
+        }
+
+        function touchMove(e){
+
+            e.preventDefault();
+
+            const touch =
+                e.touches[0];
+
+            drag(
+                touch.clientX,
+                touch.clientY
+            );
+
+        }
+
         function stop(){
 
             document.removeEventListener(
                 'mousemove',
-                drag
+                mouseMove
             );
 
             document.removeEventListener(
@@ -292,21 +364,49 @@ function enableDrag(tile){
                 stop
             );
 
+            document.removeEventListener(
+                'touchmove',
+                touchMove
+            );
+
+            document.removeEventListener(
+                'touchend',
+                stop
+            );
+
         }
 
-        document.addEventListener(
-            'mousemove',
-            drag
-        );
+        if(isTouch){
 
-        document.addEventListener(
-            'mouseup',
-            stop
-        );
+            document.addEventListener(
+                'touchmove',
+                touchMove,
+                { passive:false }
+            );
+
+            document.addEventListener(
+                'touchend',
+                stop
+            );
+
+        } else {
+
+            document.addEventListener(
+                'mousemove',
+                mouseMove
+            );
+
+            document.addEventListener(
+                'mouseup',
+                stop
+            );
+
+        }
 
     }
 
 }
+
 
 /* =========================================================
    REMOVE TILE
