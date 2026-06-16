@@ -1,432 +1,688 @@
+
 /* =========================================================
    VARIABLES
-   x = 3 units (120px),  y = 4 units (160px)
-   This makes x² ≠ y² visually, and xy a rectangle.
-   ========================================================= */
+========================================================= */
 
 :root {
-    --unit:  40px;
-    --x-len: 120px;   /* 3 × 40 */
-    --y-len: 160px;   /* 4 × 40 */
 
-    --border-tile: rgba(0, 0, 0, 0.22);
-    --bg:      #f5f4f0;
+    --unit: 40px;
+
+    --x-w: calc(var(--unit) * 3);
+    --y-h: calc(var(--unit) * 4);
+
+    --border-tile: rgba(0,0,0,0.22);
+
+    --bg: #f5f4f0;
     --surface: #ffffff;
-    --border:  #e2e0da;
-    --text:    #1a1a1a;
-    --muted:   #6b6b6b;
+    --border: #e2e0da;
+
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+
 }
 
 /* =========================================================
    RESET
-   ========================================================= */
+========================================================= */
 
-*, *::before, *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*,
+*::before,
+*::after {
+
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+
 }
 
 body {
-    font-family: 'Inter', system-ui, sans-serif;
-    background-color: var(--bg);
-    background-image: none;
-    color: var(--text);
-    min-height: 100vh;
-    padding: 32px 24px 64px;
+
+    font-family:'Inter', system-ui, sans-serif;
+
+    background:var(--bg);
+
+    color:var(--text);
+
+    min-height:100vh;
+
+    padding:32px 24px 64px;
+
 }
 
 /* =========================================================
-   LAB LAYOUT
-   ========================================================= */
+   LAYOUT
+========================================================= */
 
 .lab {
-    max-width: 1200px;
-    margin: 0 auto;
-    background-image: none;
+
+    max-width:1200px;
+    margin:auto;
+
 }
 
 .lab-header {
-    margin-bottom: 28px;
+
+    margin-bottom:28px;
+
 }
 
 .lab-header h1 {
-    font-size: 2rem;
-    font-weight: 500;
-    letter-spacing: -0.02em;
-    margin-bottom: 8px;
+
+    font-size:2rem;
+    font-weight:500;
+
+    margin-bottom:8px;
+
 }
 
 .lab-header p {
-    font-size: 15px;
-    color: var(--muted);
-    line-height: 1.7;
+
+    color:var(--muted);
+    line-height:1.7;
+
 }
 
 .lab-body {
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 20px;
-    align-items: start;
-    background-image: none;
+
+    display:grid;
+
+    grid-template-columns:240px 1fr;
+
+    gap:20px;
+
+    align-items:start;
+
 }
 
 /* =========================================================
    SIDEBAR
-   ========================================================= */
+========================================================= */
 
 .how-to {
-    background: var(--surface);
-    background-image: none;
-    border: 1px solid var(--border);
-    border-radius: 18px;
-    padding: 20px;
-    position: sticky;
-    top: 24px;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    position:sticky;
+
+    top:24px;
+
 }
 
 .how-to h3 {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.07em;
-    color: var(--muted);
-    margin-bottom: 14px;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.06em;
+
+    color:var(--muted);
+
+    margin-bottom:14px;
+
 }
 
 .step {
-    display: flex;
-    gap: 10px;
-    align-items: flex-start;
-    margin-bottom: 12px;
+
+    display:flex;
+
+    gap:10px;
+
+    margin-bottom:14px;
+
 }
 
 .step-num {
-    min-width: 22px;
-    height: 22px;
-    border-radius: 50%;
-    background: #f0eeea;
-    font-size: 11px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--muted);
-    flex-shrink: 0;
-    margin-top: 1px;
+
+    width:22px;
+    height:22px;
+
+    border-radius:50%;
+
+    background:#f0eeea;
+
+    font-size:11px;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    color:var(--muted);
+
+    flex-shrink:0;
+
 }
 
 .step p {
-    font-size: 12.5px;
-    line-height: 1.65;
-    color: var(--text);
+
+    font-size:13px;
+
+    line-height:1.65;
+
 }
 
-.step p strong { font-weight: 500; }
-
 .legend {
-    margin-top: 16px;
-    padding-top: 14px;
-    border-top: 1px solid var(--border);
+
+    margin-top:18px;
+
+    padding-top:14px;
+
+    border-top:1px solid var(--border);
+
 }
 
 .legend-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 8px;
-    font-size: 12px;
-    color: var(--text);
-}
 
-.swatch {
-    border-radius: 4px;
-    border: 1.5px solid rgba(0,0,0,0.18);
-    flex-shrink: 0;
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:10px;
+
+    font-size:12px;
+
 }
 
 .tip {
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid var(--border);
-    font-size: 11.5px;
-    color: var(--muted);
-    line-height: 1.65;
-    font-style: italic;
+
+    margin-top:14px;
+
+    padding-top:14px;
+
+    border-top:1px solid var(--border);
+
+    font-size:12px;
+
+    color:var(--muted);
+
+    line-height:1.6;
+
+    font-style:italic;
+
 }
 
 /* =========================================================
    SHELL
-   ========================================================= */
+========================================================= */
 
 .shell {
-    background: var(--surface);
-    background-image: none;
-    border: 1px solid var(--border);
-    border-radius: 22px;
-    overflow: hidden;
+
+    background:var(--surface);
+
+    border:1px solid var(--border);
+
+    border-radius:22px;
+
+    overflow:hidden;
+
 }
 
 /* =========================================================
    TRAY
-   ========================================================= */
+========================================================= */
 
 .tray {
-    padding: 14px 18px;
-    border-bottom: 1px solid var(--border);
-    background-color: #fafaf8;
-    background-image: none;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
+
+    padding:14px 18px;
+
+    border-bottom:1px solid var(--border);
+
+    background:#fafaf8;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:14px;
+
 }
 
 .tray-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-wrap: wrap;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    flex-wrap:wrap;
+
 }
 
 .tray-label {
-    font-size: 10.5px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    min-width: 60px;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.06em;
+
+    color:var(--muted);
+
+    min-width:65px;
+
 }
 
 /* =========================================================
-   TILE BASE — shared styles
-   ========================================================= */
+   TILE BASE
+========================================================= */
 
 .tile-base {
-    box-sizing: border-box;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border: 1.5px solid var(--border-tile);
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 600;
-    user-select: none;
-    border-radius: 3px;
-    position: relative;
-    overflow: hidden;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    border:1.5px solid var(--border-tile);
+
+    font-family:'JetBrains Mono', monospace;
+
+    font-weight:600;
+
+    user-select:none;
+
+    border-radius:3px;
+
+    overflow:hidden;
+
+    position:relative;
+
 }
 
 /* =========================================================
-   BOARD TILE SIZES  (snap to 40px grid)
-   x = 3u = 120px,  y = 4u = 160px
-   ========================================================= */
+   BOARD TILES
+========================================================= */
 
-.board-tile.t-unit { width:  40px; height:  40px; font-size: 13px; }
-.board-tile.t-x    { width: 120px; height:  40px; font-size: 16px; }
-.board-tile.t-y    { width:  40px; height: 160px; font-size: 16px; writing-mode: vertical-lr; }
-.board-tile.t-x2   { width: 120px; height: 120px; font-size: 22px; }
-.board-tile.t-xy   { width: 120px; height: 160px; font-size: 20px; }
-.board-tile.t-y2   { width: 160px; height: 160px; font-size: 24px; }
+.board-tile {
 
-/* =========================================================
-   TRAY TILE SIZES  (scaled down for compact tray)
-   Proportions preserved: x² is square, y² is bigger square,
-   xy is a rectangle taller than wide.
-   ========================================================= */
+    position:absolute;
 
-.tray-tile.t-unit { width:  36px; height:  36px; font-size: 12px; }
-.tray-tile.t-x    { width:  96px; height:  32px; font-size: 13px; }
-.tray-tile.t-y    { width:  32px; height:  80px; font-size: 13px; writing-mode: vertical-lr; }
-.tray-tile.t-x2   { width:  72px; height:  72px; font-size: 14px; }
-.tray-tile.t-xy   { width:  72px; height:  96px; font-size: 13px; }
-.tray-tile.t-y2   { width:  96px; height:  96px; font-size: 16px; }
+    cursor:grab;
+
+    z-index:1;
+
+}
+
+.board-tile:active {
+
+    cursor:grabbing;
+
+}
 
 /* =========================================================
-   UNIT-GRID OVERLAY on board tiles (not tray tiles)
-   Draws 40px repeating cell lines at ~50% opacity so the
-   tile colour shows through but units are visible.
-   The 1px line sits at position 39px→40px within each cell.
-   ========================================================= */
+   TILE DIMENSIONS
+========================================================= */
+
+/* UNIT */
+
+.t-unit {
+
+    width:var(--unit);
+    height:var(--unit);
+
+    font-size:13px;
+
+}
+
+/* X */
+
+.t-x {
+
+    width:var(--x-w);
+    height:var(--unit);
+
+    font-size:16px;
+
+}
+
+/* Y */
+
+.t-y {
+
+    width:var(--unit);
+    height:var(--y-h);
+
+    font-size:16px;
+
+    writing-mode:vertical-lr;
+
+}
+
+/* X² */
+
+.t-x2 {
+
+    width:var(--x-w);
+    height:var(--x-w);
+
+    font-size:22px;
+
+}
+
+/* XY */
+
+.t-xy {
+
+    width:var(--x-w);
+    height:var(--y-h);
+
+    font-size:20px;
+
+}
+
+/* Y² */
+
+.t-y2 {
+
+    width:var(--y-h);
+    height:var(--y-h);
+
+    font-size:24px;
+
+}
+
+/* =========================================================
+   GRID OVERLAY
+========================================================= */
 
 .board-tile.t-x::before,
 .board-tile.t-y::before,
 .board-tile.t-x2::before,
 .board-tile.t-xy::before,
 .board-tile.t-y2::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 2;
+
+    content:'';
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
     background-image:
         repeating-linear-gradient(
             to bottom,
-            transparent 0px,
-            transparent 39px,
-            rgba(0, 0, 0, 0.28) 39px,
-            rgba(0, 0, 0, 0.28) 40px
+            transparent 0,
+            transparent calc(var(--unit) - 1px),
+            rgba(0,0,0,0.24) calc(var(--unit) - 1px),
+            rgba(0,0,0,0.24) var(--unit)
         ),
+
         repeating-linear-gradient(
             to right,
-            transparent 0px,
-            transparent 39px,
-            rgba(0, 0, 0, 0.28) 39px,
-            rgba(0, 0, 0, 0.28) 40px
+            transparent 0,
+            transparent calc(var(--unit) - 1px),
+            rgba(0,0,0,0.24) calc(var(--unit) - 1px),
+            rgba(0,0,0,0.24) var(--unit)
         );
-    background-size: 40px 40px;
-    background-position: 0 0;
-    opacity: 0.55;
+
 }
 
 /* =========================================================
-   TILE COLOURS
-   ========================================================= */
+   COLORS
+========================================================= */
 
 /* Positive */
-.pos-unit { background: #F5A623; color: #6B3800; }
-.pos-x    { background: #4CAF50; color: #1B4A1E; }
-.pos-y    { background: #29B6F6; color: #003D5C; }
-.pos-x2   { background: #F5A623; color: #6B3800; }
-.pos-xy   { background: #66BB6A; color: #1B4A1E; }
-.pos-y2   { background: #29B6F6; color: #003D5C; }
+
+.pos-unit { background:#F5A623; color:#6B3800; }
+.pos-x    { background:#4CAF50; color:#1B4A1E; }
+.pos-y    { background:#29B6F6; color:#003D5C; }
+.pos-x2   { background:#F5A623; color:#6B3800; }
+.pos-xy   { background:#66BB6A; color:#1B4A1E; }
+.pos-y2   { background:#29B6F6; color:#003D5C; }
 
 /* Negative */
-.neg-unit { background: #EF5350; color: #fff; }
-.neg-x    { background: #E91E8C; color: #fff; }
-.neg-y    { background: #FF7043; color: #fff; }
-.neg-x2   { background: #C62828; color: #fff; }
-.neg-xy   { background: #AD1457; color: #fff; }
-.neg-y2   { background: #BF360C; color: #fff; }
+
+.neg-unit { background:#EF5350; color:white; }
+.neg-x    { background:#E91E8C; color:white; }
+.neg-y    { background:#FF7043; color:white; }
+.neg-x2   { background:#C62828; color:white; }
+.neg-xy   { background:#AD1457; color:white; }
+.neg-y2   { background:#BF360C; color:white; }
 
 /* =========================================================
-   TRAY TILE INTERACTIONS
-   ========================================================= */
+   TRAY HOVER
+========================================================= */
 
 .tray-tile {
-    cursor: pointer;
-    transition: transform 0.12s, box-shadow 0.12s;
-    flex-shrink: 0;
+
+    cursor:pointer;
+
+    transition:transform 0.12s;
+
+    flex-shrink:0;
+
 }
 
 .tray-tile:hover {
-    transform: scale(1.06);
-    box-shadow: 0 3px 10px rgba(0,0,0,0.14);
-}
 
-.tray-tile:active {
-    transform: scale(0.97);
+    transform:scale(1.05);
+
 }
 
 /* =========================================================
-   WORKSPACE — grid lives ONLY here
-   ========================================================= */
+   WORKSPACE
+========================================================= */
 
 .workspace {
-    position: relative;
-    height: 560px;
-    overflow: hidden;
-    isolation: isolate;
-    background-color: #fefefe;
+
+    position:relative;
+
+    height:560px;
+
+    overflow:auto;
+
+    background-color:#fefefe;
+
     background-image:
+
         repeating-linear-gradient(
             to bottom,
             rgba(0,0,0,0.09) 0,
             rgba(0,0,0,0.09) 1px,
             transparent 1px,
-            transparent 40px
+            transparent var(--unit)
         ),
+
         repeating-linear-gradient(
             to right,
             rgba(0,0,0,0.09) 0,
             rgba(0,0,0,0.09) 1px,
             transparent 1px,
-            transparent 40px
+            transparent var(--unit)
         );
-    background-size: 40px 40px;
-    background-position: 0 0;
-}
 
-/* =========================================================
-   BOARD TILES (draggable, positioned absolutely)
-   ========================================================= */
-
-.board-tile {
-    position: absolute;
-    cursor: grab;
-    z-index: 1;
-    transition: box-shadow 0.1s;
-}
-
-.board-tile:hover {
-    box-shadow: 0 4px 14px rgba(0,0,0,0.18);
-    z-index: 5;
-}
-
-.board-tile:active {
-    cursor: grabbing;
-    z-index: 20;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.22);
 }
 
 /* =========================================================
    EXPRESSION BAR
-   ========================================================= */
+========================================================= */
 
 .expr-bar {
-    border-top: 1px solid var(--border);
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    min-height: 52px;
-    background-color: #fafaf8;
-    background-image: none;
+
+    border-top:1px solid var(--border);
+
+    padding:14px 20px;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    background:#fafaf8;
+
+    flex-wrap:wrap;
+
 }
 
 .expr-label {
-    font-size: 11px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    color: var(--muted);
-    white-space: nowrap;
+
+    font-size:11px;
+
+    text-transform:uppercase;
+
+    letter-spacing:0.06em;
+
+    color:var(--muted);
+
 }
 
 .expr-value {
-    font-family: 'JetBrains Mono', monospace;
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text);
-    flex: 1;
-    min-height: 28px;
-    display: flex;
-    align-items: center;
+
+    font-family:'JetBrains Mono', monospace;
+
+    font-size:1.1rem;
+
+    font-weight:600;
+
+    flex:1;
+
+    min-width:180px;
+
 }
 
 .clear-btn {
-    margin-left: auto;
-    padding: 7px 16px;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    background: transparent;
-    font-family: 'Inter', sans-serif;
-    font-size: 12px;
-    color: var(--muted);
-    cursor: pointer;
-    transition: background 0.15s, color 0.15s;
-    white-space: nowrap;
+
+    padding:8px 16px;
+
+    border:1px solid var(--border);
+
+    border-radius:10px;
+
+    background:transparent;
+
+    cursor:pointer;
+
 }
 
-.clear-btn:hover {
-    background: #f0eeea;
-    color: var(--text);
+/* =========================================================
+   LEGEND SHAPES
+========================================================= */
+
+.swatch {
+
+    border:1px solid rgba(0,0,0,0.18);
+
+    border-radius:3px;
+
+    flex-shrink:0;
+
+}
+
+.square-x {
+
+    width:28px;
+    height:28px;
+
+}
+
+.square-y {
+
+    width:34px;
+    height:34px;
+
+}
+
+.rect-x {
+
+    width:34px;
+    height:12px;
+
+}
+
+.rect-y {
+
+    width:12px;
+    height:34px;
+
+}
+
+.rect-xy {
+
+    width:28px;
+    height:34px;
+
 }
 
 /* =========================================================
    RESPONSIVE
-   ========================================================= */
+========================================================= */
 
-@media (max-width: 900px) {
-    .lab-body { grid-template-columns: 1fr; }
-    .how-to   { position: static; }
-    .workspace { height: 400px; }
+@media (max-width: 1000px){
+
+    .lab-body{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .how-to{
+
+        position:static;
+
+    }
+
+}
+
+@media (max-width: 768px){
+
+    body{
+
+        padding:18px 14px 40px;
+
+    }
+
+    .workspace{
+
+        height:420px;
+
+    }
+
+    .lab-header h1{
+
+        font-size:1.7rem;
+
+    }
+
+}
+
+@media (max-width: 560px){
+
+    :root{
+
+        --unit:32px;
+
+    }
+
+    .workspace{
+
+        height:360px;
+
+    }
+
+    .tray-label{
+
+        width:100%;
+
+    }
+
+    .expr-value{
+
+        font-size:1rem;
+
+        word-break:break-word;
+
+    }
+
 }

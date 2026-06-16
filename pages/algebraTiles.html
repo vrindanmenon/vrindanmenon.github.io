@@ -1,140 +1,271 @@
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Algebra Tiles Lab</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/resources/css/algebra-tiles.css">
+<link rel="stylesheet" href="../resources/css/algebra-tiles.css">
 
 </head>
+
 <body>
 
 <div class="lab">
 
-    <div class="lab-header">
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="lab-header">
+
         <h1>Algebra Tiles Lab</h1>
-        <p>A manipulative space for exploring algebraic expressions through area, shape, and arrangement.</p>
-    </div>
+
+        <p>
+            A manipulative space for exploring algebraic
+            expressions through area, shape, and arrangement.
+        </p>
+
+    </header>
+
+    <!-- =====================================================
+         MAIN LAYOUT
+    ====================================================== -->
 
     <div class="lab-body">
 
-        <!-- SIDEBAR -->
+        <!-- =================================================
+             SIDEBAR
+        ================================================== -->
+
         <aside class="how-to">
 
             <h3>How to use</h3>
 
             <div class="step">
                 <div class="step-num">1</div>
-                <p><strong>Click a tile</strong> in the tray to place it on the board.</p>
+
+                <p>
+                    <strong>Click a tile</strong>
+                    in the tray to place it on the board.
+                </p>
             </div>
+
             <div class="step">
                 <div class="step-num">2</div>
-                <p><strong>Drag tiles</strong> on the board to arrange them. They snap to the grid.</p>
+
+                <p>
+                    <strong>Drag tiles</strong>
+                    on the board to arrange them.
+                    Tiles snap to the grid.
+                </p>
             </div>
+
             <div class="step">
                 <div class="step-num">3</div>
-                <p><strong>Double-click</strong> a board tile to remove it.</p>
+
+                <p>
+                    <strong>Double-click</strong>
+                    a board tile to remove it.
+                </p>
             </div>
+
             <div class="step">
                 <div class="step-num">4</div>
-                <p>The <strong>expression bar</strong> updates live as you add or remove tiles.</p>
+
+                <p>
+                    The expression bar updates automatically
+                    as tiles are added or removed.
+                </p>
             </div>
+
+            <!-- =============================================
+                 LEGEND
+            ============================================== -->
 
             <div class="legend">
 
                 <div class="legend-row">
-                    <div class="swatch" style="background:#F5A623;width:28px;height:28px;"></div>
-                    <span>x² and units (1)</span>
+                    <div class="swatch pos-unit"></div>
+                    <span>Unit tiles</span>
                 </div>
+
                 <div class="legend-row">
-                    <!-- x strip: wide, 1 unit tall -->
-                    <div class="swatch" style="background:#4CAF50;width:36px;height:12px;"></div>
-                    <span>x strips (1×3)</span>
+                    <div class="swatch pos-x rect-x"></div>
+                    <span>x strips</span>
                 </div>
+
                 <div class="legend-row">
-                    <!-- y strip: narrow, 4 units tall -->
-                    <div class="swatch" style="background:#29B6F6;width:12px;height:36px;"></div>
-                    <span>y strips (1×4)</span>
+                    <div class="swatch pos-y rect-y"></div>
+                    <span>y strips</span>
                 </div>
+
                 <div class="legend-row">
-                    <!-- x² square -->
-                    <div class="swatch" style="background:#F5A623;width:28px;height:28px;"></div>
-                    <span>x² (3×3 square)</span>
+                    <div class="swatch pos-x2 square-x"></div>
+                    <span>x² area tile</span>
                 </div>
+
                 <div class="legend-row">
-                    <!-- xy rect: 3 wide, 4 tall -->
-                    <div class="swatch" style="background:#66BB6A;width:24px;height:32px;"></div>
-                    <span>xy (3×4 rect)</span>
+                    <div class="swatch pos-xy rect-xy"></div>
+                    <span>xy rectangle</span>
                 </div>
+
                 <div class="legend-row">
-                    <!-- y² bigger square -->
-                    <div class="swatch" style="background:#29B6F6;width:32px;height:32px;"></div>
-                    <span>y² (4×4 square)</span>
-                </div>
-                <div class="legend-row">
-                    <div class="swatch" style="background:#EF5350;width:28px;height:28px;"></div>
-                    <span>Negative tiles</span>
+                    <div class="swatch pos-y2 square-y"></div>
+                    <span>y² area tile</span>
                 </div>
 
             </div>
 
             <div class="tip">
-                Notice x² and y² are different sizes — x and y are different lengths.
+                x and y represent different dimensions,
+                so x² and y² are visually different sizes.
             </div>
 
         </aside>
 
-        <!-- MAIN -->
-        <div class="shell">
+        <!-- =================================================
+             MAIN SHELL
+        ================================================== -->
 
-            <!-- TRAY -->
-            <div class="tray">
+        <main class="shell">
 
-                <div class="tray-row">
-                    <span class="tray-label">Positive</span>
-                    <div class="tile-base tray-tile pos-unit t-unit" data-tile="pos-unit">1</div>
-                    <div class="tile-base tray-tile pos-x    t-x"   data-tile="pos-x">x</div>
-                    <div class="tile-base tray-tile pos-y    t-y"   data-tile="pos-y">y</div>
-                    <div class="tile-base tray-tile pos-x2   t-x2"  data-tile="pos-x2">x²</div>
-                    <div class="tile-base tray-tile pos-xy   t-xy"  data-tile="pos-xy">xy</div>
-                    <div class="tile-base tray-tile pos-y2   t-y2"  data-tile="pos-y2">y²</div>
-                </div>
+            <!-- =============================================
+                 TILE TRAY
+            ============================================== -->
+
+            <section class="tray">
+
+                <!-- POSITIVE -->
 
                 <div class="tray-row">
-                    <span class="tray-label">Negative</span>
-                    <div class="tile-base tray-tile neg-unit t-unit" data-tile="neg-unit">−1</div>
-                    <div class="tile-base tray-tile neg-x    t-x"   data-tile="neg-x">−x</div>
-                    <div class="tile-base tray-tile neg-y    t-y"   data-tile="neg-y">−y</div>
-                    <div class="tile-base tray-tile neg-x2   t-x2"  data-tile="neg-x2">−x²</div>
-                    <div class="tile-base tray-tile neg-xy   t-xy"  data-tile="neg-xy">−xy</div>
-                    <div class="tile-base tray-tile neg-y2   t-y2"  data-tile="neg-y2">−y²</div>
+
+                    <span class="tray-label">
+                        Positive
+                    </span>
+
+                    <div class="tile-base tray-tile pos-unit t-unit"
+                         data-tile="pos-unit">
+                        1
+                    </div>
+
+                    <div class="tile-base tray-tile pos-x t-x"
+                         data-tile="pos-x">
+                        x
+                    </div>
+
+                    <div class="tile-base tray-tile pos-y t-y"
+                         data-tile="pos-y">
+                        y
+                    </div>
+
+                    <div class="tile-base tray-tile pos-x2 t-x2"
+                         data-tile="pos-x2">
+                        x²
+                    </div>
+
+                    <div class="tile-base tray-tile pos-xy t-xy"
+                         data-tile="pos-xy">
+                        xy
+                    </div>
+
+                    <div class="tile-base tray-tile pos-y2 t-y2"
+                         data-tile="pos-y2">
+                        y²
+                    </div>
+
                 </div>
 
-            </div>
+                <!-- NEGATIVE -->
 
-            <!-- WORKSPACE -->
-            <div class="workspace" id="workspace"></div>
+                <div class="tray-row">
 
-            <!-- EXPRESSION BAR -->
-            <div class="expr-bar">
-                <span class="expr-label">Expression</span>
-                <span class="expr-value" id="expr-value">—</span>
-                <button class="clear-btn" id="clear-btn">Clear board</button>
-            </div>
+                    <span class="tray-label">
+                        Negative
+                    </span>
 
-        </div>
+                    <div class="tile-base tray-tile neg-unit t-unit"
+                         data-tile="neg-unit">
+                        −1
+                    </div>
+
+                    <div class="tile-base tray-tile neg-x t-x"
+                         data-tile="neg-x">
+                        −x
+                    </div>
+
+                    <div class="tile-base tray-tile neg-y t-y"
+                         data-tile="neg-y">
+                        −y
+                    </div>
+
+                    <div class="tile-base tray-tile neg-x2 t-x2"
+                         data-tile="neg-x2">
+                        −x²
+                    </div>
+
+                    <div class="tile-base tray-tile neg-xy t-xy"
+                         data-tile="neg-xy">
+                        −xy
+                    </div>
+
+                    <div class="tile-base tray-tile neg-y2 t-y2"
+                         data-tile="neg-y2">
+                        −y²
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- =============================================
+                 WORKSPACE
+            ============================================== -->
+
+            <section class="workspace"
+                     id="workspace">
+            </section>
+
+            <!-- =============================================
+                 EXPRESSION BAR
+            ============================================== -->
+
+            <section class="expr-bar">
+
+                <span class="expr-label">
+                    Expression
+                </span>
+
+                <span class="expr-value"
+                      id="expr-value">
+                    —
+                </span>
+
+                <button class="clear-btn"
+                        id="clear-btn">
+
+                    Clear board
+
+                </button>
+
+            </section>
+
+        </main>
 
     </div>
 
 </div>
 
-<script src="/resources/scripts/algebra-tiles.js"></script>
+<script src="../resources/scripts/algebra-tiles.js"></script>
 
 </body>
 </html>
