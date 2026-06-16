@@ -1,3 +1,4 @@
+
 .algebra-lab{
 
     --bg:#fafafa;
@@ -6,6 +7,11 @@
     --text:#222;
     --muted:#666;
     --grid:#ececec;
+
+    --unit:44px;
+
+    --x-length:calc(var(--unit) * 3);
+    --y-length:calc(var(--unit) * 3);
 
 }
 
@@ -134,26 +140,30 @@
    ========================================================= */
 
 .algebra-lab .workspace{
+
     position:relative;
     min-height:700px;
 
     background:
+
         repeating-linear-gradient(
             0deg,
             var(--grid),
             var(--grid) 1px,
             transparent 1px,
-            transparent 22px
+            transparent var(--unit)
         ),
+
         repeating-linear-gradient(
             90deg,
             var(--grid),
             var(--grid) 1px,
             transparent 1px,
-            transparent 22px
+            transparent var(--unit)
         );
 
     overflow:hidden;
+
 }
 
 /* =========================================================
@@ -190,49 +200,97 @@
    TILES
    ========================================================= */
 
-.algebra-lab .tile{
-    position:absolute;
+.algebra-lab .tile,
+.algebra-lab .tray-tile{
+
+    box-sizing:border-box;
+
     display:flex;
     align-items:center;
     justify-content:center;
-    cursor:grab;
+
+    border:2px solid rgba(0,0,0,0.18);
+
+    font-family:"JetBrains Mono", monospace;
     font-weight:600;
-    border:1px solid rgba(0,0,0,0.12);
+
     user-select:none;
+
+}
+
+.algebra-lab .tile{
+    position:absolute;
+    cursor:grab;
     touch-action:none;
 }
 
-/* SIZES */
+/* =========================================================
+   TILE SIZES
+   ========================================================= */
 
-.algebra-lab .tile-unit{
-    width:22px;
-    height:22px;
-    font-size:10px;
-    font-family: "JetBrains Mono",
-                 monospace;
+.algebra-lab .tile-unit,
+.algebra-lab .tray-unit{
+
+    width:var(--unit);
+    height:var(--unit);
+
+    font-size:16px;
+
 }
 
-.algebra-lab .tile-bar{
-    width:66px;
-    height:22px;
+.algebra-lab .tile-x,
+.algebra-lab .tray-x{
+
+    width:var(--x-length);
+    height:var(--unit);
+
+    font-size:22px;
+
 }
 
-.algebra-lab .tile-square-x{
-    width:66px;
-    height:66px;
+.algebra-lab .tile-y,
+.algebra-lab .tray-y{
+
+    width:var(--y-length);
+    height:var(--unit);
+
+    font-size:22px;
+
 }
 
-.algebra-lab .tile-square-y{
-    width:50px;
-    height:50px;
+.algebra-lab .tile-square-x,
+.algebra-lab .tray-square-x{
+
+    width:var(--x-length);
+    height:var(--x-length);
+
+    font-size:26px;
+
 }
 
-.algebra-lab .tile-rect{
-    width:88px;
-    height:66px;
+.algebra-lab .tile-square-y,
+.algebra-lab .tray-square-y{
+
+    width:var(--y-length);
+    height:var(--y-length);
+
+    font-size:26px;
+
 }
 
-/* POSITIVE */
+.algebra-lab .tile-rect,
+.algebra-lab .tray-rect{
+
+    width:var(--x-length);
+    height:var(--y-length);
+
+    font-size:26px;
+
+}
+
+/* =========================================================
+   COLORS
+   ========================================================= */
 
 .algebra-lab .pos-unit{background:#FFA726;color:#7B3800;}
 .algebra-lab .pos-x{background:#66BB6A;color:#1B5E20;}
@@ -241,8 +299,6 @@
 .algebra-lab .pos-xy{background:#7E57C2;color:white;}
 .algebra-lab .pos-y2{background:#AB47BC;color:white;}
 
-/* NEGATIVE */
-
 .algebra-lab .neg-unit{background:#EF5350;color:white;}
 .algebra-lab .neg-x{background:#EC407A;color:white;}
 .algebra-lab .neg-y{background:#FF7043;color:white;}
@@ -250,39 +306,17 @@
 .algebra-lab .neg-xy{background:#C62828;color:white;}
 .algebra-lab .neg-y2{background:#AD1457;color:white;}
 
-/* TRAY */
+/* =========================================================
+   HOVER
+   ========================================================= */
 
 .algebra-lab .tray-tile{
-    display:flex;
-    align-items:center;
-    justify-content:center;
     cursor:pointer;
     transition:0.15s;
 }
 
 .algebra-lab .tray-tile:hover{
-    transform:scale(1.06);
-}
-
-.algebra-lab .tray-unit{
-    width:22px;
-    height:22px;
-    font-size:10px;
-}
-
-.algebra-lab .tray-bar{
-    width:60px;
-    height:22px;
-}
-
-.algebra-lab .tray-square{
-    width:60px;
-    height:60px;
-}
-
-.algebra-lab .tray-rect{
-    width:80px;
-    height:60px;
+    transform:scale(1.04);
 }
 
 /* =========================================================
@@ -300,3 +334,4 @@
     }
 
 }
+

@@ -1,4 +1,5 @@
-const GRID_SIZE = 22;
+
+const GRID_SIZE = 44;
 
 const TILES = [
 
@@ -7,31 +8,31 @@ const TILES = [
         label:'1',
         classes:'tile tile-unit pos-unit',
         value:{u:1},
-        size:[22,22]
+        size:[44,44]
     },
 
     {
         id:'pos-x',
         label:'x',
-        classes:'tile tile-bar pos-x',
+        classes:'tile tile-x pos-x',
         value:{x:1},
-        size:[66,22]
+        size:[132,44]
     },
 
     {
         id:'pos-y',
         label:'y',
-        classes:'tile tile-bar pos-y',
+        classes:'tile tile-y pos-y',
         value:{y:1},
-        size:[66,22]
+        size:[132,44]
     },
 
     {
         id:'pos-x2',
         label:'x²',
-        classes:'tile tile-square pos-x2',
+        classes:'tile tile-square-x pos-x2',
         value:{x2:1},
-        size:[66,66]
+        size:[132,132]
     },
 
     {
@@ -39,15 +40,15 @@ const TILES = [
         label:'xy',
         classes:'tile tile-rect pos-xy',
         value:{xy:1},
-        size:[88,66]
+        size:[132,132]
     },
 
     {
         id:'pos-y2',
         label:'y²',
-        classes:'tile tile-square pos-y2',
+        classes:'tile tile-square-y pos-y2',
         value:{y2:1},
-        size:[66,66]
+        size:[132,132]
     },
 
     {
@@ -55,23 +56,47 @@ const TILES = [
         label:'−1',
         classes:'tile tile-unit neg-unit',
         value:{u:-1},
-        size:[22,22]
+        size:[44,44]
     },
 
     {
         id:'neg-x',
         label:'−x',
-        classes:'tile tile-bar neg-x',
+        classes:'tile tile-x neg-x',
         value:{x:-1},
-        size:[66,22]
+        size:[132,44]
     },
 
     {
         id:'neg-y',
         label:'−y',
-        classes:'tile tile-bar neg-y',
+        classes:'tile tile-y neg-y',
         value:{y:-1},
-        size:[66,22]
+        size:[132,44]
+    },
+
+    {
+        id:'neg-x2',
+        label:'−x²',
+        classes:'tile tile-square-x neg-x2',
+        value:{x2:-1},
+        size:[132,132]
+    },
+
+    {
+        id:'neg-xy',
+        label:'−xy',
+        classes:'tile tile-rect neg-xy',
+        value:{xy:-1},
+        size:[132,132]
+    },
+
+    {
+        id:'neg-y2',
+        label:'−y²',
+        classes:'tile tile-square-y neg-y2',
+        value:{y2:-1},
+        size:[132,132]
     }
 
 ];
