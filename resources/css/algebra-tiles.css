@@ -4,18 +4,14 @@
 
 :root {
     --unit: 40px;
-    --x-len: calc(var(--unit) * 3);   /* 120px */
-    --y-len: calc(var(--unit) * 3);   /* 120px */
-
-    --grid-line: rgba(0, 0, 0, 0.13);
+    --x-len: 120px;
+    --y-len: 120px;
     --border-tile: rgba(0, 0, 0, 0.22);
-
     --bg: #f5f4f0;
     --surface: #ffffff;
     --border: #e2e0da;
     --text: #1a1a1a;
     --muted: #6b6b6b;
-    --sidebar-bg: #ffffff;
 }
 
 /* =========================================================
@@ -30,7 +26,8 @@
 
 body {
     font-family: 'Inter', system-ui, sans-serif;
-    background: var(--bg);
+    background-color: var(--bg);
+    background-image: none;
     color: var(--text);
     min-height: 100vh;
     padding: 32px 24px 64px;
@@ -43,6 +40,7 @@ body {
 .lab {
     max-width: 1160px;
     margin: 0 auto;
+    background-image: none;
 }
 
 .lab-header {
@@ -67,6 +65,7 @@ body {
     grid-template-columns: 220px 1fr;
     gap: 20px;
     align-items: start;
+    background-image: none;
 }
 
 /* =========================================================
@@ -74,12 +73,13 @@ body {
    ========================================================= */
 
 .how-to {
-    background: var(--sidebar-bg);
+    background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 18px;
     padding: 20px;
     position: sticky;
     top: 24px;
+    background-image: none;
 }
 
 .how-to h3 {
@@ -165,6 +165,7 @@ body {
     border: 1px solid var(--border);
     border-radius: 22px;
     overflow: hidden;
+    background-image: none;
 }
 
 /* =========================================================
@@ -174,7 +175,8 @@ body {
 .tray {
     padding: 14px 18px;
     border-bottom: 1px solid var(--border);
-    background: #fafaf8;
+    background-color: #fafaf8;
+    background-image: none;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -215,86 +217,64 @@ body {
 }
 
 /* =========================================================
-   TILE SIZES
+   TILE SIZES — board tiles use full unit-based sizes
    ========================================================= */
 
-.t-unit {
-    width: var(--unit);
-    height: var(--unit);
-    font-size: 13px;
-}
-
-.t-x {
-    width: var(--x-len);
-    height: var(--unit);
-    font-size: 16px;
-}
-
-.t-y {
-    width: var(--unit);
-    height: var(--y-len);
-    font-size: 16px;
-    writing-mode: vertical-lr;
-    text-orientation: mixed;
-}
-
-.t-x2 {
-    width: var(--x-len);
-    height: var(--x-len);
-    font-size: 22px;
-}
-
-.t-xy {
-    width: var(--x-len);
-    height: var(--y-len);
-    font-size: 20px;
-}
-
-.t-y2 {
-    width: var(--y-len);
-    height: var(--y-len);
-    font-size: 22px;
-}
+.board-tile.t-unit { width: 40px;  height: 40px;  font-size: 13px; }
+.board-tile.t-x    { width: 120px; height: 40px;  font-size: 16px; }
+.board-tile.t-y    { width: 40px;  height: 120px; font-size: 16px; writing-mode: vertical-lr; }
+.board-tile.t-x2   { width: 120px; height: 120px; font-size: 22px; }
+.board-tile.t-xy   { width: 120px; height: 120px; font-size: 20px; }
+.board-tile.t-y2   { width: 120px; height: 120px; font-size: 22px; }
 
 /* =========================================================
-   UNIT-GRID OVERLAY  (shown on all tiles > 1×1)
-   The ::before pseudo draws repeating grid lines
-   at 50% opacity so the tile colour shows through.
+   TILE SIZES — tray tiles are smaller for compact display
    ========================================================= */
 
-.t-x::before,
-.t-y::before,
-.t-x2::before,
-.t-xy::before,
-.t-y2::before {
+.tray-tile.t-unit { width: 40px;  height: 40px;  font-size: 12px; }
+.tray-tile.t-x    { width: 120px; height: 40px;  font-size: 14px; }
+.tray-tile.t-y    { width: 24px;  height: 64px;  font-size: 12px; writing-mode: vertical-lr; }
+.tray-tile.t-x2   { width: 64px;  height: 64px;  font-size: 15px; }
+.tray-tile.t-xy   { width: 64px;  height: 64px;  font-size: 15px; }
+.tray-tile.t-y2   { width: 64px;  height: 64px;  font-size: 15px; }
+
+/* =========================================================
+   UNIT-GRID OVERLAY on large board tiles
+   Repeating lines at 50% opacity show inner unit structure
+   ========================================================= */
+
+.board-tile.t-x::before,
+.board-tile.t-y::before,
+.board-tile.t-x2::before,
+.board-tile.t-xy::before,
+.board-tile.t-y2::before {
     content: '';
     position: absolute;
     inset: 0;
     pointer-events: none;
-    opacity: 0.50;
-    background:
+    opacity: 0.5;
+    background-image:
         repeating-linear-gradient(
             0deg,
             transparent,
-            transparent calc(var(--unit) - 1.5px),
-            rgba(0, 0, 0, 0.35) calc(var(--unit) - 1.5px),
-            rgba(0, 0, 0, 0.35) var(--unit)
+            transparent 38.5px,
+            rgba(0, 0, 0, 0.30) 38.5px,
+            rgba(0, 0, 0, 0.30) 40px
         ),
         repeating-linear-gradient(
             90deg,
             transparent,
-            transparent calc(var(--unit) - 1.5px),
-            rgba(0, 0, 0, 0.35) calc(var(--unit) - 1.5px),
-            rgba(0, 0, 0, 0.35) var(--unit)
+            transparent 38.5px,
+            rgba(0, 0, 0, 0.30) 38.5px,
+            rgba(0, 0, 0, 0.30) 40px
         );
-    background-size: var(--unit) var(--unit);
+    background-size: 40px 40px;
 }
 
 /* =========================================================
    TILE COLOURS
    ========================================================= */
 
-/* Positive */
 .pos-unit { background: #F5A623; color: #6B3800; }
 .pos-x    { background: #4CAF50; color: #1B4A1E; }
 .pos-y    { background: #29B6F6; color: #003D5C; }
@@ -302,7 +282,6 @@ body {
 .pos-xy   { background: #66BB6A; color: #1B4A1E; }
 .pos-y2   { background: #29B6F6; color: #003D5C; }
 
-/* Negative */
 .neg-unit { background: #EF5350; color: #fff; }
 .neg-x    { background: #E91E8C; color: #fff; }
 .neg-y    { background: #FF7043; color: #fff; }
@@ -311,7 +290,7 @@ body {
 .neg-y2   { background: #BF360C; color: #fff; }
 
 /* =========================================================
-   TRAY TILES
+   TRAY TILE INTERACTIONS
    ========================================================= */
 
 .tray-tile {
@@ -330,36 +309,36 @@ body {
 }
 
 /* =========================================================
-   WORKSPACE
+   WORKSPACE  — grid only lives here
    ========================================================= */
 
 .workspace {
     position: relative;
     height: 520px;
     overflow: hidden;
+    isolation: isolate;
     background-color: #fefefe;
     background-image:
         repeating-linear-gradient(
             0deg,
-            var(--grid-line),
-            var(--grid-line) 1px,
+            rgba(0, 0, 0, 0.10) 0,
+            rgba(0, 0, 0, 0.10) 1px,
             transparent 1px,
-            transparent var(--unit)
+            transparent 40px
         ),
         repeating-linear-gradient(
             90deg,
-            var(--grid-line),
-            var(--grid-line) 1px,
+            rgba(0, 0, 0, 0.10) 0,
+            rgba(0, 0, 0, 0.10) 1px,
             transparent 1px,
-            transparent var(--unit)
+            transparent 40px
         );
-    background-size: var(--unit) var(--unit);
-    /* Align grid origin at top-left corner exactly */
+    background-size: 40px 40px;
     background-position: 0 0;
 }
 
 /* =========================================================
-   BOARD TILES  (placed on the workspace)
+   BOARD TILES
    ========================================================= */
 
 .board-tile {
@@ -391,7 +370,8 @@ body {
     align-items: center;
     gap: 16px;
     min-height: 52px;
-    background: #fafaf8;
+    background-color: #fafaf8;
+    background-image: none;
 }
 
 .expr-label {
@@ -438,17 +418,13 @@ body {
    ========================================================= */
 
 @media (max-width: 900px) {
-
     .lab-body {
         grid-template-columns: 1fr;
     }
-
     .how-to {
         position: static;
     }
-
     .workspace {
         height: 380px;
     }
-
 }
