@@ -1,333 +1,185 @@
+/* =========================================================
+   ALGEBRA TILES — algebra-tiles.js
+   ========================================================= */
 
-const GRID_SIZE = 44;
+const UNIT = 40;
 
-const TILES = [
+/* ----------------------------------------------------------
+   Tile definitions
+   w / h are in grid units (multiples of UNIT)
+   ---------------------------------------------------------- */
 
-    {
-        id:'pos-unit',
-        label:'1',
-        classes:'tile tile-unit pos-unit',
-        value:{u:1},
-        size:[44,44]
-    },
+const TILE_DEFS = {
 
-    {
-        id:'pos-x',
-        label:'x',
-        classes:'tile tile-x pos-x',
-        value:{x:1},
-        size:[132,44]
-    },
+    'pos-unit': { label: '1',   cls: 'pos-unit t-unit', w: 1, h: 1, val: { u:  1 } },
+    'pos-x':    { label: 'x',   cls: 'pos-x t-x',       w: 3, h: 1, val: { x:  1 } },
+    'pos-y':    { label: 'y',   cls: 'pos-y t-y',        w: 1, h: 3, val: { y:  1 } },
+    'pos-x2':   { label: 'x²',  cls: 'pos-x2 t-x2',     w: 3, h: 3, val: { x2: 1 } },
+    'pos-xy':   { label: 'xy',  cls: 'pos-xy t-xy',      w: 3, h: 3, val: { xy: 1 } },
+    'pos-y2':   { label: 'y²',  cls: 'pos-y2 t-y2',      w: 3, h: 3, val: { y2: 1 } },
 
-    {
-        id:'pos-y',
-        label:'y',
-        classes:'tile tile-y pos-y',
-        value:{y:1},
-        size:[132,44]
-    },
+    'neg-unit': { label: '−1',  cls: 'neg-unit t-unit',  w: 1, h: 1, val: { u: -1 } },
+    'neg-x':    { label: '−x',  cls: 'neg-x t-x',        w: 3, h: 1, val: { x: -1 } },
+    'neg-y':    { label: '−y',  cls: 'neg-y t-y',        w: 1, h: 3, val: { y: -1 } },
+    'neg-x2':   { label: '−x²', cls: 'neg-x2 t-x2',     w: 3, h: 3, val: { x2:-1 } },
+    'neg-xy':   { label: '−xy', cls: 'neg-xy t-xy',      w: 3, h: 3, val: { xy:-1 } },
+    'neg-y2':   { label: '−y²', cls: 'neg-y2 t-y2',      w: 3, h: 3, val: { y2:-1 } },
 
-    {
-        id:'pos-x2',
-        label:'x²',
-        classes:'tile tile-square-x pos-x2',
-        value:{x2:1},
-        size:[132,132]
-    },
+};
 
-    {
-        id:'pos-xy',
-        label:'xy',
-        classes:'tile tile-rect pos-xy',
-        value:{xy:1},
-        size:[132,132]
-    },
+/* ----------------------------------------------------------
+   State
+   ---------------------------------------------------------- */
 
-    {
-        id:'pos-y2',
-        label:'y²',
-        classes:'tile tile-square-y pos-y2',
-        value:{y2:1},
-        size:[132,132]
-    },
-
-    {
-        id:'neg-unit',
-        label:'−1',
-        classes:'tile tile-unit neg-unit',
-        value:{u:-1},
-        size:[44,44]
-    },
-
-    {
-        id:'neg-x',
-        label:'−x',
-        classes:'tile tile-x neg-x',
-        value:{x:-1},
-        size:[132,44]
-    },
-
-    {
-        id:'neg-y',
-        label:'−y',
-        classes:'tile tile-y neg-y',
-        value:{y:-1},
-        size:[132,44]
-    },
-
-    {
-        id:'neg-x2',
-        label:'−x²',
-        classes:'tile tile-square-x neg-x2',
-        value:{x2:-1},
-        size:[132,132]
-    },
-
-    {
-        id:'neg-xy',
-        label:'−xy',
-        classes:'tile tile-rect neg-xy',
-        value:{xy:-1},
-        size:[132,132]
-    },
-
-    {
-        id:'neg-y2',
-        label:'−y²',
-        classes:'tile tile-square-y neg-y2',
-        value:{y2:-1},
-        size:[132,132]
-    }
-
-];
-
-const workspace =
-    document.getElementById('workspace');
-
-const expressionValue =
-    document.querySelector('.expression-value');
-
-const clearButton =
-    document.querySelector('.action-btn');
-
-const trayTiles =
-    document.querySelectorAll('.tray-tile');
+const workspace   = document.getElementById('workspace');
+const exprDisplay = document.getElementById('expr-value');
+const clearButton = document.getElementById('clear-btn');
 
 let boardTiles = [];
 let tileCounter = 0;
 
-let draggingTile = null;
+/* ----------------------------------------------------------
+   Grid helpers
+   ---------------------------------------------------------- */
 
-let offsetX = 0;
-let offsetY = 0;
+function snapToGrid(value) {
+    return Math.round(value / UNIT) * UNIT;
+}
 
-/* =========================================================
-   CREATE TILES
-   ========================================================= */
+function clamp(value, min, max) {
+    return Math.max(min, Math.min(value, max));
+}
 
-trayTiles.forEach(trayTile => {
+/* ----------------------------------------------------------
+   CREATE A TILE ON THE BOARD
+   ---------------------------------------------------------- */
 
-    trayTile.addEventListener('click', () => {
+function createBoardTile(defId) {
 
-        const tileId =
-            trayTile.dataset.tile;
+    const def = TILE_DEFS[defId];
+    if (!def) return;
 
-        const tileData =
-            TILES.find(
-                tile => tile.id === tileId
-            );
+    /* Build element — combine base class, size class, colour class */
+    const el = document.createElement('div');
+    el.className = `tile-base board-tile ${def.cls}`;
+    el.textContent = def.label;
 
-        createTile(tileData);
+    /*
+       Initial position: one unit in from top-left so the tile
+       sits cleanly inside the first grid cell.
+    */
+    const startX = UNIT;
+    const startY = UNIT;
 
+    el.style.left = startX + 'px';
+    el.style.top  = startY + 'px';
+
+    workspace.appendChild(el);
+
+    const tileObj = {
+        id:  ++tileCounter,
+        el,
+        def,
+        x: startX,
+        y: startY,
+    };
+
+    boardTiles.push(tileObj);
+    attachDragBehaviour(tileObj);
+    updateExpression();
+}
+
+/* ----------------------------------------------------------
+   DRAG BEHAVIOUR
+   ---------------------------------------------------------- */
+
+function attachDragBehaviour(tileObj) {
+
+    const el = tileObj.el;
+
+    /* Double-click removes the tile */
+    el.addEventListener('dblclick', () => {
+        destroyTile(tileObj);
     });
 
-});
+    el.addEventListener('mousedown', onMouseDown);
 
-function createTile(tileData){
+    function onMouseDown(e) {
 
-    if(!tileData) return;
+        /* Only respond to left button */
+        if (e.button !== 0) return;
+        e.preventDefault();
 
-    const tileElement =
-        document.createElement('div');
+        const wsRect = workspace.getBoundingClientRect();
 
-    tileElement.className =
-        tileData.classes;
+        /*
+           Offset = distance from pointer to tile's top-left corner,
+           measured in workspace coordinates.
+        */
+        const offsetX = e.clientX - wsRect.left - tileObj.x;
+        const offsetY = e.clientY - wsRect.top  - tileObj.y;
 
-    tileElement.innerHTML =
-        tileData.label;
+        el.style.zIndex = 20;
 
-    tileElement.style.left = '44px';
-    tileElement.style.top = '44px';
+        document.addEventListener('mousemove', onMouseMove);
+        document.addEventListener('mouseup',   onMouseUp);
 
-    workspace.appendChild(tileElement);
+        function onMouseMove(e) {
 
-    const tileObject = {
+            const wsRect2 = workspace.getBoundingClientRect();
 
-        id: ++tileCounter,
+            /* Raw position in workspace */
+            let rawX = e.clientX - wsRect2.left - offsetX;
+            let rawY = e.clientY - wsRect2.top  - offsetY;
 
-        element: tileElement,
+            /* Snap to grid */
+            let snappedX = snapToGrid(rawX);
+            let snappedY = snapToGrid(rawY);
 
-        data: tileData,
+            /* Constrain inside workspace */
+            const maxX = workspace.clientWidth  - tileObj.def.w * UNIT;
+            const maxY = workspace.clientHeight - tileObj.def.h * UNIT;
 
-        x:44,
-        y:44
+            snappedX = clamp(snappedX, 0, maxX);
+            snappedY = clamp(snappedY, 0, maxY);
 
-    };
+            tileObj.x = snappedX;
+            tileObj.y = snappedY;
 
-    boardTiles.push(tileObject);
+            el.style.left = snappedX + 'px';
+            el.style.top  = snappedY + 'px';
+        }
 
-    enableDragging(tileObject);
+        function onMouseUp() {
+            el.style.zIndex = 1;
+            document.removeEventListener('mousemove', onMouseMove);
+            document.removeEventListener('mouseup',   onMouseUp);
+        }
+    }
+}
 
+/* ----------------------------------------------------------
+   REMOVE A TILE
+   ---------------------------------------------------------- */
+
+function destroyTile(tileObj) {
+    tileObj.el.remove();
+    boardTiles = boardTiles.filter(t => t !== tileObj);
     updateExpression();
-
 }
 
-/* =========================================================
-   DRAGGING
-   ========================================================= */
+/* ----------------------------------------------------------
+   EXPRESSION BUILDER
+   ---------------------------------------------------------- */
 
-function enableDragging(tileObject){
+function updateExpression() {
 
-    const tile =
-        tileObject.element;
+    /* Tally all tile values */
+    const counts = { x2: 0, xy: 0, y2: 0, x: 0, y: 0, u: 0 };
 
-    tile.addEventListener(
-        'mousedown',
-        startDrag
-    );
-
-    function startDrag(event){
-
-        draggingTile = tileObject;
-
-        const rect =
-            workspace.getBoundingClientRect();
-
-        offsetX =
-            event.clientX -
-            rect.left -
-            tileObject.x;
-
-        offsetY =
-            event.clientY -
-            rect.top -
-            tileObject.y;
-
-        document.addEventListener(
-            'mousemove',
-            dragTile
-        );
-
-        document.addEventListener(
-            'mouseup',
-            stopDrag
-        );
-
-    }
-
-    function dragTile(event){
-
-        if(!draggingTile) return;
-
-        const rect =
-            workspace.getBoundingClientRect();
-
-        let x =
-            event.clientX -
-            rect.left -
-            offsetX;
-
-        let y =
-            event.clientY -
-            rect.top -
-            offsetY;
-
-        x = snapToGrid(x);
-        y = snapToGrid(y);
-
-        x = Math.max(
-            0,
-            Math.min(
-                x,
-                workspace.clientWidth -
-                tileObject.data.size[0]
-            )
-        );
-
-        y = Math.max(
-            0,
-            Math.min(
-                y,
-                workspace.clientHeight -
-                tileObject.data.size[1]
-            )
-        );
-
-        tileObject.x = x;
-        tileObject.y = y;
-
-        tile.style.left = x + 'px';
-        tile.style.top = y + 'px';
-
-    }
-
-    function stopDrag(){
-
-        draggingTile = null;
-
-        document.removeEventListener(
-            'mousemove',
-            dragTile
-        );
-
-        document.removeEventListener(
-            'mouseup',
-            stopDrag
-        );
-
-    }
-
-}
-
-/* =========================================================
-   GRID
-   ========================================================= */
-
-function snapToGrid(value){
-
-    return (
-        Math.round(value / GRID_SIZE)
-        * GRID_SIZE
-    );
-
-}
-
-/* =========================================================
-   EXPRESSION
-   ========================================================= */
-
-function updateExpression(){
-
-    const counts = {
-
-        x2:0,
-        xy:0,
-        y2:0,
-        x:0,
-        y:0,
-        u:0
-
-    };
-
-    boardTiles.forEach(tile => {
-
-        const [key,value] =
-            Object.entries(
-                tile.data.value
-            )[0];
-
+    boardTiles.forEach(tileObj => {
+        const [key, value] = Object.entries(tileObj.def.val)[0];
         counts[key] += value;
-
     });
 
     const parts = [];
@@ -335,59 +187,57 @@ function updateExpression(){
     addTerm(parts, counts.x2, 'x²');
     addTerm(parts, counts.xy, 'xy');
     addTerm(parts, counts.y2, 'y²');
-    addTerm(parts, counts.x, 'x');
-    addTerm(parts, counts.y, 'y');
-    addTerm(parts, counts.u, '');
+    addTerm(parts, counts.x,  'x');
+    addTerm(parts, counts.y,  'y');
+    addTerm(parts, counts.u,  '');
 
-    let expression =
-        parts.join(' ');
+    /* Build readable string */
+    let expression = parts.join(' ');
 
-    expression =
-        expression.replace(/^\+\s*/, '');
+    /* Strip leading '+' */
+    expression = expression.replace(/^\+\s*/, '');
 
-    expression =
-        expression.replace(/\+\−/g, '−');
+    /* Replace '+ −' with just '−' */
+    expression = expression.replace(/\+\s*−/g, '−');
 
-    expressionValue.innerHTML =
-        expression || '—';
-
+    exprDisplay.textContent = expression || '—';
 }
 
-function addTerm(parts,count,label){
+function addTerm(parts, count, label) {
 
-    if(count === 0) return;
+    if (count === 0) return;
 
-    const sign =
-        count > 0 ? '+' : '−';
+    const sign     = count > 0 ? '+' : '−';
+    const absCount = Math.abs(count);
 
-    const absolute =
-        Math.abs(count);
+    /* Suppress coefficient of 1 for variable terms (not units) */
+    const coef = (absCount === 1 && label !== '') ? '' : absCount;
 
-    const coefficient =
-        absolute === 1 && label !== ''
-            ? ''
-            : absolute;
-
-    parts.push(
-        `${sign}${coefficient}${label}`
-    );
-
+    parts.push(`${sign} ${coef}${label}`);
 }
 
-/* =========================================================
+/* ----------------------------------------------------------
+   TRAY — click to add
+   ---------------------------------------------------------- */
+
+document.querySelectorAll('.tray-tile').forEach(trayEl => {
+    trayEl.addEventListener('click', () => {
+        createBoardTile(trayEl.dataset.tile);
+    });
+});
+
+/* ----------------------------------------------------------
    CLEAR BOARD
-   ========================================================= */
+   ---------------------------------------------------------- */
 
 clearButton.addEventListener('click', () => {
-
-    boardTiles.forEach(tile => {
-        tile.element.remove();
-    });
-
+    boardTiles.forEach(t => t.el.remove());
     boardTiles = [];
-
     updateExpression();
-
 });
+
+/* ----------------------------------------------------------
+   INITIALISE
+   ---------------------------------------------------------- */
 
 updateExpression();

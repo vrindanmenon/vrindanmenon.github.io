@@ -1,337 +1,454 @@
+/* =========================================================
+   VARIABLES
+   ========================================================= */
 
-.algebra-lab{
+:root {
+    --unit: 40px;
+    --x-len: calc(var(--unit) * 3);   /* 120px */
+    --y-len: calc(var(--unit) * 3);   /* 120px */
 
-    --bg:#fafafa;
-    --card:#ffffff;
-    --border:#e7e7e7;
-    --text:#222;
-    --muted:#666;
-    --grid:#ececec;
+    --grid-line: rgba(0, 0, 0, 0.13);
+    --border-tile: rgba(0, 0, 0, 0.22);
 
-    --unit:44px;
-
-    --x-length:calc(var(--unit) * 3);
-    --y-length:calc(var(--unit) * 3);
-
+    --bg: #f5f4f0;
+    --surface: #ffffff;
+    --border: #e2e0da;
+    --text: #1a1a1a;
+    --muted: #6b6b6b;
+    --sidebar-bg: #ffffff;
 }
 
 /* =========================================================
-   LAYOUT
+   RESET
    ========================================================= */
 
-.algebra-lab .lab-page{
-    max-width:1500px;
-    margin:auto;
-    padding:40px 24px 80px;
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-.algebra-lab .lab-header{
-    margin-bottom:36px;
-}
-
-.algebra-lab .lab-header h1{
-    font-size:3rem;
-    margin-bottom:12px;
-}
-
-.algebra-lab .lab-header p{
-    max-width:760px;
-    line-height:1.8;
-    color:var(--muted);
-}
-
-.algebra-lab .lab-layout{
-    display:grid;
-    grid-template-columns:280px 1fr;
-    gap:24px;
+body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    padding: 32px 24px 64px;
 }
 
 /* =========================================================
-   SIDEBAR
+   LAB LAYOUT
    ========================================================= */
 
-.algebra-lab .lab-sidebar{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:20px;
-    padding:24px;
-    height:fit-content;
-    position:sticky;
-    top:24px;
+.lab {
+    max-width: 1160px;
+    margin: 0 auto;
 }
 
-.algebra-lab .prompt-card{
-    background:#f7f7f7;
-    border-radius:14px;
-    padding:16px;
-    margin-bottom:16px;
-    line-height:1.6;
+.lab-header {
+    margin-bottom: 28px;
+}
+
+.lab-header h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 8px;
+}
+
+.lab-header p {
+    font-size: 15px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.lab-body {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 20px;
+    align-items: start;
 }
 
 /* =========================================================
-   INTERACTIVE SHELL
+   SIDEBAR — HOW TO USE
    ========================================================= */
 
-.algebra-lab .interactive-shell{
-    background:var(--card);
-    border:1px solid var(--border);
-    border-radius:24px;
-    overflow:hidden;
+.how-to {
+    background: var(--sidebar-bg);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    position: sticky;
+    top: 24px;
+}
+
+.how-to h3 {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 14px;
+}
+
+.step {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    margin-bottom: 12px;
+}
+
+.step-num {
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: #f0eeea;
+    font-size: 11px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--muted);
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.step p {
+    font-size: 12.5px;
+    line-height: 1.65;
+    color: var(--text);
+}
+
+.step p strong {
+    font-weight: 500;
+}
+
+.legend {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid var(--border);
+}
+
+.legend-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 12px;
+    color: var(--text);
+}
+
+.swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(0, 0, 0, 0.18);
+    flex-shrink: 0;
+}
+
+.tip {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    font-size: 11.5px;
+    color: var(--muted);
+    line-height: 1.65;
+    font-style: italic;
 }
 
 /* =========================================================
-   TOOLBAR
+   SHELL
    ========================================================= */
 
-.algebra-lab .toolbar{
-    padding:16px 20px;
-    border-bottom:1px solid var(--border);
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
-    align-items:center;
-    background:#fcfcfc;
-}
-
-.algebra-lab .toolbar-spacer{
-    flex:1;
-}
-
-.algebra-lab .mode-btn,
-.algebra-lab .action-btn{
-    border:none;
-    background:#f1f1f1;
-    padding:10px 16px;
-    border-radius:12px;
-    cursor:pointer;
-    transition:0.2s;
-}
-
-.algebra-lab .mode-btn.active{
-    background:#222;
-    color:white;
+.shell {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    overflow: hidden;
 }
 
 /* =========================================================
-   TILE SECTION
+   TRAY
    ========================================================= */
 
-.algebra-lab .tile-section{
-    padding:20px;
-    border-bottom:1px solid var(--border);
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:20px;
+.tray {
+    padding: 14px 18px;
+    border-bottom: 1px solid var(--border);
+    background: #fafaf8;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.algebra-lab .tile-group{
-    background:#fafafa;
-    padding:16px;
+.tray-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
-.algebra-lab .tile-row{
-    display:flex;
-    gap:10px;
-    flex-wrap:wrap;
+.tray-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    min-width: 56px;
 }
 
 /* =========================================================
-   WORKSPACE
+   TILE BASE — shared by tray and board
    ========================================================= */
 
-.algebra-lab .workspace{
-
-    position:relative;
-    min-height:700px;
-
-    background:
-
-        repeating-linear-gradient(
-            0deg,
-            var(--grid),
-            var(--grid) 1px,
-            transparent 1px,
-            transparent var(--unit)
-        ),
-
-        repeating-linear-gradient(
-            90deg,
-            var(--grid),
-            var(--grid) 1px,
-            transparent 1px,
-            transparent var(--unit)
-        );
-
-    overflow:hidden;
-
-}
-
-/* =========================================================
-   EXPRESSION BAR
-   ========================================================= */
-
-.algebra-lab .expression-bar{
-    border-top:1px solid var(--border);
-    padding:18px 24px;
-    display:flex;
-    gap:18px;
-    align-items:center;
-}
-
-.algebra-lab .expression-value{
-    font-size:1.3rem;
-    font-style:italic;
-    font-weight:600;
-}
-
-/* =========================================================
-   REFLECTION
-   ========================================================= */
-
-.algebra-lab .reflection-box{
-    margin-top:24px;
-    padding:22px;
-    background:#faf8f2;
-    border-radius:18px;
-    line-height:1.8;
-}
-
-/* =========================================================
-   TILES
-   ========================================================= */
-
-.algebra-lab .tile,
-.algebra-lab .tray-tile{
-
-    box-sizing:border-box;
-
-    display:flex;
-    align-items:center;
-    justify-content:center;
-
-    border:2px solid rgba(0,0,0,0.18);
-
-    font-family:"JetBrains Mono", monospace;
-    font-weight:600;
-
-    user-select:none;
-
-}
-
-.algebra-lab .tile{
-    position:absolute;
-    cursor:grab;
-    touch-action:none;
+.tile-base {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1.5px solid var(--border-tile);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    user-select: none;
+    border-radius: 3px;
+    position: relative;
+    overflow: hidden;
 }
 
 /* =========================================================
    TILE SIZES
    ========================================================= */
 
-.algebra-lab .tile-unit,
-.algebra-lab .tray-unit{
-
-    width:var(--unit);
-    height:var(--unit);
-
-    font-size:16px;
-
+.t-unit {
+    width: var(--unit);
+    height: var(--unit);
+    font-size: 13px;
 }
 
-.algebra-lab .tile-x,
-.algebra-lab .tray-x{
-
-    width:var(--x-length);
-    height:var(--unit);
-
-    font-size:22px;
-
+.t-x {
+    width: var(--x-len);
+    height: var(--unit);
+    font-size: 16px;
 }
 
-.algebra-lab .tile-y,
-.algebra-lab .tray-y{
-
-    width:var(--y-length);
-    height:var(--unit);
-
-    font-size:22px;
-
+.t-y {
+    width: var(--unit);
+    height: var(--y-len);
+    font-size: 16px;
+    writing-mode: vertical-lr;
+    text-orientation: mixed;
 }
 
-.algebra-lab .tile-square-x,
-.algebra-lab .tray-square-x{
-
-    width:var(--x-length);
-    height:var(--x-length);
-
-    font-size:26px;
-
+.t-x2 {
+    width: var(--x-len);
+    height: var(--x-len);
+    font-size: 22px;
 }
 
-.algebra-lab .tile-square-y,
-.algebra-lab .tray-square-y{
-
-    width:var(--y-length);
-    height:var(--y-length);
-
-    font-size:26px;
-
+.t-xy {
+    width: var(--x-len);
+    height: var(--y-len);
+    font-size: 20px;
 }
 
-.algebra-lab .tile-rect,
-.algebra-lab .tray-rect{
-
-    width:var(--x-length);
-    height:var(--y-length);
-
-    font-size:26px;
-
+.t-y2 {
+    width: var(--y-len);
+    height: var(--y-len);
+    font-size: 22px;
 }
 
 /* =========================================================
-   COLORS
+   UNIT-GRID OVERLAY  (shown on all tiles > 1×1)
+   The ::before pseudo draws repeating grid lines
+   at 50% opacity so the tile colour shows through.
    ========================================================= */
 
-.algebra-lab .pos-unit{background:#FFA726;color:#7B3800;}
-.algebra-lab .pos-x{background:#66BB6A;color:#1B5E20;}
-.algebra-lab .pos-y{background:#26C6DA;color:#006064;}
-.algebra-lab .pos-x2{background:#42A5F5;color:#0D47A1;}
-.algebra-lab .pos-xy{background:#7E57C2;color:white;}
-.algebra-lab .pos-y2{background:#AB47BC;color:white;}
-
-.algebra-lab .neg-unit{background:#EF5350;color:white;}
-.algebra-lab .neg-x{background:#EC407A;color:white;}
-.algebra-lab .neg-y{background:#FF7043;color:white;}
-.algebra-lab .neg-x2{background:#D81B60;color:white;}
-.algebra-lab .neg-xy{background:#C62828;color:white;}
-.algebra-lab .neg-y2{background:#AD1457;color:white;}
-
-/* =========================================================
-   HOVER
-   ========================================================= */
-
-.algebra-lab .tray-tile{
-    cursor:pointer;
-    transition:0.15s;
+.t-x::before,
+.t-y::before,
+.t-x2::before,
+.t-xy::before,
+.t-y2::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.50;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent calc(var(--unit) - 1.5px),
+            rgba(0, 0, 0, 0.35) calc(var(--unit) - 1.5px),
+            rgba(0, 0, 0, 0.35) var(--unit)
+        ),
+        repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent calc(var(--unit) - 1.5px),
+            rgba(0, 0, 0, 0.35) calc(var(--unit) - 1.5px),
+            rgba(0, 0, 0, 0.35) var(--unit)
+        );
+    background-size: var(--unit) var(--unit);
 }
 
-.algebra-lab .tray-tile:hover{
-    transform:scale(1.04);
+/* =========================================================
+   TILE COLOURS
+   ========================================================= */
+
+/* Positive */
+.pos-unit { background: #F5A623; color: #6B3800; }
+.pos-x    { background: #4CAF50; color: #1B4A1E; }
+.pos-y    { background: #29B6F6; color: #003D5C; }
+.pos-x2   { background: #F5A623; color: #6B3800; }
+.pos-xy   { background: #66BB6A; color: #1B4A1E; }
+.pos-y2   { background: #29B6F6; color: #003D5C; }
+
+/* Negative */
+.neg-unit { background: #EF5350; color: #fff; }
+.neg-x    { background: #E91E8C; color: #fff; }
+.neg-y    { background: #FF7043; color: #fff; }
+.neg-x2   { background: #C62828; color: #fff; }
+.neg-xy   { background: #AD1457; color: #fff; }
+.neg-y2   { background: #BF360C; color: #fff; }
+
+/* =========================================================
+   TRAY TILES
+   ========================================================= */
+
+.tray-tile {
+    cursor: pointer;
+    transition: transform 0.12s, box-shadow 0.12s;
+    flex-shrink: 0;
+}
+
+.tray-tile:hover {
+    transform: scale(1.06);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.14);
+}
+
+.tray-tile:active {
+    transform: scale(0.97);
+}
+
+/* =========================================================
+   WORKSPACE
+   ========================================================= */
+
+.workspace {
+    position: relative;
+    height: 520px;
+    overflow: hidden;
+    background-color: #fefefe;
+    background-image:
+        repeating-linear-gradient(
+            0deg,
+            var(--grid-line),
+            var(--grid-line) 1px,
+            transparent 1px,
+            transparent var(--unit)
+        ),
+        repeating-linear-gradient(
+            90deg,
+            var(--grid-line),
+            var(--grid-line) 1px,
+            transparent 1px,
+            transparent var(--unit)
+        );
+    background-size: var(--unit) var(--unit);
+    /* Align grid origin at top-left corner exactly */
+    background-position: 0 0;
+}
+
+/* =========================================================
+   BOARD TILES  (placed on the workspace)
+   ========================================================= */
+
+.board-tile {
+    position: absolute;
+    cursor: grab;
+    z-index: 1;
+    transition: box-shadow 0.1s;
+}
+
+.board-tile:hover {
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+    z-index: 5;
+}
+
+.board-tile:active {
+    cursor: grabbing;
+    z-index: 20;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+}
+
+/* =========================================================
+   EXPRESSION BAR
+   ========================================================= */
+
+.expr-bar {
+    border-top: 1px solid var(--border);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-height: 52px;
+    background: #fafaf8;
+}
+
+.expr-label {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    white-space: nowrap;
+}
+
+.expr-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text);
+    flex: 1;
+    min-height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.clear-btn {
+    margin-left: auto;
+    padding: 7px 16px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: var(--muted);
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+.clear-btn:hover {
+    background: #f0eeea;
+    color: var(--text);
 }
 
 /* =========================================================
    RESPONSIVE
    ========================================================= */
 
-@media(max-width:1000px){
+@media (max-width: 900px) {
 
-    .algebra-lab .lab-layout{
-        grid-template-columns:1fr;
+    .lab-body {
+        grid-template-columns: 1fr;
     }
 
-    .algebra-lab .workspace{
-        min-height:500px;
+    .how-to {
+        position: static;
+    }
+
+    .workspace {
+        height: 380px;
     }
 
 }
-

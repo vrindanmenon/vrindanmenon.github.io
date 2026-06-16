@@ -1,171 +1,123 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Algebra Tiles Lab</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
 
 <link rel="stylesheet" href="../resources/css/main.css">
 <link rel="stylesheet" href="../resources/css/algebra-tiles.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
-
 </head>
-
 <body>
 
-<div class="algebra-lab">
+<div class="lab">
 
-    <div class="lab-page">
+    <div class="lab-header">
+        <h1>Algebra Tiles Lab</h1>
+        <p>A manipulative space for exploring algebraic expressions through area, shape, and arrangement.</p>
+    </div>
 
-        <div class="lab-header">
+    <div class="lab-body">
 
-            <h1>Algebra Tiles Lab</h1>
+        <!-- SIDEBAR -->
+        <aside class="how-to">
 
-            <p>
-                A visual space for exploring algebra through movement,
-                shape, area, and experimentation.
-            </p>
+            <h3>How to use</h3>
 
-        </div>
+            <div class="step">
+                <div class="step-num">1</div>
+                <p><strong>Click a tile</strong> in the tray to place it on the board.</p>
+            </div>
 
-        <div class="lab-layout">
+            <div class="step">
+                <div class="step-num">2</div>
+                <p><strong>Drag tiles</strong> on the board to arrange them. They snap to the grid.</p>
+            </div>
 
-            <aside class="lab-sidebar">
+            <div class="step">
+                <div class="step-num">3</div>
+                <p><strong>Double-click</strong> a board tile to remove it.</p>
+            </div>
 
-                <h3>Try Exploring</h3>
+            <div class="step">
+                <div class="step-num">4</div>
+                <p>The <strong>expression bar</strong> updates live as you add or remove tiles.</p>
+            </div>
 
-                <div class="prompt-card">
-                    Can you build x² + 3x + 2?
+            <div class="legend">
+
+                <div class="legend-row">
+                    <div class="swatch" style="background:#F5A623"></div>
+                    <span>x² and units (1)</span>
                 </div>
 
-                <div class="prompt-card">
-                    Can you create zero using opposite tiles?
+                <div class="legend-row">
+                    <div class="swatch" style="background:#4CAF50;width:36px;height:14px"></div>
+                    <span>x strips</span>
                 </div>
 
-                <div class="prompt-card">
-                    Arrange tiles into a rectangle. What patterns appear?
+                <div class="legend-row">
+                    <div class="swatch" style="background:#29B6F6;width:14px;height:36px"></div>
+                    <span>y strips</span>
                 </div>
 
-                <div class="prompt-card">
-                    Can two different arrangements represent the same expression?
+                <div class="legend-row">
+                    <div class="swatch" style="background:#EF5350"></div>
+                    <span>Negative tiles</span>
                 </div>
 
-            </aside>
+            </div>
 
-            <main>
+            <div class="tip">
+                Positive + negative pairs cancel out. Can you make zero?
+            </div>
 
-                <div class="interactive-shell">
+        </aside>
 
-                    <div class="toolbar">
+        <!-- MAIN -->
+        <div class="shell">
 
-                        <button class="mode-btn active">
-                            Free Play
-                        </button>
+            <!-- TRAY -->
+            <div class="tray">
 
-                        <button class="mode-btn">
-                            Zero Pairs
-                        </button>
-
-                        <button class="mode-btn">
-                            Area Model
-                        </button>
-
-                        <button class="mode-btn">
-                            Substitution
-                        </button>
-
-                        <div class="toolbar-spacer"></div>
-
-                        <button class="action-btn">
-                            Clear Board
-                        </button>
-
-                    </div>
-
-                    <div class="tile-section">
-
-                        <!-- POSITIVE -->
-
-                        <div class="tile-group">
-
-                            <h4>Positive Tiles</h4>
-
-                            <div class="tile-row">
-
-                                <div class="tray-tile tray-unit pos-unit" data-tile="pos-unit">1</div>
-
-                                <div class="tray-tile tray-x pos-x" data-tile="pos-x">x</div>
-
-                                <div class="tray-tile tray-y pos-y" data-tile="pos-y">y</div>
-
-                                <div class="tray-tile tray-square-x pos-x2" data-tile="pos-x2">x²</div>
-
-                                <div class="tray-tile tray-rect pos-xy" data-tile="pos-xy">xy</div>
-
-                                <div class="tray-tile tray-square-y pos-y2" data-tile="pos-y2">y²</div>
-
-                            </div>
-
-                        </div>
-
-                        <!-- NEGATIVE -->
-
-                        <div class="tile-group">
-
-                            <h4>Negative Tiles</h4>
-
-                            <div class="tile-row">
-
-                                <div class="tray-tile tray-unit neg-unit" data-tile="neg-unit">−1</div>
-
-                                <div class="tray-tile tray-x neg-x" data-tile="neg-x">−x</div>
-
-                                <div class="tray-tile tray-y neg-y" data-tile="neg-y">−y</div>
-
-                                <div class="tray-tile tray-square-x neg-x2" data-tile="neg-x2">−x²</div>
-
-                                <div class="tray-tile tray-rect neg-xy" data-tile="neg-xy">−xy</div>
-
-                                <div class="tray-tile tray-square-y neg-y2" data-tile="neg-y2">−y²</div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                    <div class="workspace" id="workspace"></div>
-
-                    <div class="expression-bar">
-
-                        <div class="expression-label">
-                            Expression
-                        </div>
-
-                        <div class="expression-value">
-                            —
-                        </div>
-
-                    </div>
-
+                <div class="tray-row">
+                    <span class="tray-label">Positive</span>
+                    <div class="tray-tile pos-unit t-unit" data-tile="pos-unit">1</div>
+                    <div class="tray-tile pos-x t-x"       data-tile="pos-x">x</div>
+                    <div class="tray-tile pos-y t-y"       data-tile="pos-y">y</div>
+                    <div class="tray-tile pos-x2 t-x2"     data-tile="pos-x2">x²</div>
+                    <div class="tray-tile pos-xy t-xy"     data-tile="pos-xy">xy</div>
+                    <div class="tray-tile pos-y2 t-y2"     data-tile="pos-y2">y²</div>
                 </div>
 
-                <div class="reflection-box">
-
-                    What changes when algebra becomes something you can move,
-                    arrange, combine, and experiment with?
-
+                <div class="tray-row">
+                    <span class="tray-label">Negative</span>
+                    <div class="tray-tile neg-unit t-unit" data-tile="neg-unit">−1</div>
+                    <div class="tray-tile neg-x t-x"       data-tile="neg-x">−x</div>
+                    <div class="tray-tile neg-y t-y"       data-tile="neg-y">−y</div>
+                    <div class="tray-tile neg-x2 t-x2"     data-tile="neg-x2">−x²</div>
+                    <div class="tray-tile neg-xy t-xy"     data-tile="neg-xy">−xy</div>
+                    <div class="tray-tile neg-y2 t-y2"     data-tile="neg-y2">−y²</div>
                 </div>
 
-            </main>
+            </div>
+
+            <!-- WORKSPACE -->
+            <div class="workspace" id="workspace"></div>
+
+            <!-- EXPRESSION BAR -->
+            <div class="expr-bar">
+                <span class="expr-label">Expression</span>
+                <span class="expr-value" id="expr-value">—</span>
+                <button class="clear-btn" id="clear-btn">Clear board</button>
+            </div>
 
         </div>
 
@@ -177,4 +129,3 @@
 
 </body>
 </html>
-
