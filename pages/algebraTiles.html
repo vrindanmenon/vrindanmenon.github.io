@@ -1,20 +1,19 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Algebra Tiles Lab</title>
+    <title>Algebra Tiles Lab</title>
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="../resources/css/algebra-tiles.css">
+    <link rel="stylesheet" href="../resources/css/algebra-tiles.css">
 
 </head>
 
@@ -22,125 +21,143 @@
 
 <div class="lab">
 
-    <!-- =====================================================
+    <!-- ======================================================
          HEADER
-    ====================================================== -->
+    ======================================================= -->
 
     <header class="lab-header">
 
         <h1>Algebra Tiles Lab</h1>
 
-        <p>
-            An experimental playground for seeing algebra through area, structure, and transformation.
+        <p class="subtitle">
+            An experimental playground for seeing algebra through
+            area, structure, and transformation.
         </p>
 
     </header>
 
-    <!-- =====================================================
-         MAIN LAYOUT
-    ====================================================== -->
+
+    <!-- ======================================================
+         PAGE LAYOUT
+    ======================================================= -->
 
     <div class="lab-body">
 
-        <!-- =================================================
-             SIDEBAR
-        ================================================== -->
+        <!-- ==================================================
+             LEFT SIDEBAR
+        =================================================== -->
 
         <aside class="how-to">
 
-            <h3>How to use</h3>
+            <section>
 
-            <div class="step">
-                <div class="step-num">1</div>
+                <h3>How to use</h3>
 
-                <p>
-                    <strong>Click a tile</strong>
-                    in the tray to place it on the board.
-                </p>
-            </div>
+                <div class="step">
+                    <div class="step-num">1</div>
+                    <p>
+                        Click a tile in the tray to add it to the workspace.
+                    </p>
+                </div>
 
-            <div class="step">
-                <div class="step-num">2</div>
+                <div class="step">
+                    <div class="step-num">2</div>
+                    <p>
+                        Drag tiles to explore different arrangements.
+                        Tiles snap to the grid.
+                    </p>
+                </div>
 
-                <p>
-                    <strong>Drag tiles</strong>
-                    on the board to arrange them.
-                    Tiles snap to the grid.
-                </p>
-            </div>
+                <div class="step">
+                    <div class="step-num">3</div>
+                    <p>
+                        Tap a tile to select it.
+                        A rotate button appears for rotatable tiles.
+                    </p>
+                </div>
 
-            <div class="step">
-                <div class="step-num">3</div>
+                <div class="step">
+                    <div class="step-num">4</div>
+                    <p>
+                        Double-click a tile to remove it.
+                    </p>
+                </div>
 
-                <p>
-                    <strong>Double-click</strong>
-                    a board tile to remove it.
-                </p>
-            </div>
+            </section>
 
-            <div class="step">
-                <div class="step-num">4</div>
 
-                <p>
-                    The expression bar updates automatically
-                    as tiles are added or removed.
-                </p>
-            </div>
+            <!-- ==============================================
+                 TILE LEGEND
+            =============================================== -->
 
-            <!-- =============================================
-                 LEGEND
-            ============================================== -->
+            <section class="legend">
 
-            <div class="legend">
+                <h3>Tile Guide</h3>
 
                 <div class="legend-row">
                     <div class="swatch pos-unit"></div>
-                    <span>Unit tiles</span>
+                    <span>Unit Tile</span>
                 </div>
 
                 <div class="legend-row">
-                    <div class="swatch pos-x rect-x"></div>
-                    <span>x strips</span>
+                    <div class="swatch rect-x pos-x"></div>
+                    <span>x Strip</span>
                 </div>
 
                 <div class="legend-row">
-                    <div class="swatch pos-y rect-y"></div>
-                    <span>y strips</span>
+                    <div class="swatch rect-y pos-y"></div>
+                    <span>y Strip</span>
                 </div>
 
                 <div class="legend-row">
-                    <div class="swatch pos-x2 square-x"></div>
-                    <span>x² area tile</span>
+                    <div class="swatch square-x pos-x2"></div>
+                    <span>x² Tile</span>
                 </div>
 
                 <div class="legend-row">
-                    <div class="swatch pos-xy rect-xy"></div>
-                    <span>xy rectangle</span>
+                    <div class="swatch rect-xy pos-xy"></div>
+                    <span>xy Tile</span>
                 </div>
 
                 <div class="legend-row">
-                    <div class="swatch pos-y2 square-y"></div>
-                    <span>y² area tile</span>
+                    <div class="swatch square-y pos-y2"></div>
+                    <span>y² Tile</span>
                 </div>
 
-            </div>
+            </section>
 
-            <div class="tip">
-                x and y represent different dimensions,
-                so x² and y² are visually different sizes.
-            </div>
+
+            <!-- ==============================================
+                 REFLECTION
+            =============================================== -->
+
+            <section class="tip">
+
+                <strong>Think...</strong>
+
+                <p>
+
+                    What changes when you rotate a tile?
+
+                    What stays exactly the same?
+
+                </p>
+
+            </section>
 
         </aside>
 
-        <!-- =================================================
-             MAIN SHELL
-        ================================================== -->
+
+        <!-- ==================================================
+             MAIN INTERACTIVE AREA
+        =================================================== -->
 
         <main class="shell">
 
-            <!-- =============================================
+
+            <!-- ==============================================
                  TILE TRAY
-            ============================================== -->
+            =============================================== -->
 
             <section class="tray">
 
@@ -153,36 +170,43 @@
                     </span>
 
                     <div class="tile-base tray-tile pos-unit t-unit"
-                         data-tile="pos-unit">
+                         data-tile="pos-unit"
+                         aria-label="Positive Unit">
                         1
                     </div>
 
                     <div class="tile-base tray-tile pos-x t-x"
-                         data-tile="pos-x">
+                         data-tile="pos-x"
+                         aria-label="Positive x">
                         x
                     </div>
 
                     <div class="tile-base tray-tile pos-y t-y"
-                         data-tile="pos-y">
+                         data-tile="pos-y"
+                         aria-label="Positive y">
                         y
                     </div>
 
                     <div class="tile-base tray-tile pos-x2 t-x2"
-                         data-tile="pos-x2">
+                         data-tile="pos-x2"
+                         aria-label="Positive x squared">
                         x²
                     </div>
 
                     <div class="tile-base tray-tile pos-xy t-xy"
-                         data-tile="pos-xy">
+                         data-tile="pos-xy"
+                         aria-label="Positive xy">
                         xy
                     </div>
 
                     <div class="tile-base tray-tile pos-y2 t-y2"
-                         data-tile="pos-y2">
+                         data-tile="pos-y2"
+                         aria-label="Positive y squared">
                         y²
                     </div>
 
                 </div>
+
 
                 <!-- NEGATIVE -->
 
@@ -226,37 +250,49 @@
 
             </section>
 
-            <!-- =============================================
-                 WORKSPACE
-            ============================================== -->
 
-            <section class="workspace"
-                     id="workspace">
+            <!-- ==============================================
+                 WORKSPACE
+            =============================================== -->
+
+            <section
+                id="workspace"
+                class="workspace">
+
             </section>
 
-            <!-- =============================================
+
+            <!-- ==============================================
                  EXPRESSION BAR
-            ============================================== -->
+            =============================================== -->
 
-            <section class="expr-bar">
+            <footer class="expr-bar">
 
-                <span class="expr-label">
-                    Expression
-                </span>
+                <div class="expr-group">
 
-                <span class="expr-value"
-                      id="expr-value">
-                    —
-                </span>
+                    <span class="expr-label">
+                        Expression
+                    </span>
 
-                <button class="clear-btn"
-                        id="clear-btn">
+                    <span
+                        id="expr-value"
+                        class="expr-value">
 
-                    Clear board
+                        —
+
+                    </span>
+
+                </div>
+
+                <button
+                    id="clear-btn"
+                    class="clear-btn">
+
+                    Clear Board
 
                 </button>
 
-            </section>
+            </footer>
 
         </main>
 
@@ -267,4 +303,5 @@
 <script src="../resources/scripts/algebra-tiles.js"></script>
 
 </body>
+
 </html>

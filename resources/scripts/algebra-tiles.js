@@ -1,7 +1,12 @@
-
 /* =========================================================
    ALGEBRA TILES LAB
-========================================================= */
+   Part 1
+   ========================================================= */
+
+
+/* =========================================================
+   GRID
+   ========================================================= */
 
 const UNIT =
     parseInt(
@@ -9,250 +14,428 @@ const UNIT =
         .getPropertyValue('--unit')
     );
 
+
+/* =========================================================
+   ROTATABLE TILES
+   ========================================================= */
+
+const ROTATABLE = [
+
+    "pos-x",
+    "pos-y",
+    "pos-xy",
+
+    "neg-x",
+    "neg-y",
+    "neg-xy"
+
+];
+
+
 /* =========================================================
    TILE DEFINITIONS
-========================================================= */
+   ========================================================= */
 
 const TILE_DEFS = {
 
-    'pos-unit': {
-        label:'1',
-        cls:'pos-unit t-unit',
+    "pos-unit":{
+        label:"1",
+        cls:"pos-unit t-unit",
         w:1,
         h:1,
-        val:{u:1}
+        value:{u:1}
     },
 
-    'pos-x': {
-        label:'x',
-        cls:'pos-x t-x',
+    "pos-x":{
+        label:"x",
+        cls:"pos-x t-x",
         w:3,
         h:1,
-        val:{x:1}
+        value:{x:1}
     },
 
-    'pos-y': {
-        label:'y',
-        cls:'pos-y t-y',
+    "pos-y":{
+        label:"y",
+        cls:"pos-y t-y",
         w:1,
         h:4,
-        val:{y:1}
+        value:{y:1}
     },
 
-    'pos-x2': {
-        label:'x²',
-        cls:'pos-x2 t-x2',
+    "pos-x2":{
+        label:"x²",
+        cls:"pos-x2 t-x2",
         w:3,
         h:3,
-        val:{x2:1}
+        value:{x2:1}
     },
 
-    'pos-xy': {
-        label:'xy',
-        cls:'pos-xy t-xy',
+    "pos-xy":{
+        label:"xy",
+        cls:"pos-xy t-xy",
         w:3,
         h:4,
-        val:{xy:1}
+        value:{xy:1}
     },
 
-    'pos-y2': {
-        label:'y²',
-        cls:'pos-y2 t-y2',
+    "pos-y2":{
+        label:"y²",
+        cls:"pos-y2 t-y2",
         w:4,
         h:4,
-        val:{y2:1}
+        value:{y2:1}
     },
 
-    'neg-unit': {
-        label:'−1',
-        cls:'neg-unit t-unit',
+    "neg-unit":{
+        label:"−1",
+        cls:"neg-unit t-unit",
         w:1,
         h:1,
-        val:{u:-1}
+        value:{u:-1}
     },
 
-    'neg-x': {
-        label:'−x',
-        cls:'neg-x t-x',
+    "neg-x":{
+        label:"−x",
+        cls:"neg-x t-x",
         w:3,
         h:1,
-        val:{x:-1}
+        value:{x:-1}
     },
 
-    'neg-y': {
-        label:'−y',
-        cls:'neg-y t-y',
+    "neg-y":{
+        label:"−y",
+        cls:"neg-y t-y",
         w:1,
         h:4,
-        val:{y:-1}
+        value:{y:-1}
     },
 
-    'neg-x2': {
-        label:'−x²',
-        cls:'neg-x2 t-x2',
+    "neg-x2":{
+        label:"−x²",
+        cls:"neg-x2 t-x2",
         w:3,
         h:3,
-        val:{x2:-1}
+        value:{x2:-1}
     },
 
-    'neg-xy': {
-        label:'−xy',
-        cls:'neg-xy t-xy',
+    "neg-xy":{
+        label:"−xy",
+        cls:"neg-xy t-xy",
         w:3,
         h:4,
-        val:{xy:-1}
+        value:{xy:-1}
     },
 
-    'neg-y2': {
-        label:'−y²',
-        cls:'neg-y2 t-y2',
+    "neg-y2":{
+        label:"−y²",
+        cls:"neg-y2 t-y2",
         w:4,
         h:4,
-        val:{y2:-1}
+        value:{y2:-1}
     }
 
 };
 
+
 /* =========================================================
    DOM
-========================================================= */
+   ========================================================= */
 
 const workspace =
-    document.getElementById('workspace');
+    document.getElementById("workspace");
 
-const exprValue =
-    document.getElementById('expr-value');
+const expressionValue =
+    document.getElementById("expr-value");
 
-const clearBtn =
-    document.getElementById('clear-btn');
+const clearButton =
+    document.getElementById("clear-btn");
 
 const trayTiles =
-    document.querySelectorAll('.tray-tile');
+    document.querySelectorAll(".tray-tile");
+
 
 /* =========================================================
    STATE
-========================================================= */
+   ========================================================= */
 
 let boardTiles = [];
 
+let selectedTile = null;
+
 let tileCounter = 0;
 
-/* =========================================================
-   HELPERS
-========================================================= */
-
-function snap(value){
-
-    return Math.round(value / UNIT) * UNIT;
-
-}
-
-function clamp(value,min,max){
-
-    return Math.max(min, Math.min(value,max));
-
-}
 
 /* =========================================================
    CREATE TILE
-========================================================= */
+   ========================================================= */
 
-function createTile(defId){
+function createTile(tileID){
 
-    const def = TILE_DEFS[defId];
+    const def = TILE_DEFS[tileID];
 
     if(!def) return;
 
-    const el =
-        document.createElement('div');
+    const tile =
+        document.createElement("div");
 
-    el.className =
+    tile.className =
         `tile-base board-tile ${def.cls}`;
 
-    el.textContent =
-        def.label;
+    tile.innerHTML =
 
-    const startX = UNIT;
-    const startY = UNIT;
+        `<span class="tile-label">
+            ${def.label}
+        </span>`;
 
-    el.style.left = startX + 'px';
-    el.style.top  = startY + 'px';
+    tile.style.left = UNIT + "px";
+    tile.style.top  = UNIT + "px";
 
-    workspace.appendChild(el);
 
-    const tile = {
+    /* ---------------------------------------------
+       ROTATE BUTTON
+       --------------------------------------------- */
 
-        id: ++tileCounter,
+    if(ROTATABLE.includes(tileID)){
 
-        el,
+        const rotate =
+            document.createElement("button");
 
-        def,
+        rotate.className =
+            "rotate-btn";
 
-        x:startX,
+        rotate.innerHTML = "↻";
 
-        y:startY
+        tile.appendChild(rotate);
+
+    }
+    else{
+
+        tile.classList.add("no-rotate");
+
+    }
+
+
+    workspace.appendChild(tile);
+
+
+    const tileObject = {
+
+        id:++tileCounter,
+
+        type:tileID,
+
+        def:def,
+
+        element:tile,
+
+        rotated:false,
+
+        x:UNIT,
+
+        y:UNIT
 
     };
 
-    boardTiles.push(tile);
+    boardTiles.push(tileObject);
 
-    enableDrag(tile);
+
+    /* ---------------------------------------------
+       TILE EVENTS
+       --------------------------------------------- */
+
+    tile.addEventListener(
+
+        "click",
+
+        event=>{
+
+            event.stopPropagation();
+
+            selectTile(tileObject);
+
+        }
+
+    );
+
+
+    tile.addEventListener(
+
+        "dblclick",
+
+        event=>{
+
+            event.stopPropagation();
+
+            removeTile(tileObject);
+
+        }
+
+    );
+
+
+    attachTileEvents(tileObject);
 
     updateExpression();
 
 }
 
+
 /* =========================================================
-   DRAGGING
-========================================================= */
+   SELECTION
+   ========================================================= */
 
-function enableDrag(tile){
+function selectTile(tileObject){
 
-    const el = tile.el;
+    document
 
-    el.addEventListener(
-        'dblclick',
-        () => removeTile(tile)
+        .querySelectorAll(".board-tile")
+
+        .forEach(tile=>{
+
+            tile.classList.remove("selected");
+
+        });
+
+
+    tileObject.element
+
+        .classList
+
+        .add("selected");
+
+
+    selectedTile = tileObject;
+
+}
+
+
+/* =========================================================
+   DESELECT
+   ========================================================= */
+
+workspace.addEventListener(
+
+    "click",
+
+    ()=>{
+
+        document
+
+            .querySelectorAll(".board-tile")
+
+            .forEach(tile=>{
+
+                tile.classList.remove("selected");
+
+            });
+
+        selectedTile = null;
+
+    }
+
+);
+
+
+/* =========================================================
+   TRAY
+   ========================================================= */
+
+trayTiles.forEach(tile=>{
+
+    tile.addEventListener(
+
+        "click",
+
+        ()=>{
+
+            createTile(
+
+                tile.dataset.tile
+
+            );
+
+        }
+
     );
 
-    /* =====================================================
-       MOUSE
-    ===================================================== */
+});
 
-    el.addEventListener(
-        'mousedown',
-        startMouseDrag
-    );
+/* =========================================================
+   TILE INTERACTION
+   ========================================================= */
 
-    /* =====================================================
-       TOUCH
-    ===================================================== */
+function attachTileEvents(tileObject){
 
-    el.addEventListener(
-        'touchstart',
-        startTouchDrag,
-        { passive:false }
-    );
+    const tile = tileObject.element;
 
-    /* =====================================================
-       MOUSE DRAG
-    ===================================================== */
+    const rotateButton =
+        tile.querySelector(".rotate-btn");
 
-    function startMouseDrag(event){
+    /* -----------------------------------------------------
+       ROTATE
+       ----------------------------------------------------- */
 
-        if(event.button !== 0) return;
+    if(rotateButton){
 
-        beginDrag(
-            event.clientX,
-            event.clientY,
-            false
+        rotateButton.addEventListener(
+
+            "click",
+
+            event=>{
+
+                event.stopPropagation();
+
+                rotateTile(tileObject);
+
+            }
+
         );
 
     }
 
-    /* =====================================================
+    /* -----------------------------------------------------
+       MOUSE DRAG
+       ----------------------------------------------------- */
+
+    tile.addEventListener(
+
+        "mousedown",
+
+        startMouseDrag
+
+    );
+
+    /* -----------------------------------------------------
        TOUCH DRAG
-    ===================================================== */
+       ----------------------------------------------------- */
+
+    tile.addEventListener(
+
+        "touchstart",
+
+        startTouchDrag,
+
+        {passive:false}
+
+    );
+
+
+    function startMouseDrag(event){
+
+        if(event.button!==0) return;
+
+        beginDrag(
+
+            event.clientX,
+
+            event.clientY,
+
+            false
+
+        );
+
+    }
+
 
     function startTouchDrag(event){
 
@@ -262,172 +445,374 @@ function enableDrag(tile){
             event.touches[0];
 
         beginDrag(
+
             touch.clientX,
+
             touch.clientY,
+
             true
+
         );
 
     }
 
-    /* =====================================================
-       CORE DRAG
-    ===================================================== */
 
-    function beginDrag(startX,startY,isTouch){
+    /* -----------------------------------------------------
+       CORE DRAG
+       ----------------------------------------------------- */
+
+    function beginDrag(clientX,clientY,isTouch){
+
+        selectTile(tileObject);
 
         const rect =
             workspace.getBoundingClientRect();
 
         const offsetX =
-            startX -
+            clientX -
             rect.left -
-            tile.x;
+            tileObject.x;
 
         const offsetY =
-            startY -
+            clientY -
             rect.top -
-            tile.y;
+            tileObject.y;
 
-        function drag(clientX,clientY){
+        tile.style.zIndex = 100;
 
-            const r =
+
+        function move(x,y){
+
+            const workspaceRect =
                 workspace.getBoundingClientRect();
 
-            let x =
+            let left =
+
                 snap(
-                    clientX -
-                    r.left -
+
+                    x -
+                    workspaceRect.left -
                     offsetX
+
                 );
 
-            let y =
+            let top =
+
                 snap(
-                    clientY -
-                    r.top -
+
+                    y -
+                    workspaceRect.top -
                     offsetY
+
                 );
 
-            x = clamp(
-                x,
+            left = clamp(
+
+                left,
+
                 0,
+
                 workspace.clientWidth -
-                el.offsetWidth
+                tile.offsetWidth
+
             );
 
-            y = clamp(
-                y,
+            top = clamp(
+
+                top,
+
                 0,
+
                 workspace.clientHeight -
-                el.offsetHeight
+                tile.offsetHeight
+
             );
 
-            tile.x = x;
-            tile.y = y;
+            tileObject.x = left;
+            tileObject.y = top;
 
-            el.style.left = x + 'px';
-            el.style.top  = y + 'px';
+            tile.style.left =
+                left + "px";
+
+            tile.style.top =
+                top + "px";
 
         }
 
-        function mouseMove(e){
 
-            drag(
-                e.clientX,
-                e.clientY
+        function mouseMove(event){
+
+            move(
+
+                event.clientX,
+
+                event.clientY
+
             );
 
         }
 
-        function touchMove(e){
 
-            e.preventDefault();
+        function touchMove(event){
+
+            event.preventDefault();
 
             const touch =
-                e.touches[0];
+                event.touches[0];
 
-            drag(
+            move(
+
                 touch.clientX,
+
                 touch.clientY
+
             );
 
         }
 
-        function stop(){
+
+        function stopDrag(){
+
+            tile.style.zIndex = 2;
 
             document.removeEventListener(
-                'mousemove',
+
+                "mousemove",
+
                 mouseMove
+
             );
 
             document.removeEventListener(
-                'mouseup',
-                stop
+
+                "mouseup",
+
+                stopDrag
+
             );
 
             document.removeEventListener(
-                'touchmove',
+
+                "touchmove",
+
                 touchMove
+
             );
 
             document.removeEventListener(
-                'touchend',
-                stop
+
+                "touchend",
+
+                stopDrag
+
             );
 
         }
+
 
         if(isTouch){
 
             document.addEventListener(
-                'touchmove',
+
+                "touchmove",
+
                 touchMove,
-                { passive:false }
+
+                {passive:false}
+
             );
 
             document.addEventListener(
-                'touchend',
-                stop
+
+                "touchend",
+
+                stopDrag
+
             );
 
-        } else {
+        }
+
+        else{
 
             document.addEventListener(
-                'mousemove',
+
+                "mousemove",
+
                 mouseMove
+
             );
 
             document.addEventListener(
-                'mouseup',
-                stop
+
+                "mouseup",
+
+                stopDrag
+
             );
 
         }
 
     }
+
+}
+
+
+/* =========================================================
+   ROTATE TILE
+   ========================================================= */
+
+function rotateTile(tileObject){
+
+    const tile = tileObject.element;
+
+    tileObject.rotated =
+        !tileObject.rotated;
+
+
+    /* -----------------------------------------------------
+       X
+       ----------------------------------------------------- */
+
+    if(tile.classList.contains("t-x")){
+
+        tile.classList.remove("t-x");
+        tile.classList.add("t-x-rotated");
+
+    }
+
+    else if(tile.classList.contains("t-x-rotated")){
+
+        tile.classList.remove("t-x-rotated");
+        tile.classList.add("t-x");
+
+    }
+
+
+    /* -----------------------------------------------------
+       Y
+       ----------------------------------------------------- */
+
+    else if(tile.classList.contains("t-y")){
+
+        tile.classList.remove("t-y");
+        tile.classList.add("t-y-rotated");
+
+    }
+
+    else if(tile.classList.contains("t-y-rotated")){
+
+        tile.classList.remove("t-y-rotated");
+        tile.classList.add("t-y");
+
+    }
+
+
+    /* -----------------------------------------------------
+       XY
+       ----------------------------------------------------- */
+
+    else if(tile.classList.contains("t-xy")){
+
+        tile.classList.remove("t-xy");
+        tile.classList.add("t-xy-rotated");
+
+    }
+
+    else if(tile.classList.contains("t-xy-rotated")){
+
+        tile.classList.remove("t-xy-rotated");
+        tile.classList.add("t-xy");
+
+    }
+
+
+    /* -----------------------------------------------------
+       KEEP TILE INSIDE BOARD
+       ----------------------------------------------------- */
+
+    tileObject.x = clamp(
+
+        tileObject.x,
+
+        0,
+
+        workspace.clientWidth -
+        tile.offsetWidth
+
+    );
+
+    tileObject.y = clamp(
+
+        tileObject.y,
+
+        0,
+
+        workspace.clientHeight -
+        tile.offsetHeight
+
+    );
+
+    tile.style.left =
+        tileObject.x + "px";
+
+    tile.style.top =
+        tileObject.y + "px";
 
 }
 
 
 /* =========================================================
    REMOVE TILE
-========================================================= */
+   ========================================================= */
 
-function removeTile(tile){
+function removeTile(tileObject){
 
-    tile.el.remove();
+    tileObject.element.remove();
 
     boardTiles =
+
         boardTiles.filter(
-            t => t !== tile
+
+            tile =>
+
+                tile.id !== tileObject.id
+
         );
+
+    if(selectedTile &&
+       selectedTile.id===tileObject.id){
+
+        selectedTile = null;
+
+    }
 
     updateExpression();
 
 }
 
 /* =========================================================
-   EXPRESSION
-========================================================= */
+   UTILITIES
+   ========================================================= */
+
+function snap(value){
+
+    return Math.round(value / UNIT) * UNIT;
+
+}
+
+function clamp(value,min,max){
+
+    return Math.max(
+        min,
+        Math.min(value,max)
+    );
+
+}
+
+
+/* =========================================================
+   EXPRESSION ENGINE
+   ========================================================= */
 
 function updateExpression(){
 
@@ -442,93 +827,154 @@ function updateExpression(){
 
     };
 
-    boardTiles.forEach(tile => {
 
-        const [key,val] =
-            Object.entries(tile.def.val)[0];
+    boardTiles.forEach(tile=>{
 
-        counts[key] += val;
+        const key =
+            Object.keys(tile.def.value)[0];
+
+        counts[key] +=
+            tile.def.value[key];
 
     });
 
-    const parts = [];
 
-    addTerm(parts, counts.x2, 'x²');
-    addTerm(parts, counts.xy, 'xy');
-    addTerm(parts, counts.y2, 'y²');
-    addTerm(parts, counts.x, 'x');
-    addTerm(parts, counts.y, 'y');
-    addTerm(parts, counts.u, '');
+    const expression = [];
 
-    let expression =
-        parts.join(' ');
+    addTerm(expression,counts.x2,"x²");
+    addTerm(expression,counts.xy,"xy");
+    addTerm(expression,counts.y2,"y²");
+    addTerm(expression,counts.x,"x");
+    addTerm(expression,counts.y,"y");
+    addTerm(expression,counts.u,"");
 
-    expression =
-        expression.replace(/^\+\s*/, '');
 
-    expression =
-        expression.replace(/\+\s*−/g, '− ');
+    let result =
+        expression.join(" ");
 
-    exprValue.textContent =
-        expression || '—';
+    result =
+        result.replace(/^\+\s*/,"");
+
+    result =
+        result.replace(/\+\s−/g,"− ");
+
+    expressionValue.textContent =
+        result || "—";
 
 }
 
+
+/* =========================================================
+   TERM BUILDER
+   ========================================================= */
+
 function addTerm(parts,count,label){
 
-    if(count === 0) return;
+    if(count===0) return;
 
     const sign =
-        count > 0 ? '+' : '−';
+        count>0
+            ? "+"
+            : "−";
 
     const abs =
         Math.abs(count);
 
-    const coef =
-        (abs === 1 && label !== '')
-            ? ''
-            : abs;
+    const coefficient =
+
+        abs===1 &&
+        label!==""
+
+        ? ""
+
+        : abs;
 
     parts.push(
-        `${sign} ${coef}${label}`
+
+        `${sign} ${coefficient}${label}`
+
     );
 
 }
 
-/* =========================================================
-   TRAY
-========================================================= */
-
-trayTiles.forEach(tile => {
-
-    tile.addEventListener(
-        'click',
-        () => createTile(tile.dataset.tile)
-    );
-
-});
 
 /* =========================================================
-   CLEAR
-========================================================= */
+   CLEAR BOARD
+   ========================================================= */
 
-clearBtn.addEventListener(
-    'click',
-    () => {
+clearButton.addEventListener(
 
-        boardTiles.forEach(tile => {
-            tile.el.remove();
+    "click",
+
+    ()=>{
+
+        boardTiles.forEach(tile=>{
+
+            tile.element.remove();
+
         });
 
-        boardTiles = [];
+        boardTiles=[];
+
+        selectedTile=null;
 
         updateExpression();
 
     }
+
 );
 
+
 /* =========================================================
-   INIT
-========================================================= */
+   OPTIONAL SHORTCUTS
+   ========================================================= */
+
+document.addEventListener(
+
+    "keydown",
+
+    event=>{
+
+        if(!selectedTile) return;
+
+        switch(event.key){
+
+            case "Delete":
+
+            case "Backspace":
+
+                removeTile(selectedTile);
+
+                break;
+
+            case "r":
+
+            case "R":
+
+                if(
+                    ROTATABLE.includes(
+                        selectedTile.type
+                    )
+                ){
+
+                    rotateTile(
+                        selectedTile
+                    );
+
+                }
+
+                break;
+
+        }
+
+    }
+
+);
+
+
+/* =========================================================
+   INITIALISE
+   ========================================================= */
 
 updateExpression();
+
