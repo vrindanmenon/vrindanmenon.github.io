@@ -1,6 +1,6 @@
 ---
 layout: blogpost
-title: "008 — Who Is Really Educated? Part 01"
+title: "009 - Learning, Reconsidered Part 01 — Who Is Really Educated?"
 date: 2026-08-19
 tags: [education, learning, philosophy, recursiveReflections]
 ---
