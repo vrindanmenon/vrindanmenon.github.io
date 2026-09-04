@@ -6,7 +6,7 @@ tags: [algebra, logic, mathematics, patterns]
 ---
 
 # Algebra Lab
-
+(WORK UNDER PROGRESS)
 Before algebra becomes symbols on paper, it can become shape, movement, and space.
 
 This learning space invites learners to:
