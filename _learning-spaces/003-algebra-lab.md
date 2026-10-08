@@ -10,7 +10,6 @@ tags: [algebra, logic, mathematics, patterns]
 
 ---
 
-# Algebra Lab
 
 **WORK IN PROGRESS**
 
@@ -22,13 +21,13 @@ Instead of moving directly from a question to a formula, the lab gives you diffe
 
 <div class="lab-launch">
 
-```
+
 <a href="https://algebra-lab-navy.vercel.app/" class="lab-button">
 
     Enter the Algebra Lab →
 
 </a>
-```
+
 
 </div>
 
@@ -115,13 +114,11 @@ Rather than treating a graph, an equation, a pattern, or a visual model as separ
 
 <div class="lab-launch">
 
-```
 <a href="https://algebra-lab-navy.vercel.app/" class="lab-button">
 
     Explore the Algebra Lab →
 
 </a>
-```
 
 </div>
 
