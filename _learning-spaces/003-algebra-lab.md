@@ -20,15 +20,9 @@ The Algebra Lab is an interactive space for exploring algebra through **visual p
 Instead of moving directly from a question to a formula, the lab gives you different ways to see the relationship and asks you to notice what changes, what stays the same, and how the representations connect.
 
 <div class="lab-launch">
-
-
-<a href="https://algebra-lab-navy.vercel.app/" class="lab-button">
-
+  <a href="https://algebra-lab-navy.vercel.app/" class="lab-button">
     Enter the Algebra Lab →
-
-</a>
-
-
+  </a>
 </div>
 
 ---
@@ -113,13 +107,9 @@ Rather than treating a graph, an equation, a pattern, or a visual model as separ
 ---
 
 <div class="lab-launch">
-
-<a href="https://algebra-lab-navy.vercel.app/" class="lab-button">
-
-    Explore the Algebra Lab →
-
-</a>
-
+  <a href="https://algebra-lab-navy.vercel.app/" class="lab-button">
+    Enter the Algebra Lab →
+  </a>
 </div>
 
 ## More challenges and explorations will be added as the lab develops.
