@@ -6,9 +6,10 @@ tags:
 - learning
 - philosophy
 - recursiveReflections
-title: Learning Reconsidered Part 03 --- Are We Learning to Think, or
+title: 011 - Learning Reconsidered Part 03 - Are We Learning to Think, or
   Learning to Follow?
 ---
+
 
 ![Are We Learning to Think, or Learning to
 Follow?](https://substackcdn.com/image/fetch/$s_!2bWT!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F764cf754-8a99-4012-97fa-c053452a299a_1672x941.png)
@@ -23,6 +24,9 @@ around for reassurance before taking the next step.
 I notice this in myself very often. Having an idea and acting on it are
 not always the same thing. It makes me wonder, how much of this has to
 do with the way we learn?
+
+
+[Prefer to read on Substack? Read Part 3 here ↗](https://substack.com/home/post/p-219882598)
 
 When we think about education, we often ask what children are learning
 and how well they are learning it. But do we also ask whether they are

@@ -6,12 +6,11 @@ tags:
 - learning
 - philosophy
 - recursiveReflections
-title: Learning Reconsidered Part 02 --- What Actually Changes Inside Us
+title: 010 - Learning Reconsidered Part 02 - What Actually Changes Inside Us
   When We Genuinely Learn?
 ---
 
-![Learning Reconsidered --- Part
-02](assets/learning-reconsidered-part-02.png)
+
 
 > "Tell me and I forget. Teach me and I remember. Involve me and I
 > learn." --- Chinese proverb
@@ -43,6 +42,8 @@ different elements appear most of the time:
 Are these six separate parts of learning? Or are they just different
 ways of creating a relationship between the learner and what is being
 learnt?
+
+[Prefer to read on Substack? Read Part 2 here ↗](https://substack.com/home/post/p-216262573)
 
 But how can knowledge in a curriculum become something a child needs,
 rather than something they are told to learn? Can we connect new
