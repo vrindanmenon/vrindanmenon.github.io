@@ -11,8 +11,6 @@ tags: [algebra, logic, mathematics, patterns]
 ---
 
 
-**WORK IN PROGRESS**
-
 What happens when you look at the same mathematical idea in different ways?
 
 The Algebra Lab is an interactive space for exploring algebra through **visual patterns, equations, number lines, graphs, and algebra tiles**.
@@ -111,5 +109,7 @@ Rather than treating a graph, an equation, a pattern, or a visual model as separ
     Enter the Algebra Lab →
   </a>
 </div>
+
+**WORK IN PROGRESS**
 
 ## More challenges and explorations will be added as the lab develops.
